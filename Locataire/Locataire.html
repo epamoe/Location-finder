@@ -13,49 +13,32 @@
 		<script src="../bootstrap-5.1.3-dist/js/bootstrap.min.js"></script>
 	</head>
 	<body>
-		<header>
-			<div class="container-fluid" style="background:#bf1b00">
-				<div style="margin-left:55px">
-					<p class="h6" style="margin:15px 55px 15px 0px">
-						<img src="../images/tel.png" width="20px" height="20px">
-						656 05 55 37
-					</p>
-				</div>			
-			</div>
-			<div class="container">
-				<div class="row">
-					<div id="block1" class="col-sm-6">
-						<img src="../images/logo.png" width="160px" height="140px">
-					</div>
-					<div id="block2" class="col-sm-6">
-						<br><br>
-						<a href="../Propriété/Propriétés.html" class="btn btn-info btn-danger">
-							Propriétés
-						</a>
-						<a href="../Bailleur/Bailleur.html" class="btn btn-info btn-danger">
-							Bailleur
-						</a>
-						<a href="../Locataire/Locataire.html" class="btn btn-info btn-danger btn-lg active">
-							Locataire
-						</a>
-						<a href="Commentaire.html" class="btn btn-info btn-danger">
-							Commentaires
-						</a>
-						<a href="../accueil.html" class="btn btn-info btn-danger">
-							Retour
-						</a>
-					</div>
-				</div>
+		<header class="site-header sticky-top py-1">
+			<div class="container-fluid" style="background:#212529; font-size:25px">
+			  <nav id="navAccueil" class="container d-flex flex-column flex-md-row justify-content-between">
+				<a href="../Accueil.html" style="text-decoration:none; color:#ba6101">
+						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="Color:#ba6101" class="bi bi-house"  viewBox="0 0 16 16" style="margin-top:10px; margin-left:10px">
+							<path fill-rule="evenodd" d="M2 13.5V7h1v6.5a.5.5 0 0 0 .5.5h9a.5.5 0 0 0 .5-.5V7h1v6.5a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 2 13.5zm11-11V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+							</path>
+							<path fill-rule="evenodd" d="M7.293 1.5a1 1 0 0 1 1.414 0l6.647 6.646a.5.5 0 0 1-.708.708L8 2.207 1.354 8.854a.5.5 0 1 1-.708-.708L7.293 1.5z"/>
+							</path>
+						</svg>
+				</a>
+			    <a class="py-2 d-none d-md-inline-block" href="../Propriété/Propriétés.html" style="text-decoration:none; color:#ba6101">Propriétés</a>
+			    <a class="py-2 d-none d-md-inline-block" href="../Bailleur/AuthentificationBailleur.html" style="text-decoration:none; color:#ba6101">Bailleur</a>
+			    <a class="py-2 d-none d-md-inline-block" href="Locataire.html" style="text-decoration:none; color:#ba6101">Locataire</a>
+			    <a class="py-2 d-none d-md-inline-block" href="Commentaire.html" style="text-decoration:none; color:#ba6101">Commentaire</a>
+			  </nav>
 			</div>
 		</header>
 		
 		<br>
 		<div class="container">
 			<div class="row">
-				<div id="block1" class="col-sm-2" style="background:#484647">
+				<div id="block1" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 10rem; background:#484647;">
 					<br><br>
 					<div class="bg-light border mt-2 text-white bg-dark p-2 rounded-top rounded-bottom">
-						<nav><h4 class="text-danger">Communiquer avec le bailleur:</h4>
+						<nav><h5 style="color:#ba6101">Echanger avec le bailleur:</h5>
 							<ul class="nav nav-tabs">
 								<ul class="nav flex-column flex-xs-row">
 									<li class="nav-item">
@@ -67,7 +50,7 @@
 							</ul>
 						</nav>
 						<br>
-						<nav><h4 class="text-danger">Informations sur sa propriété:</h4>
+						<nav><h5 style="color:#ba6101">Informations sur sa propriété:</h5>
 							<ul class="nav nav-tabs">
 								<ul class="nav flex-column flex-xs-row">
 									<li class="nav-item">
@@ -88,7 +71,7 @@
 								</ul>
 							</ul>
 						</nav>
-						<nav><h4 class="text-danger">Documentation:</h4>
+						<nav><h5 style="color:#ba6101">Autres:</h5>
 							<ul class="nav nav-tabs">
 								<ul class="nav flex-column flex-xs-row">
 									<li class="nav-item">
