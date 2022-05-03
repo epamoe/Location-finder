@@ -1,0 +1,23 @@
+p
+{
+	font-family: cambria;
+}
+div[id=index]
+{
+	background-image: url(images/maisonFin.jpg);
+	background-size: cover;
+}
+a
+{
+	text-decoration: none;
+	color: red;
+}
+div
+{
+	font-family: cambria;
+}
+div[id=bailBack]
+{
+	background-image: url(images/bail.jpg);
+	background-size: cover;
+}
