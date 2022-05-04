@@ -2,11 +2,6 @@ p
 {
 	font-family: cambria;
 }
-div[id=index]
-{
-	background-image: url(images/maisonFin.jpg);
-	background-size: cover;
-}
 a
 {
 	text-decoration: none;
