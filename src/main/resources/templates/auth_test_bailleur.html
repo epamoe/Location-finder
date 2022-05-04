@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>auth_test_bailleur</title>
+</head>
+<body>
+<marquee><h1>bonjour M./Mme!</h1></marquee>
+
+<form th:action= "addBailleur">
+    <input type="text" name="aid" th:name="aid">
+    <br><input type="text" name="name" th:name="name">
+    <br><input type="text" name="tech" th:name="tech">
+    <br><input type="submit" th:value="envoyer">
+</form>
+
+
+</body>
+</html>
+
+</body>
+</html>
