@@ -13,7 +13,8 @@ public class Bailleur_controlleur {
 
     @GetMapping("/Bailleur/AuthentificationBailleur")
     public String authentification_locataire() {
-        return "/Bailleur/AjoutLocataire";
+
+        return "/Bailleur/AuthentificationBailleur";
     }
 
     @GetMapping("/Bailleur")
