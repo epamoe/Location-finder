@@ -12,7 +12,7 @@ body {
 }
 body[id=aut]
 {
-  background-image: url(images/fond.jpg);
+  background-image: url(static/images/fond.jpg);
   background-size: cover;
 }
 

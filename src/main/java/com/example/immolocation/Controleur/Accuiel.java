@@ -4,18 +4,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
-public class Controleur_accueil {
+public class Accuiel {
 
-    @GetMapping(value="/Accueil")
+    @GetMapping(value="/home")
     public String accueil()
     {
 
         return "Accueil";
-    }
-
-    @GetMapping(value="/")
-    public String auth()
-    {
-        return "auth_test_bailleur";
     }
 }
