@@ -1,5 +1,7 @@
 package com.example.immolocation.Controleur;
 
+import com.example.immolocation.Service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -14,17 +16,11 @@ public class Bailleur_controlleur {
     @GetMapping("/Bailleur/AuthentificationBailleur")
     public String authentification_locataire() {
 
-        return "/Bailleur/AuthentificationBailleur";
-    }
-
-    @GetMapping("/Bailleur")
-    public String bailleur() {
         return "/Bailleur/Bailleur";
     }
-
     @GetMapping("/h")
     public String pro()
     {
-        return "/propriete/h";
+        return "/propriete";
     }
 }

@@ -13,6 +13,6 @@ div
 }
 div[id=bailBack]
 {
-	background-image: url(images/bail.jpg);
+	background-image: url(../images/bail.jpg);
 	background-size: cover;
 }
