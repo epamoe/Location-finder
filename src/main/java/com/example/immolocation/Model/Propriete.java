@@ -9,7 +9,7 @@ public class Propriete {
     private long id_propriete;
     private String type;
     private boolean statut;
-    private int prix_lcation;
+    private int prix_location;
     private String description;
     private String localisation;
 
@@ -46,12 +46,28 @@ public class Propriete {
         this.statut = statut;
     }
 
-    public int getPrix_lcation() {
-        return prix_lcation;
+    public int getPrix_location() {
+        return prix_location;
     }
 
-    public void setPrix_lcation(int prix_lcation) {
-        this.prix_lcation = prix_lcation;
+    public void setPrix_location(int prix_location) {
+        this.prix_location = prix_location;
+    }
+
+    public Bailleur getBailleur() {
+        return bailleur;
+    }
+
+    public void setBailleur(Bailleur bailleur) {
+        this.bailleur = bailleur;
+    }
+
+    public Locataire getLocataire() {
+        return locataire;
+    }
+
+    public void setLocataire(Locataire locataire) {
+        this.locataire = locataire;
     }
 
     public String getDescription() {
