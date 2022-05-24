@@ -8,12 +8,34 @@ import java.util.List;
 
 public interface IProprieteServices {
 
+    //ajoute une propriete dans la bd
     public void ajouterProprieter(Propriete propriete);
+
+    //supprime une propriete de la Bd
     public void supprimerPropriete(Propriete propriete);
+
+    //modifie une propriete existante
     public void modifierPropriete(Propriete propriete);
+
+    //retourne un propriete ayant l'id mis en parametre
     public Propriete consulterPropriete(Long id);
-    public List<Propriete> listProprieteparBailleur(Bailleur Bailleur, Pageable pageable);
-    public List<Propriete> findAllPropriete();
+
+    //retourne une liste de propriete par region
+    public List<Propriete> findByRegion(String Region);
+
+    //retourne une liste de propriete par description
+    public List<Propriete> findByLocalisation(String localisation);
+
+    //retourne une liste de propriete par intervalle de prix
+    public List<Propriete> findByPrix(Long prixiInf,Long prixSup);
+
+    //retourne la liste des proprietes d'un bailleur d'identifiant idbailleur
+    public List<Propriete> listProprieteparBailleur(Bailleur bailleur);
+
+    //cette methode permet de mettre automatiquement enligne des photos de proprietes libres
+    public void publierPropriete(Propriete propriete);
+
+
 
 
 

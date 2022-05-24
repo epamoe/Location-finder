@@ -35,7 +35,7 @@ public class Locataire implements Serializable {
 
     //liason de la table locataire a la table propriete
 
-        @OneToMany(mappedBy="locataire")
+        @OneToMany
     private List<Propriete> propriete = new ArrayList<Propriete>();
         //constructeur
     public Locataire(){

@@ -23,6 +23,7 @@ public class Propriete_controleur {
 
     @RequestMapping("/propriete")
     public String Pagepropriete(){
+
         return "/propriete/propriete";
     }
 
@@ -40,19 +41,7 @@ public class Propriete_controleur {
         iProprieteServices.ajouterProprieter(propriete);
         return "/propriete/propriete";
     }
-//*************************************cette methode revoie la liste des proprietes**********************************
-  /* @RequestMapping("/listPropriete")
-    public Optional<Propriete> listPropriete(){
-        Optional<Propriete> listPropriete=iProprieteServices.listProprieteparBailleur(id);
-        return listPropriete;
-    }*/
-//***********************************retourne la liste de propriete**************************************************
 
-    @RequestMapping("/listPropriete")
-    public String proprieteList(Model model){
-        List<Propriete> listPropriete=iProprieteServices.findAllPropriete();
-        model.addAttribute("listPropriete",listPropriete);
-        return "Bailleur/listPropriete";
-    }
+
 }
 
