@@ -1,26 +1,44 @@
 package com.example.immolocation.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Propriete {
+public class Propriete implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id_propriete;
-    private String type;
-    private boolean statut;
-    private int prix_lcation;
     private String description;
     private String localisation;
-
-    //liaison des tables
-
+    private boolean disponible = true;
+    private long prix;
     @ManyToOne
     private Bailleur bailleur;
-    @ManyToOne
-    private Locataire locataire;
 
-    //getter et setter
+    public Propriete(){
+        super();
+    }
+
+    public Propriete( String description, String localisation, boolean disponible, long prix, Bailleur bailleur) {
+
+        this.description = description;
+        this.localisation = localisation;
+        this.disponible = disponible;
+        this.prix = prix;
+        this.bailleur = bailleur;
+    }
+
+    public long getPrix() {
+        return prix;
+    }
+
+    public Bailleur getBailleur() {
+        return bailleur;
+    }
+
+    public void setBailleur(Bailleur bailleur) {
+        this.bailleur = bailleur;
+    }
 
     public long getId_propriete() {
         return id_propriete;
@@ -30,28 +48,20 @@ public class Propriete {
         this.id_propriete = id_propriete;
     }
 
-    public String getType() {
-        return type;
+    public boolean isDisponible() {
+        return disponible;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDisponible(boolean statut) {
+        this.disponible = statut;
     }
 
-    public boolean isStatut() {
-        return statut;
-    }
-
-    public void setStatut(boolean statut) {
-        this.statut = statut;
-    }
-
-    public int getPrix_lcation() {
-        return prix_lcation;
+    public Long getPrix_lcation() {
+        return prix;
     }
 
     public void setPrix_lcation(int prix_lcation) {
-        this.prix_lcation = prix_lcation;
+        this.prix = prix_lcation;
     }
 
     public String getDescription() {
