@@ -1,57 +1,57 @@
 package com.example.immolocation.Model;
 
 import javax.persistence.*;
+import java.io.Serializable;
 
 @Entity
-public class Propriete {
+public class Propriete implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id_propriete;
-    private String type;
-    private boolean statut;
-    private int prix_location;
-    private String description;
-    private String localisation;
-
-    //liaison des tables
-
+    private String description="inconnue";
+    private String localisation="inconnue";
+    private String region="inconnue";
+    private boolean disponible = true;
+    private long prix=0;
     @ManyToOne
     private Bailleur bailleur;
-    @ManyToOne
-    private Locataire locataire;
 
-    //getter et setter
-
-    public long getId_propriete() {
-        return id_propriete;
+    public Propriete(){
+        super();
     }
 
-    public void setId_propriete(long id_propriete) {
-        this.id_propriete = id_propriete;
+    public Propriete(String description, String localisation, String region, boolean disponible, long prix, Bailleur bailleur) {
+        this.description = description;
+        this.localisation = localisation;
+        this.region = region;
+        this.disponible = disponible;
+        this.prix = prix;
+        this.bailleur = bailleur;
     }
 
-    public String getType() {
-        return type;
+
+    public boolean getDisponible() {
+        return disponible;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setDisponible(boolean disponible) {
+        this.disponible = disponible;
     }
 
-    public boolean isStatut() {
-        return statut;
+    public String getRegion() {
+        return region;
     }
 
-    public void setStatut(boolean statut) {
-        this.statut = statut;
+    public void setRegion(String region) {
+        this.region = region;
     }
 
-    public int getPrix_location() {
-        return prix_location;
+    public void setPrix(long prix) {
+        this.prix = prix;
     }
 
-    public void setPrix_location(int prix_location) {
-        this.prix_location = prix_location;
+    public long getPrix() {
+        return prix;
     }
 
     public Bailleur getBailleur() {
@@ -62,12 +62,16 @@ public class Propriete {
         this.bailleur = bailleur;
     }
 
-    public Locataire getLocataire() {
-        return locataire;
+    public long getId_propriete() {
+        return id_propriete;
     }
 
-    public void setLocataire(Locataire locataire) {
-        this.locataire = locataire;
+    public Long getPrix_lcation() {
+        return prix;
+    }
+
+    public void setPrix_lcation(int prix_lcation) {
+        this.prix = prix_lcation;
     }
 
     public String getDescription() {
