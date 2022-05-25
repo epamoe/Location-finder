@@ -1,0 +1,14 @@
+.paddindbody {
+    padding-top: 19%;
+}
+.cr {
+    position: relative;
+    background-color: #ba6101;
+}
+.formcontrol {
+    border-radius: 0%;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    font-size: 16px;
+}
