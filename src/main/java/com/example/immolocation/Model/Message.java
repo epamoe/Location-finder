@@ -1,5 +1,6 @@
 package com.example.immolocation.Model;
 
+import javax.transaction.Status;///////////////////////
 import java.util.Date;
 
 public class Message {
@@ -7,7 +8,7 @@ public class Message {
     private String nom_recepteur;
     private String message;
     private String date;
-    private Status status;
+    private Status status;///////////////////////Attention a son pakage
 
     public Message(){
 
