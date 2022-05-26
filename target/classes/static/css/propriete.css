@@ -1,0 +1,21 @@
+.paddindbody {
+    padding-top: 19%;
+}
+.alg {
+    position: center;
+    background-color: #ba6101;
+}
+.formcontrol {
+    border-radius: 0%;
+    border: none;
+    padding: 8px;
+    width: 100%;
+    font-size: 16px;
+    box-shadow: -1px 1px 60px 10px rgba(0,0,0,0.5);
+}
+.sg-image {
+    background-image: url(../images/maison.jpg);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
