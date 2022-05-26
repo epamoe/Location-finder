@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -23,7 +24,8 @@ public class ProprieteServiceImp implements IProprieteServices{
 
 
     @Override
-    public void ajouterProprieter(Propriete propriete) {
+    public void ajouterProprieter(Propriete propriete,Bailleur bailleur) {
+        propriete.setBailleur(bailleur);
         proprieteRepository.save(propriete);
     }
 
@@ -68,15 +70,11 @@ public class ProprieteServiceImp implements IProprieteServices{
         return proprieteList;
     }
     //////////////////////::::::encours de traitement!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
     @Override
-    public void publierPropriete(Propriete propriete) {
-        if(propriete.getDisponible() == true){
-
-
-        }
-        else{
-            ajouterProprieter(propriete);
-        }
+    public Optional<Propriete> consulterProp(Long id) {
+        return proprieteRepository.findById(id);
     }
 
 

@@ -16,13 +16,14 @@ public class Locataire implements Serializable {
     private String Login;
     private String nom_Locataire;
     private String prenom_Locataire;
-    private int age;
     private String mot_de_passe;
     private String Numero_cni;
     private int montant_mensuel_a_payer;
     private LocalDateTime date_entree_locataire= LocalDateTime.now();
 
 //liason de la table locataire a la table facture
+
+
 
         @ManyToOne
         @JoinColumn(name="Id_Bailleur")
@@ -47,11 +48,20 @@ public class Locataire implements Serializable {
         Login = login;
         this.nom_Locataire = nom_Locataire;
         this.prenom_Locataire = prenom_Locataire;
-        this.age = age;
-
         this.mot_de_passe = mot_de_passe;
         this.bailleur = bailleur;
         this.factures = factures;
+        this.propriete = propriete;
+    }
+
+    public Locataire(String login, String nom_Locataire, String prenom_Locataire, String mot_de_passe, String numero_cni, int montant_mensuel_a_payer, LocalDateTime date_entree_locataire, List<Propriete> propriete) {
+        Login = login;
+        this.nom_Locataire = nom_Locataire;
+        this.prenom_Locataire = prenom_Locataire;
+        this.mot_de_passe = mot_de_passe;
+        Numero_cni = numero_cni;
+        this.montant_mensuel_a_payer = montant_mensuel_a_payer;
+        this.date_entree_locataire = date_entree_locataire;
         this.propriete = propriete;
     }
 
@@ -124,14 +134,6 @@ public class Locataire implements Serializable {
 
     public void setPrenom_Locataire(String prenom_Locataire) {
         this.prenom_Locataire = prenom_Locataire;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public int getMontant_mensuel_a_payer() {

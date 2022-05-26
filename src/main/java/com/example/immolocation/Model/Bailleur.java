@@ -38,6 +38,14 @@ public class Bailleur  implements Serializable {
         this.locataire = locataire;
     }
 
+    public Bailleur(String nom_bailleur, String prenom_bailleur, int age, String login, String mot_de_passe) {
+        this.nom_bailleur = nom_bailleur;
+        this.prenom_bailleur = prenom_bailleur;
+        this.age = age;
+        Login = login;
+        this.mot_de_passe = mot_de_passe;
+    }
+
     // getters et setters
 
 

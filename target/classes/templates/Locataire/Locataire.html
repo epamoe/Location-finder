@@ -14,119 +14,156 @@
 
 	</head>
 	<body>
-<header class="container-fluid; site-header sticky-top py-4">
-			<div class="container-fluid" style="background:#ba6101; font-size:25px">
-				<nav id="navAccueil" class="d-flex justify-content-center py-3">
-					<a class="py-2 d-none d-md-inline-block" href="Accueil.html" th:href="@{/home}" title="Accueil" style="text-decoration:none">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-house-door" viewBox="0 0 16 16">
-							<path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z">
-							</path>
-						</svg>
-					</a>
-					<a class="py-2 d-none d-md-inline-block" href="../Propriete/Proprietes.html" th:href="@{Propriete/Proprietes}" title="Propriétés" style="text-decoration:none; margin-left:50px">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-building" viewBox="0 0 16 16">
-							<path fill-rule="evenodd" d="M14.763.075A.5.5 0 0 1 15 .5v15a.5.5 0 0 1-.5.5h-3a.5.5 0 0 1-.5-.5V14h-1v1.5a.5.5 0 0 1-.5.5h-9a.5.5 0 0 1-.5-.5V10a.5.5 0 0 1 .342-.474L6 7.64V4.5a.5.5 0 0 1 .276-.447l8-4a.5.5 0 0 1 .487.022zM6 8.694 1 10.36V15h5V8.694zM7 15h2v-1.5a.5.5 0 0 1 .5-.5h2a.5.5 0 0 1 .5.5V15h2V1.309l-7 3.5V15z"></path>
-							<path d="M2 11h1v1H2v-1zm2 0h1v1H4v-1zm-2 2h1v1H2v-1zm2 0h1v1H4v-1zm4-4h1v1H8V9zm2 0h1v1h-1V9zm-2 2h1v1H8v-1zm2 0h1v1h-1v-1zm2-2h1v1h-1V9zm0 2h1v1h-1v-1zM8 7h1v1H8V7zm2 0h1v1h-1V7zm2 0h1v1h-1V7zM8 5h1v1H8V5zm2 0h1v1h-1V5zm2 0h1v1h-1V5zm0-2h1v1h-1V3z"></path>
-						</svg>
-					</a>
-					<a class="py-2 d-none d-md-inline-block" href="../Bailleur/AuthentificationBailleur.html" th:href="@{Bailleur/AuthentificationBailleur}" title="Bailleur" style="text-decoration:none; margin-left:50px">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
-							<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"></path>
-						</svg>
-					</a>
-					<a class="py-2 d-none d-md-inline-block" href="../Locataire/AuthentificationLocataire.html"  th:href="@{/Locataire/AuthentificationLocataire}"title="Locataire" style="text-decoration:none; margin-left:50px">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-person-fill" viewBox="0 0 16 16">
-							<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
-						</svg>
-					</a>
-					<a class="py-2 d-none d-md-inline-block" href="Commentaire.html" th:href="@{Commentaire}" title="Commentaires" style="text-decoration:none; margin-left:50px">
-						<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-plus" viewBox="0 0 16 16">
-							<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
-						</svg>
-					</a>
-					</nav>
-			</div>
-		</header>
-		
-		<br>
-		<div class="container">
-			<div class="row">
-				<div id="block1" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark" style="width: 10rem; background:#484647;">
-					<br><br>
-					<div class="bg-light border mt-2 text-white bg-dark p-2 rounded-top rounded-bottom">
-						<nav><h5 style="color:#ba6101">Echanger avec le bailleur:</h5>
-							<ul class="nav nav-tabs">
-								<ul class="nav flex-column flex-xs-row">
-									<li class="nav-item">
-										<a class="nav-link" href="Ajout Propriétés">
-											<span class="text-white">Messagerie</span>
-										</a>
-									</li>
-								</ul>
+		<main>
+			<div class="wrapper">
+			        <!-- Sidebar  -->
+			    <div class="row">
+			    	<div class="col-md-2">
+						<nav id="sidebar" style="position:fixed">
+				            <div class="sidebar-header">
+				                <h3>Bonjour cher locataire!!!</h3>
+				            </div>
+				            <ul class="list-unstyled components">
+		 						<p style="color:#643104; font-size:20px; background:#d1813b">Echanger avec le bailleur:</p>
+				                <li>
+									<a style="color:#d1813b; font-size:15px; text-decoration: none" href="Ajout Propriétés">
+										Messagerie
+									</a>			                
+								</li>
+				                <li>
+									<a style="color:#d1813b; font-size:15px; text-decoration: none" href="Ajout Propriétés">
+										Supprimer Proprietes
+									</a>			                
+								</li>		
+				                <li>
+									<a style="color:#d1813b; font-size:15px; text-decoration: none" href="Ajout Propriétés">
+										Modifier Proprietes		
+									</a>			                
+								</li>
+		 						<p style="color:#643104; font-size:20px; background:#d1813b">Informations sur sa propriété:</p>
+				                <li>
+									<a style="color:#d1813b; font-size:15px; text-decoration: none" href="Ajout Propriétés">
+										Description
+									</a>			                
+								</li>		
+				                <li>
+									<a style="color:#d1813b; font-size:15px; text-decoration: none" href="Ajout Propriétés">
+										Facture
+									</a>			                
+								</li> 						
+		 						<p style="color:#643104; font-size:20px; background:#d1813b">Autres:</p>
+				                <li>
+									<a style="color:#d1813b; font-size:15px; text-decoration: none" href="Ajout Propriétés">
+										Droit domanier
+									</a>			                
+								</li>
+				                <li>
+									<a style="color:#d1813b; font-size:15px; text-decoration: none" href="Ajout Propriétés">
+										Contrat de bail
+									</a>			                
+								</li>
 							</ul>
-						</nav>
-						<br>
-						<nav><h5 style="color:#ba6101">Informations sur sa propriété:</h5>
-							<ul class="nav nav-tabs">
-								<ul class="nav flex-column flex-xs-row">
-									<li class="nav-item">
-										<a class="nav-link" href="Ajout Propriétés">
-											<span class="text-white">Description</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="Ajout Propriétés">
-											<span class="text-white">Date de payement</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="Ajout Propriétés">
-											<span class="text-white">Facture</span>
-										</a>
-									</li>
-								</ul>
-							</ul>
-						</nav>
-						<nav><h5 style="color:#ba6101">Autres:</h5>
-							<ul class="nav nav-tabs">
-								<ul class="nav flex-column flex-xs-row">
-									<li class="nav-item">
-										<a class="nav-link" href="Ajout Propriétés">
-											<span class="text-white">Droit domanier</span>
-										</a>
-									</li>
-									<li class="nav-item">
-										<a class="nav-link" href="Ajout Propriétés">
-											<span class="text-white">Contrat de bail</span>
-										</a>
-									</li>
-								</ul>
-							</ul>
-						</nav>
-					</div>
-					<br><br>						
-				</div>
-				<div id="bailBack" class="col-sm-10">
-					<div class="row">
-						<div class="col-sm-5">
-							
-						</div>
-						<div class="col-sm-7">
-							<br><br><br><br><br><br><br><br><br>
-							<span id="titre" style="font-size:30px"><strong>Salut </strong></span>
-							<br>
-							<span id="titre" style="font-size:30px"><strong>Cher Locataire!!!</strong></span>	
-							<br><br><br>
-							<span id="titre" style="font-size:15px"><strong>Veuillez consulter les différentes <br> actions, que vous pouvez éxécuter <br> et choisir celle qui correspond à <br>votre désir ponctuel...</strong></span>						
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+				            <ul class="list-unstyled CTAs">
+				                <li>
+				                    <a href="https://bootstrapious.com/tutorial/files/sidebar.zip" class="download">Date de payement</a>
+				                </li>
+				            </ul>
+				        </nav>			    		
+			    	</div>
+			        
 
-
-		<footer>
-			
-		</footer>
+			        <!-- Page Content  -->
+			        <div class="col-md-10">
+			   	        <div id="content">
+				            <nav class="navbar navbar-expand-lg" style="background:#643104">
+				                <div class="container-fluid">
+				                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+				                        <ul class="nav navbar-nav ml-auto">
+				                            <li class="nav-item">
+												<a class="py-2 d-none d-md-inline-block" href="Accueil.html" th:href="@{home}" title="Accueil" style="text-decoration:none">
+													<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#d1813b" class="bi bi-house-door" viewBox="0 0 16 16">
+														<path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z">
+														</path>
+													</svg>
+												</a>
+									       </li>			                        
+				                           <li class="nav-item active">
+												<a class="py-2 d-none d-md-inline-block" href="Bailleur/AuthentificationBailleur.html" th:href="@{Bailleur/AuthentificationBailleur}" title="Bailleur" style="text-decoration:none; margin-left:50px">
+													<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#d1813b" class="bi bi-person-lines-fill" viewBox="0 0 16 16">
+														<path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"></path>
+													</svg>
+												</a>
+				                            </li>
+				                            <li class="nav-item">
+												<a class="py-2 d-none d-md-inline-block" href="Locataire/AuthentificationLocataire.html"  th:href="@{/Locataire/AuthentificationLocataire}"title="Locataire" style="text-decoration:none; margin-left:50px">
+													<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#d1813b" class="bi bi-person-fill" viewBox="0 0 16 16">
+														<path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+													</svg>
+												</a>			           
+								            </li>
+				                            <li class="nav-item">
+												<a class="py-2 d-none d-md-inline-block" href="Commentaire.html" th:href="@{Commentaire}" title="Commentaires" style="text-decoration:none; margin-left:50px">
+													<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#d1813b" class="bi bi-plus" viewBox="0 0 16 16">
+														<path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
+													</svg>
+												</a>	
+				                            </li>
+				                        </ul>
+				                    </div>
+				                </div>
+				            </nav>
+					        <p>
+					        	Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+					        	tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+					        	quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+					        	consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+					        	cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+					        	proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					        </p>				        
+				        </div>
+			        </div>			        
+			    </div>
+			</div>
+		</main>
 	</body>
 </html>

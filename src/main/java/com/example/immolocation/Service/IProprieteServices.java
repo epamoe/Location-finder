@@ -5,11 +5,12 @@ import com.example.immolocation.Model.Propriete;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IProprieteServices {
 
     //ajoute une propriete dans la bd
-    public void ajouterProprieter(Propriete propriete);
+    public void ajouterProprieter(Propriete propriete,Bailleur bailleur);
 
     //supprime une propriete de la Bd
     public void supprimerPropriete(Propriete propriete);
@@ -33,10 +34,11 @@ public interface IProprieteServices {
     public List<Propriete> listProprieteparBailleur(Bailleur bailleur);
 
     //cette methode permet de mettre automatiquement enligne des photos de proprietes libres
-    public void publierPropriete(Propriete propriete);
 
 
 
+    //
+    public Optional<Propriete> consulterProp(Long id);
 
 
 

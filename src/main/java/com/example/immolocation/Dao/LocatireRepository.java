@@ -2,8 +2,11 @@ package com.example.immolocation.Dao;
 
 
 import com.example.immolocation.Model.Locataire;
+import com.example.immolocation.Model.Propriete;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+
+import java.util.List;
 
 
 public interface LocatireRepository extends CrudRepository<Locataire, Long> {
@@ -11,4 +14,8 @@ public interface LocatireRepository extends CrudRepository<Locataire, Long> {
                long montant_mentuel(long id);
 
                   Locataire findById(long Id);
+
+                 public List<Locataire> findByPropriete(Propriete propriete);
+
+
 }
