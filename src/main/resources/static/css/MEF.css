@@ -55,11 +55,11 @@ a:focus {
     SIDEBAR STYLE
 ----------------------------------------------------- */
 
-.wrapper {
+/*.wrapper {
     display: flex;
     width: 100%;
     align-items: stretch;
-}
+}*/
 
 #sidebar {
     min-width: 250px;
@@ -160,7 +160,7 @@ a.article:hover {
     MEDIAQUERIES
 ----------------------------------------------------- */
 
-@media (max-width: 768px) {
+/*@media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
     }
@@ -170,6 +170,6 @@ a.article:hover {
     #sidebarCollapse span {
         display: none;
     }
-}
+}*/
 
 /* fin side barre*/
