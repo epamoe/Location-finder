@@ -1,15 +1,11 @@
 package com.example.immolocation;
 
-import com.example.immolocation.Dao.LocatireRepository;
-import com.example.immolocation.Model.Locataire;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.List;
-import java.util.Optional;
 
 @SpringBootApplication
 public class ImmolocationApplication {

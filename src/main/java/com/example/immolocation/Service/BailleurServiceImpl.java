@@ -6,12 +6,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class BailleurServiceImpl {
+public class BailleurServiceImpl implements IBailleurServices {
 
     @Autowired
     BailleurRepository bailleurRepository;
 
-   /* public Bailleur rechercherBailleurParId(Long id){
-    }*/
+    public Bailleur rechercherBailleurParId(Long id){
+
+        Bailleur bailleur=bailleurRepository.findById(id).get();
+        return bailleur;
+
+    }
 
 }

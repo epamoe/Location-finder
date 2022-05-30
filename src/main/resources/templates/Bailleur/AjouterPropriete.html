@@ -11,10 +11,11 @@
         <form method="post" th:action="@{/SavePropriete}">
 
             <label for="description">Description </label>
-            <input type="textarea"  id="description" name="description"><br/>
+            <textarea id="description" name="description"></textarea><br/>
 
             <label for="localisation">Localisation </label>
-            <input type="textArea"  id="localisation" name="localisation"><br/>
+            <input type="text" id="localisation" name="localisation"><br/>
+
 
             <select class="listSelective" name="region">
                 <option>CENTRE</option>

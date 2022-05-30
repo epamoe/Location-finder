@@ -9,7 +9,7 @@ import org.springframework.data.repository.CrudRepository;
 import java.util.List;
 
 
-public interface LocatireRepository extends CrudRepository<Locataire, Long> {
+public interface LocataireRepository extends CrudRepository<Locataire, Long> {
       @Query("SELECT u.montant_mensuel_a_payer FROM Locataire u WHERE u.id_locataire=?1")
                long montant_mentuel(long id);
       

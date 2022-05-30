@@ -1,9 +1,8 @@
 package com.example.immolocation.Service;
 
 import com.example.immolocation.Dao.FactureRepository;
-import com.example.immolocation.Dao.LocatireRepository;
+import com.example.immolocation.Dao.LocataireRepository;
 import com.example.immolocation.Model.Facture;
-import com.example.immolocation.Model.Locataire;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ public class ServiceFacture {
     Facture facture;
 
     @Autowired
-    LocatireRepository locataireRepository;
+    LocataireRepository locataireRepository;
 
     @Autowired
     private FactureRepository factureRepository;

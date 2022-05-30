@@ -10,18 +10,18 @@ import java.util.List;
 @Entity
 public class Locataire implements Serializable {
 
-    @Id          // precise que l'attribut qui est juste en bas est l'identifiant
-    @GeneratedValue(strategy= GenerationType.IDENTITY) //genere les valeurs de l'id automatiquement de un a un
+    @Id
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id_locataire;
-    private String Login;
     private String nom_Locataire;
     private String prenom_Locataire;
-    private String mot_de_passe;
     private String Numero_cni;
+    private String telephone;
+    private String profession;
     private int montant_mensuel_a_payer;
     private LocalDateTime date_entree_locataire= LocalDateTime.now();
 
-//liason de la table locataire a la table facture
+
 
 
 
@@ -43,22 +43,35 @@ public class Locataire implements Serializable {
 
     }
 
-    public Locataire(int id_locataire, String login, String nom_Locataire, String prenom_Locataire, int age, String mot_de_passe, Bailleur bailleur, List<Facture> factures, List<Propriete> propriete) {
+    //*************************************constructeur pour la gestion des proprietes**************************
+
+    public Locataire(long id_locataire, String nom_Locataire, String prenom_Locataire, String numero_cni, int montant_mensuel_a_payer, LocalDateTime date_entree_locataire, Bailleur bailleur, List<Facture> factures, List<Propriete> propriete) {
         this.id_locataire = id_locataire;
-        Login = login;
         this.nom_Locataire = nom_Locataire;
         this.prenom_Locataire = prenom_Locataire;
-        this.mot_de_passe = mot_de_passe;
+        Numero_cni = numero_cni;
+        this.montant_mensuel_a_payer = montant_mensuel_a_payer;
+        this.date_entree_locataire = date_entree_locataire;
+        this.bailleur = bailleur;
+        this.factures = factures;
+        this.propriete = propriete;
+    }
+
+
+    //**********************************************************************************************************
+
+    public Locataire(int id_locataire, String nom_Locataire, String prenom_Locataire, Bailleur bailleur, List<Facture> factures, List<Propriete> propriete) {
+        this.id_locataire = id_locataire;
+        this.nom_Locataire = nom_Locataire;
+        this.prenom_Locataire = prenom_Locataire;
         this.bailleur = bailleur;
         this.factures = factures;
         this.propriete = propriete;
     }
 
     public Locataire(String login, String nom_Locataire, String prenom_Locataire, String mot_de_passe, String numero_cni, int montant_mensuel_a_payer, LocalDateTime date_entree_locataire, List<Propriete> propriete) {
-        Login = login;
         this.nom_Locataire = nom_Locataire;
         this.prenom_Locataire = prenom_Locataire;
-        this.mot_de_passe = mot_de_passe;
         Numero_cni = numero_cni;
         this.montant_mensuel_a_payer = montant_mensuel_a_payer;
         this.date_entree_locataire = date_entree_locataire;
@@ -95,23 +108,6 @@ public class Locataire implements Serializable {
 
     public void setNumero_cni(String numero_cni) {
         Numero_cni = numero_cni;
-    }
-
-    public String getMot_de_passe() {
-        return mot_de_passe;
-    }
-
-    public void setMot_de_passe(String mot_de_passe) {
-        this.mot_de_passe = mot_de_passe;
-    }
-
-
-    public String getLogin() {
-        return Login;
-    }
-
-    public void setLogin(String login) {
-        Login = login;
     }
 
     public long getId_locataire() {return id_locataire;}
