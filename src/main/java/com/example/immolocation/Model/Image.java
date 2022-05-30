@@ -14,17 +14,17 @@ public class Image implements Serializable {
     @Lob
     // @Column(name="Image",length = Integer.MAX_VALUE, nullable = true);
     private byte[] image;
-    private Date date;
+   /* private Date date;
     @ManyToOne
     @JoinColumn(name = "id_propriete")
-    private Propriete propriete;
+    private Propriete propriete;*/
 
 
-    public Image(String name, byte[] image, Propriete propriete) {
+    public Image(String name, byte[] image) {
         this.name = name;
         this.image = image;
-        this.date = new Date();
-        this.propriete = propriete;
+      /*  this.date = new Date();
+        this.propriete = propriete;*/
     }
 
     public Image() {
@@ -47,7 +47,7 @@ public class Image implements Serializable {
         this.image = image;
     }
 
-    public Date getDate() {
+    /*public Date getDate() {
         return date;
     }
 
@@ -61,5 +61,5 @@ public class Image implements Serializable {
 
     public void setPropriete(Propriete propriete) {
         this.propriete = propriete;
-    }
+    }*/
 }

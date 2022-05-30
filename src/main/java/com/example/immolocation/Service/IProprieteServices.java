@@ -12,8 +12,12 @@ public interface IProprieteServices {
     //ajoute une propriete dans la bd
     public void ajouterProprieter(Propriete propriete,Bailleur bailleur);
 
+    public Bailleur retourneBailleur(Propriete propriete);
+
+
+
     //supprime une propriete de la Bd
-    public void supprimerPropriete(Propriete propriete);
+    public void supprimerPropriete(Long id);
 
     //modifie une propriete existante
     public void modifierPropriete(Propriete propriete);

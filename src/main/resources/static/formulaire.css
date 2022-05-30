@@ -37,34 +37,3 @@ input{
     flex-direction:column;
     align-content: baseline;
 }
-#btn{
-    background: #0c63e4;
-    border-style: solid;
-    border-radius: 10px;
-    height: 50px;
-    font-family: PMingLiU-ExtB;
-    font-size: large;
-    color: white;
-}
-#btn1 {
-    background:rgb(201,20,56) ;
-    border-style: solid;
-    border-radius: 10px;
-    height: 50px;
-    font-family: PMingLiU-ExtB;
-    font-size: large;
-    color: white;
-}
-em{
-    color: red;
-}
-.listeSelective{
-    border-radius: 10px;
-    height: 50px;
-    font-family: monospace;
-
-}
-#body{
-    display: flex;
-    flex-direction: row;
-}

@@ -8,7 +8,7 @@ import java.util.*;
 public class Bailleur  implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id_bailleur;
+    private Long id_bailleur;
     private String nom_bailleur;
     private String prenom_bailleur;
     private int age;
@@ -27,8 +27,7 @@ public class Bailleur  implements Serializable {
 
     }
 
-    public Bailleur(int id_bailleur, String nom_bailleur, String prenom_bailleur, int age, String mot_de_passe, String login, Collection<Propriete> propriete, List<Locataire> locataire) {
-        this.id_bailleur = id_bailleur;
+    public Bailleur( String nom_bailleur, String prenom_bailleur, int age, String mot_de_passe, String login, Collection<Propriete> propriete, List<Locataire> locataire) {
         this.nom_bailleur = nom_bailleur;
         this.prenom_bailleur = prenom_bailleur;
         this.age = age;
@@ -74,12 +73,8 @@ public class Bailleur  implements Serializable {
         Login = login;
     }
 
-    public int getId_bailleur() {
+    public Long getId_bailleur() {
         return id_bailleur;
-    }
-
-    public void setId_bailleur(int id_bailleur) {
-        this.id_bailleur = id_bailleur;
     }
 
     public String getNom_bailleur() {
