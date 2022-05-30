@@ -97,8 +97,8 @@ public class Propriete_controleur {
                     e.printStackTrace();
                 }
                 //bailleur proprietaire
-            Bailleur bailleur=new Bailleur("marc","berger",22,"marco","galipette");
-                bailleurRepository.save(bailleur);///////////////////////////////////////////////////////////////////////////////////////////////a rectifier
+          //  Bailleur bailleur=new Bailleur("marc","berger", ,22,"marco","galipette");
+          //      bailleurRepository.save(bailleur);///////////////////////////////////////////////////////////////////////////////////////////////a rectifier
                 byte[] imageData = file.getBytes();
                 Propriete propriete = new Propriete();
                 propriete.setDescription(descriptions[0]);

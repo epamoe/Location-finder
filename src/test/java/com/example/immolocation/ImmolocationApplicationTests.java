@@ -19,12 +19,12 @@ class ImmolocationApplicationTests {
     @Test
     public void save(){
 
-        Bailleur bailleur=new Bailleur("alex","deparie",21,"marvel","ankara");
+        /*Bailleur bailleur=new Bailleur("alex","deparie",21,"marvel","ankara");
         bailleurRepository.save(bailleur);
         Propriete propriete1 = new Propriete("tres enorme","ankara","loundesk",true,1600);
         e.ajouterProprieter(propriete1,bailleur);
         System.out.println(propriete1.getBailleur().toString());
-
+*/
     }
 
 }

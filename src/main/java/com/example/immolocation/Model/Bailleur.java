@@ -5,16 +5,13 @@ import java.io.Serializable;
 import java.util.*;
 
 @Entity
-public class Bailleur  implements Serializable {
-    @Id
+public class Bailleur extends User  implements Serializable   {
+@Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private int id_bailleur;
     private String nom_bailleur;
     private String prenom_bailleur;
-    private int age;
-    private String Login;
-    private String mot_de_passe;
-
+    private String Numero_cni;
+    public String Numero_de_telephone;
 
     @OneToMany(mappedBy="bailleur")
     private Collection<Propriete> propriete;
@@ -27,28 +24,32 @@ public class Bailleur  implements Serializable {
 
     }
 
-    public Bailleur(int id_bailleur, String nom_bailleur, String prenom_bailleur, int age, String mot_de_passe, String login, Collection<Propriete> propriete, List<Locataire> locataire) {
-        this.id_bailleur = id_bailleur;
+    public Bailleur(String nom_bailleur, String prenom_bailleur, String numero_cni, String numero_de_telephone, Collection<Propriete> propriete, List<Locataire> locataire) {
         this.nom_bailleur = nom_bailleur;
         this.prenom_bailleur = prenom_bailleur;
-        this.age = age;
-        this.mot_de_passe = mot_de_passe;
-        Login = login;
+        Numero_cni = numero_cni;
+        Numero_de_telephone = numero_de_telephone;
         this.propriete = propriete;
         this.locataire = locataire;
     }
 
-    public Bailleur(String nom_bailleur, String prenom_bailleur, int age, String login, String mot_de_passe) {
+    public Bailleur(Long user_id, String login, String mot_de_passe, List<Role> roles, String nom_bailleur, String prenom_bailleur, String numero_cni, String numero_de_telephone, Collection<Propriete> propriete, List<Locataire> locataire) {
+        super(user_id, login, mot_de_passe, roles);
         this.nom_bailleur = nom_bailleur;
         this.prenom_bailleur = prenom_bailleur;
-        this.age = age;
-        Login = login;
-        this.mot_de_passe = mot_de_passe;
+        Numero_cni = numero_cni;
+        Numero_de_telephone = numero_de_telephone;
+        this.propriete = propriete;
+        this.locataire = locataire;
     }
 
-    // getters et setters
+    public String getNumero_cni() {
+        return Numero_cni;
+    }
 
-
+    public void setNumero_cni(String numero_cni) {
+        Numero_cni = numero_cni;
+    }
 
     public Collection<Propriete> getPropriete() {
         return propriete;
@@ -58,29 +59,6 @@ public class Bailleur  implements Serializable {
         this.propriete = propriete;
     }
 
-    public String getMot_de_passe() {
-        return mot_de_passe;
-    }
-
-    public void setMot_de_passe(String mot_de_passe) {
-        this.mot_de_passe = mot_de_passe;
-    }
-
-    public String getLogin() {
-        return Login;
-    }
-
-    public void setLogin(String login) {
-        Login = login;
-    }
-
-    public int getId_bailleur() {
-        return id_bailleur;
-    }
-
-    public void setId_bailleur(int id_bailleur) {
-        this.id_bailleur = id_bailleur;
-    }
 
     public String getNom_bailleur() {
         return nom_bailleur;
@@ -96,14 +74,6 @@ public class Bailleur  implements Serializable {
 
     public void setPrenom_bailleur(String prenom_bailleur) {
         this.prenom_bailleur = prenom_bailleur;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
     }
 
     public List<Locataire> getLocataire() {

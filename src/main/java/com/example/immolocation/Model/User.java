@@ -8,13 +8,14 @@ import java.util.List;
 
 @Entity
 @Table(name="users")
+@Inheritance
 public class User  implements Serializable {
  @Id
  @GeneratedValue(strategy= GenerationType.IDENTITY)
  private Long user_id;
  @Column(unique = true )
-private String login;
-private String mot_de_passe;
+protected String login;
+protected String mot_de_passe;
 
  @ManyToMany(fetch = FetchType.EAGER)
  @JoinTable(name="User_Role",
