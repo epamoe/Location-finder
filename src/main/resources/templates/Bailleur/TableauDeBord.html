@@ -4,8 +4,7 @@
 		<meta charset="utf-8">
 		<meta name="viewport" content="width-device-width, initial-scale=1">
 		<title>
-			Locataire
-
+			Tableau de bord
 		</title>
 		<link rel="stylesheet" href="../../static/css/MEF.css" th:href="@{css/MEF.css}"/>
 
@@ -22,7 +21,6 @@
 				<div id="block1" class="col-sm-2" style="color:#fff">
 					<br>
 					<div class="bg-light border mt-2 text-white bg-dark p-2 rounded-top rounded-bottom">
-						<br>
 						<div>
 							<nav>
 								<ul class="nav nav-tabs">
@@ -31,68 +29,79 @@
 					                </ul>
 					            </ul>
 			                </nav>
-			                <br><br>
-			            </div>			
-						<div>
-							<nav><h4 style="color:#adb4da">Echanger avec le bailleur:</h4>
+			                <br>
+							<nav><h4 style="color:#adb4da">Gérer les propriétés:</h4>
 								<ul class="nav nav-tabs">
 									<ul class="nav flex-column flex-xs-row">
 										<li class="nav-item">
 											<a class="nav-link" href="Ajout Propriétés">
-												<span class="text-white">Messagerie</span>
+												<span class="text-white">Ajouter Propriété(s)</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="Ajout Propriétés">
+												<span class="text-white">Supprimer Propriété(s)</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="Ajout Propriétés">
+												<span class="text-white">Modifier Propriété(s)</span>
 											</a>
 										</li>
 									</ul>
 								</ul>
 							</nav>
 							<br>
-							<nav><h4 style="color:#adb4da">Informations sur sa propriété:</h4>
+							<nav><h4 style="color:#adb4da">Gérer les locataires:</h4>
 								<ul class="nav nav-tabs">
 									<ul class="nav flex-column flex-xs-row">
 										<li class="nav-item">
 											<a class="nav-link" href="Ajout Propriétés">
-												<span class="text-white">Description</span>
+												<span class="text-white">Ajouter Locataire(s)</span>
 											</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="Ajout Propriétés">
-												<span class="text-white">Facture</span>
+												<span class="text-white">Supprimer Locataire(s)</span>
 											</a>
 										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="Ajout Propriétés">
-												<span class="text-white">Contrat de bail</span>
+												<span class="text-white">Modifier Locataire(s)</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="Ajout Propriétés">
+												<span class="text-white">Erire à un Locataire</span>
+											</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="Ajout Propriétés">
+												<span class="text-white">Facturer un Locataire</span>
 											</a>
 										</li>
 									</ul>
 								</ul>
 							</nav>
 							<br>
-							<nav><h4 style="color:#adb4da">Autres:</h4>
+							<nav><h4 style="color:#adb4da">Récapitulatif:</h4>
 								<ul class="nav nav-tabs">
 									<ul class="nav flex-column flex-xs-row">
-										<li class="nav-item">
+										<li class="nav-item" style="background-color:#adb4da">
 											<a class="nav-link" href="Ajout Propriétés">
-												<span class="text-white">Droit domanier</span>
-											</a>
-										</li>										
-										<li class="nav-item">
-											<a class="nav-link" href="Ajout Propriétés">
-												<span class="text-white">Date payement</span>
+												<span class="text-white">Tableau de bords</span>
 											</a>
 										</li>
 									</ul>
 								</ul>
-							</nav>	
-							<br>						
+							</nav>							
 						</div>
 					</div>
 					<br>
 				</div>
 				<div id="bailBack" class="col-sm-10">
-					<br>
 					<header class="container-fluid; site-header sticky-top py-5">
-						<div class="bg-light border mt-0 text-white bg-dark p-0 rounded-top rounded-bottom" style="font-size:25px">
+						<div class="container-fluid bg-light border mt-0 text-white bg-dark p-0 rounded-top rounded-bottom" style="font-size:25px">
 							<nav id="navAccueilS.html" class="d-flex justify-content-center py-3">
 							 	<a class="py-2" href="../Accueil.html" title="Accueil" style="text-decoration:none">
 									<svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-house-door" viewBox="0 0 16 16">
@@ -124,13 +133,45 @@
 							</nav>
 						</div>
 					</header>
-					<br><br>
-					<p style="text-align:center; font-family:chellin; font-size:30px; color:#000">
-					        	Bienvenue sur Immolocation!!!<br>Votre application de gestion locative.<br>Veillez choisir l'action à éxécuter dans le menu ci-contre...
-					</p>
+						<table class="table table-dark table-striped table-bordered table-hover">
+						  	<thead class="thead-light" style="color:#fff">
+						  		<tr>
+						  			<th>Identifiant de l'utilisateur</th>
+						  			<th>E-mail</th>
+						  			<th>Propriété</th>
+						  			<th>Etat Facture</th>
+						  		</tr>
+						  	</thead>
+						  	<tbody>
+						  		<tr>
+						  			<td></td>
+						  			<td></td>
+						  			<td></td>
+						  			<td></td>
+						  		</tr>
+						  		<tr>
+						  			<td></td>
+						  			<td></td>
+						  			<td></td>
+						  			<td></td>
+						  		</tr>
+						  		<tr>
+						  			<td></td>
+						  			<td></td>
+						  			<td></td>
+						  			<td></td>
+						  		</tr>
+						  		<tr>
+						  			<td></td>
+						  			<td></td>
+						  			<td></td>
+						  			<td></td>
+						  		</tr>
+						  	</tbody>
+						</table>
 				</div>
 			</div>
-			<br><br><br><br><br><br>					
+			<br><br>				
 		</div>
 
 	</body>
