@@ -8,10 +8,9 @@
 <body>
 <h1>veillez remplir le formulaire Svp</h1>
 <form method="post" th:action="@{/saveImage}" enctype="multipart/form-data">
-    <label for="name">Nom image</label>
-    <input type="text" id="name" name="name"><br/>
 
-    <input type="file"  id="image" name="image"><br/>
+    <label for="file">choisissez une image</label>
+    <input type="file"  id="image" name="image" id="file"><br/>
 
     <input type="submit" value="ajouter" class="btn2"><br/>
     <input type="reset" value="annuler" class="btn1">

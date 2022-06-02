@@ -3,11 +3,10 @@ package com.example.immolocation.Service;
 import com.example.immolocation.Dao.BailleurRepository;
 import com.example.immolocation.Dao.ProprieteRepository;
 import com.example.immolocation.Model.Bailleur;
+import com.example.immolocation.Model.Image;
 import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Model.Propriete;
-import org.aspectj.weaver.ast.Instanceof;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -26,6 +25,9 @@ public class ProprieteServiceImp implements IProprieteServices{
     @Autowired
     private BailleurRepository bailleurRepository;
 
+    @Autowired
+    IimageServices iimageServices;
+
     public Bailleur retourneBailleur(Propriete propriete){
        Bailleur bailleur= propriete.getBailleur();
        return bailleur;
@@ -43,10 +45,20 @@ public class ProprieteServiceImp implements IProprieteServices{
     //********************la suppression d'une propriete occupé entraine la suppression de son locataire******************************
     public void supprimerPropriete(Long id) {
         Propriete propriete=proprieteRepository.findById(id).get();
+        List<Image> images = iimageServices.RechercherParPropriete(propriete);
+
         if(propriete.getDisponible()== true){
+            for(int i=0;i<images.size();i++){
+                Image image=images.get(i);
+                iimageServices.SupprimmerImage(image);
+            }
             proprieteRepository.delete(propriete );
         }
         else{
+            for(int i=0;i<images.size();i++){
+                Image image=images.get(i);
+                iimageServices.SupprimmerImage(image);
+            }
         Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
         iLocataireServices.deleteLocatire(locataire);
         proprieteRepository.delete(propriete);
@@ -54,8 +66,14 @@ public class ProprieteServiceImp implements IProprieteServices{
     }
 
 
-    public void modifierPropriete(Propriete propriete) {
-        proprieteRepository.save(propriete);
+    public void modifierPropriete(Long id,Propriete propriete) {
+       Propriete propriete1=proprieteRepository.findById(id).get();
+       propriete1.setLocalisation(propriete.getLocalisation());
+       propriete1.setVille(propriete.getVille());
+       propriete1.setDisponible(propriete.getDisponible());
+       propriete1.setDate(propriete.getDate());
+       propriete1.setName(propriete.getName());
+        proprieteRepository.save(propriete1);
     }
 
 

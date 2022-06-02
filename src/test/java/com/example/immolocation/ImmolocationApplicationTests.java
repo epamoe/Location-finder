@@ -71,6 +71,12 @@ class ImmolocationApplicationTests {
 
     }
 
+    @Test
+    public void bailleur(){
+        Bailleur bailleur=bailleurRepository.findById(1L).get();
+        System.out.println(bailleur.toString());
+    }
+
 
 
 

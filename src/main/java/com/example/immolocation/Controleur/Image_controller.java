@@ -31,10 +31,9 @@ public class Image_controller {
         return "Bailleur/AjouterImage";
     }
     @PostMapping("/saveImage")
-    public String SaveImage(@RequestParam("image")MultipartFile file  ,
-                            @RequestParam("name")String name){
+    public String SaveImage(@RequestParam("image")MultipartFile file){
         Propriete propriete=iproprieteServices.consulterPropriete(this.nId);
-        iimageServices.AjouterImage(file,name,propriete);
+        iimageServices.AjouterImage(file,propriete);
 
     return "redirect:/GestionPropriete";
     }

@@ -12,5 +12,6 @@ import java.util.List;
 @Repository
 public interface ImageRepository
         extends JpaRepository<Image,Long> {
-    public List<Image> findByPropriete(Propriete propriete);
+    List<Image> findByPropriete(Propriete propriete);
+
 }

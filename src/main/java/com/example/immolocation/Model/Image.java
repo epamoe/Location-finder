@@ -10,7 +10,7 @@ public class Image implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
+
     @Lob
     @Column(columnDefinition="MEDIUMBLOB")
     String image;
@@ -22,8 +22,7 @@ public class Image implements Serializable {
 
     }
 
-    public Image(String name, String image, Propriete propriete) {
-        this.name = name;
+    public Image( String image, Propriete propriete) {
         this.image = image;
         this.propriete = propriete;
     }
@@ -40,13 +39,6 @@ public class Image implements Serializable {
         return id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public String getImage() {
         return image;

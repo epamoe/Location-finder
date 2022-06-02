@@ -1,4 +1,5 @@
 package com.example.immolocation.Controleur;
+import com.example.immolocation.Dao.BailleurRepository;
 import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Service.IBailleurServices;
 import com.example.immolocation.Service.IProprieteServices;
@@ -13,6 +14,7 @@ import java.util.List;
 @Controller
 public class Propriete_controleur {
 
+    private Long nId;
     @Autowired
     IProprieteServices iProprieteServices;
 
@@ -56,4 +58,24 @@ public class Propriete_controleur {
         iProprieteServices.supprimerPropriete(id);
         return "redirect:/GestionPropriete";
     }
+
+    @GetMapping("/update")
+    public String Pageupdate(Long id,Model model){
+        this.nId=id;
+        Propriete propriete=iProprieteServices.consulterPropriete(this.nId);
+        model.addAttribute("propriete",propriete);
+        return "BAilleur/ModifierPropriete";
+    }
+
+    @PostMapping("/SaveUpdate")
+    public String upadate(Model model,Propriete propriete){
+        model.addAttribute("propriete",new Propriete());
+        iProprieteServices.modifierPropriete(this.nId,propriete);
+        return"redirect:/GestionPropriete";
+    }
+    @GetMapping("/annuler")
+    public String annuler(){
+        return "redirect:/GestionPropriete";
+    }
+
 }
