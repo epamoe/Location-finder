@@ -12,7 +12,7 @@ public class ImmolocationApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ImmolocationApplication.class, args);
-        BCryptPasswordEncoder crypt= new BCryptPasswordEncoder();
+        /*BCryptPasswordEncoder crypt= new BCryptPasswordEncoder();
         String mdp="aaaa";
         String mdpcrypte=crypt.encode(mdp);
         System.out.println(mdpcrypte);
@@ -22,7 +22,7 @@ public class ImmolocationApplication {
         DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
         String formattedDate = myDateObj.format(myFormatObj);
         System.out.println(myDateObj);
-
+*/
     }
 
 }

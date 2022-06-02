@@ -1,6 +1,7 @@
 package com.example.immolocation;
 
 import com.example.immolocation.Dao.BailleurRepository;
+import com.example.immolocation.Dao.ProprieteRepository;
 import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Service.IProprieteServices;
@@ -8,7 +9,9 @@ import com.example.immolocation.Service.ProprieteServiceImp;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.ui.Model;
 
+import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -19,6 +22,9 @@ class ImmolocationApplicationTests {
 
     @Autowired
     IProprieteServices iProprieteServices;
+
+    @Autowired
+    ProprieteRepository proprieteRepository;
 
     @Test
     public void save(){
@@ -50,10 +56,24 @@ class ImmolocationApplicationTests {
     }
 
     @Test
-    public void delete(){
+    public void Save(){
+       Propriete propriete=new Propriete("hoolé","makarie","eozuj",false,50,bailleurRepository.findById(2L).get());
+        iProprieteServices.ajouterProprieter(propriete,bailleurRepository.findById(2L).get());
 
+    }
+
+    @Test
+    public void consulterPropriete() {
+
+        Propriete propriete= proprieteRepository.findById(9L);
+        System.out.println(propriete.toString());
 
 
     }
+
+
+
+
+
 
 }

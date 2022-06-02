@@ -52,18 +52,18 @@ public class  Locataire_controleur {
         return "Accueil";
     }
 
-    @GetMapping("/AjouterLocataire")
+  /*
+   *//*  @GetMapping("/AjouterLocataire")
     public String formulaireLocataire(Model model){
         model.addAttribute("locataire",new Locataire());
-        List<Propriete> proprieteList= iProprieteServices.listProprieteparBailleur();
+        //List<Propriete> proprieteList= iProprieteServices.listProprieteparBailleur();
     return "AjouterLocataire";
-    }
-    @PostMapping("/SaveProcessing")
+    }*//* @PostMapping("/SaveProcessing")
     public String SaveLocataire(Model model, Locataire locataire){
 
         model.addAttribute("Locatiare",new Locataire());
 
         iLocataireServices.addLocataire(locataire,iBailleurServices.rechercherBailleurParId(1L),new Propriete());
         return"redirect:Bailleur/GestionPropriete";
-    }
+    }*/
 }

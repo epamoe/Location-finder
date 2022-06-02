@@ -3,7 +3,9 @@ package com.example.immolocation.Service;
 import com.example.immolocation.Dao.BailleurRepository;
 import com.example.immolocation.Dao.ProprieteRepository;
 import com.example.immolocation.Model.Bailleur;
+import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Model.Propriete;
+import org.aspectj.weaver.ast.Instanceof;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -16,6 +18,8 @@ import java.util.Optional;
 @Transactional
 public class ProprieteServiceImp implements IProprieteServices{
 
+    @Autowired
+    ILocataireServices iLocataireServices;
 
     @Autowired
     private ProprieteRepository proprieteRepository;
@@ -36,9 +40,17 @@ public class ProprieteServiceImp implements IProprieteServices{
         proprieteRepository.save(propriete);
     }
 
-
+    //********************la suppression d'une propriete occupé entraine la suppression de son locataire******************************
     public void supprimerPropriete(Long id) {
-        proprieteRepository.deleteById(id);
+        Propriete propriete=proprieteRepository.findById(id).get();
+        if(propriete.getDisponible()== true){
+            proprieteRepository.delete(propriete );
+        }
+        else{
+        Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
+        iLocataireServices.deleteLocatire(locataire);
+        proprieteRepository.delete(propriete);
+        }
     }
 
 

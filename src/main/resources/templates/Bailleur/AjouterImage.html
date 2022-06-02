@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../static/css/formulaire.css" th:href="@{/css/formulaire.css}">
+    <title>Ajouter une image </title>
+</head>
+<body>
+<h1>veillez remplir le formulaire Svp</h1>
+<form method="post" th:action="@{/saveImage}" enctype="multipart/form-data">
+    <label for="name">Nom image</label>
+    <input type="text" id="name" name="name"><br/>
+
+    <input type="file"  id="image" name="image"><br/>
+
+    <input type="submit" value="ajouter" class="btn2"><br/>
+    <input type="reset" value="annuler" class="btn1">
+
+
+
+</form>
+</body>
+</html>

@@ -1,37 +1,33 @@
 package com.example.immolocation.Controleur;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
+import com.example.immolocation.Service.IimageServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
 
 
 @Controller
 public class Image_controller {
-/*
 
-    @Value("$(uploadDir)")
-    private String uploadFolder;
+    @Autowired
+    private IimageServices iimageServices;
 
-    private final Logger logger= LoggerFactory.getLogger(this.getClass());
-
-    @GetMapping(value="/Ajouterimage")
-    public String addImage(){
-        return"formImg";
+    @GetMapping("/AjouterImage")
+    public String ajouterImage(){
+        return "Bailleur/AjouterImage";
     }
-    @PostMapping("/saveImageProcessing")
-    public @ResponseBody
-    ResponseEntity<?> createImage(@RequestParam("name") String name,
-                                  Model model,
-*/
+    @PostMapping("/saveImage")
+    public String SaveImage(@RequestParam("image")MultipartFile file  ,
+                            @RequestParam("name")String name){
+        iimageServices.AjouterImage(file,name);
+
+    return "redirect:/GestionPropriete";
+    }
 
 
 }

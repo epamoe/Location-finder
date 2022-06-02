@@ -50,7 +50,7 @@ import javax.sql.DataSource;
 
 
             http
-                    .authorizeRequests().antMatchers("/bootstrap-5.1.3-dist/**","/h2/**", "/form","/en", "/moi","/val", "/home", "/css/**", "/images/**","/AjouterPropriete","Bailleur/GestionPropriete","/GestionPropriete","/SavePropriete","/GestionPropriete","/delete").permitAll()
+                    .authorizeRequests().antMatchers("/**","/bootstrap-5.1.3-dist/**","/h2/**", "/form","/en", "/moi","/val", "/home", "/css/**", "/images/**","/AjouterPropriete","Bailleur/GestionPropriete","/GestionPropriete","/SavePropriete","/GestionPropriete","/delete","/AjouterImage","/saveImage","/SaveProprieteProcessing").permitAll()
                     .anyRequest().authenticated()  // (1)
                     .and()
                     .formLogin();

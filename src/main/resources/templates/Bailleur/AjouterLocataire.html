@@ -2,11 +2,11 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/formulaire.css"/>
+    <link rel="stylesheet" href="../../static/css/formulaire.css"/>
     <title>ajouter un locataire</title>
 </head>
 <body>
-
+<div class="formulaire">
     <h1>veillez remplir le formulaire</h1>
     <form th:action="@{SaveLocataire}" method="post">
 
@@ -30,11 +30,11 @@
             <option th:text="${p.id_propriete}"></option>
         </select><br/>
 
-        <input type="submit" value="ajouter"><br/>
-        <input type="reset" value="annuler">
+        <input type="submit" value="ajouter" class="btn1"><br/>
+        <input type="reset" value="annuler" class="btn2">
 
 
     </form>
-
+</div>
 </body>
 </html>

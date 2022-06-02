@@ -9,17 +9,17 @@ public class Propriete implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id_propriete;
-    private String description="inconnue";
-    private String localisation="inconnue";
-    private String region="inconnue";
+    private String description="non precisé";
+    private String localisation="non precisé";
+    private String region="non precisé";
     private boolean disponible=true;
-    private long prix=0;
+    private int prix=0;
   //********************************************************************************************************************
     @Lob
     // @Column(name="Image",length = Integer.MAX_VALUE, nullable = true);
     private Date date;
 
-    public Propriete(Date date,String description, String localisation, String region, long prix) {
+    public Propriete(Date date,String description, String localisation, String region, int prix) {
 
         this.description = description;
         this.localisation = localisation;
@@ -51,7 +51,7 @@ public class Propriete implements Serializable {
         super();
     }
 
-    public Propriete(String description, String localisation, String region, boolean disponible, long prix,Bailleur bailleur) {
+    public Propriete(String description, String localisation, String region, boolean disponible, int prix,Bailleur bailleur) {
         this.description = description;
         this.localisation = localisation;
         this.region = region;
@@ -78,7 +78,7 @@ public class Propriete implements Serializable {
         this.region = region;
     }
 
-    public void setPrix(long prix) {
+    public void setPrix(int prix) {
         this.prix = prix;
     }
 
@@ -98,7 +98,7 @@ public class Propriete implements Serializable {
         return id_propriete;
     }
 
-    public Long getPrix_lcation() {
+    public int getPrix_lcation() {
         return prix;
     }
 

@@ -2,6 +2,7 @@ package com.example.immolocation.Service;
 
 import com.example.immolocation.Model.Image;
 import com.example.immolocation.Model.Propriete;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 import java.util.Optional;
@@ -9,8 +10,7 @@ import java.util.Optional;
 public interface IimageServices {
 
     //**********enregistre une image en BD
-    public void ajouterImage(Image image);
-
+    public void AjouterImage(MultipartFile file, String name);
     //**********supprime une image en BD
     public void supprimerImage(Image image);
 

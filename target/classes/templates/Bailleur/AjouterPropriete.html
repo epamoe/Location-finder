@@ -1,20 +1,21 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="../../static/formulaire.css" th:href="@{/formulaire.css}"/>
+    <link rel="stylesheet" href="../../static/css/formulaire.css" th:href="@{/css/formulaire.css}">
 
 
-    <title>ajouterPropriete</title>
+    <title>ajouter Propriete</title>
 </head>
 <body>
     <h1>veillez remplir le formulaire Svp</h1>
-        <form method="post" th:action="@{/SavePropriete}">
+        <form method="post" th:action="@{/GestionPropriete}">
 
             <label for="description">Description </label>
-            <input type="textarea"  id="description" name="description"><br/>
+            <textarea id="description" name="description" required placeholder="@Exemple:2 chambres salon,2 deux douches et une grande cours"></textarea><br/>
 
-            <label for="localisation">Localisation </label>
-            <input type="textArea"  id="localisation" name="localisation"><br/>
+            <label for="localisation" required>Localisation </label>
+            <textarea type="text" id="localisation" name="localisation" required placeholder="@Exemple: en face de carrefour le bon berger d'Essos"></textarea><br/>
+
 
             <select class="listSelective" name="region">
                 <option>CENTRE</option>
@@ -30,10 +31,11 @@
             </select><br/>
 
             <label for="prix">Prix </label>
-            <input type="number" id="prix" name="prix"><br/>
+            <input type="number" id="prix" name="prix" required placeholder="@Exemple:50000"><br/>
 
-            <input type="reset" value="annuler">
-            <input type="submit" value="ajouter"><br/>
+
+            <input type="submit" value="ajouter" class="btn2"><br/>
+            <input type="reset" value="annuler" class="btn1">
 
 
 

@@ -1,3 +1,4 @@
+/*
 package com.example.immolocation.Controleur;
 
 import com.example.immolocation.Dao.ImageRepository;
@@ -76,7 +77,8 @@ public class test {
             imageRepository.save(image);
 
 
-             /*
+             */
+/*
 
                 iProprieteServices.ajouterProprieter(propriete,bailleur);
                 if (propriete.getDisponible() == true){
@@ -88,7 +90,8 @@ public class test {
 
                 ajouter locataire
 
-                }*/
+                }*//*
+
             logger.info("HttpStatus===" + new ResponseEntity<>(HttpStatus.OK));
             return new ResponseEntity<>("propriete enregistrée avec comme nom de fichier -" +fileName,HttpStatus.OK);
 
@@ -107,3 +110,4 @@ public class test {
 
 
 }
+*/
