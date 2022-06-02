@@ -25,6 +25,7 @@ select{
     color: white;
 
 }
+
 .btn2{
     color: white;
     border-radius: 20px;
@@ -32,6 +33,17 @@ select{
     background-color: #0d6efd ;
     border-style: none;
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+
+}
+.btn3{
+    color: #1c1f23;
+    border-radius: 20px;
+    height: 40px;
+    background-color: #ffc107 ;
+    border-style: none;
+    box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+
+    color: white;
 
 }
 textarea{

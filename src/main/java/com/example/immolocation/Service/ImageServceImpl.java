@@ -20,22 +20,7 @@ public class ImageServceImpl implements IimageServices {
     @Autowired
     ImageRepository imageRepository;
 
-    @Override
-    public void supprimerImage(Image image) {
-        imageRepository.delete(image);
-    }
-
-    @Override
-    public Optional<Image> getImageById(Long id) {
-        return imageRepository.findById(id);
-    }
-
-    @Override
-    public List<Image> AllImageParIdPropriete(Propriete propriete) {
-        return null;
-    }
-
-    public void AjouterImage(MultipartFile file,String name){
+    public void AjouterImage(MultipartFile file,String name,Propriete propriete){
 
         Image image = new Image();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
@@ -50,6 +35,7 @@ public class ImageServceImpl implements IimageServices {
                 e.printStackTrace();
             }
         image.setName(name);
+        image.setPropriete(propriete);
         imageRepository.save(image);
         }
 

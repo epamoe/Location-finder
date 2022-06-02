@@ -14,9 +14,8 @@ public class Propriete implements Serializable {
     private String region="non precisé";
     private boolean disponible=true;
     private int prix=0;
-  //********************************************************************************************************************
-    @Lob
-    // @Column(name="Image",length = Integer.MAX_VALUE, nullable = true);
+
+
     private Date date;
 
     public Propriete(Date date,String description, String localisation, String region, int prix) {

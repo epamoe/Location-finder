@@ -12,8 +12,5 @@ import java.util.List;
 @Repository
 public interface ImageRepository
         extends JpaRepository<Image,Long> {
-/*
-    //@Query("select i from  Image i where i.propriete like :x")
-    public List<Image> findByPropriete(Propriete propriete);*/
-
+    public List<Image> findByPropriete(Propriete propriete);
 }

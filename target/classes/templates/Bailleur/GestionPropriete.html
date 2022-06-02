@@ -148,7 +148,7 @@
                     <td th:text="${p.localisation}"></td>
                     <td th:text="${p.disponible}"></td>
                     <td th:text="${p.prix}">F cfa</td>
-                    <td><button class="btn-primary"><a th:href="@{addpicture(id=${p.id_propriete})}">Photo</a></button></td>
+                    <td><button class="btn-primary"><a th:href="@{/AjouterImage(id=${p.id_propriete})}">Photo</a></button></td>
                     <td><button class="btn-danger"><a th:href="@{update(id=${p.id_propriete})}">Modifier</a></button></td>
                     <td><button class="btn-outline-danger"><a th:href="@{delete(id=${p.id_propriete})}">Supprimer</a></button></td>
 

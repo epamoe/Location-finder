@@ -10,13 +10,8 @@ import java.util.Optional;
 public interface IimageServices {
 
     //**********enregistre une image en BD
-    public void AjouterImage(MultipartFile file, String name);
+    public void AjouterImage(MultipartFile file, String name,Propriete propriete);
     //**********supprime une image en BD
-    public void supprimerImage(Image image);
-
     //**********retourne l'image de l'id
-    public Optional<Image> getImageById(Long id);
-
     //**********retourne les images associées a une propriete
-    public List<Image> AllImageParIdPropriete(Propriete propriete);
 }
