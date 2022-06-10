@@ -1,5 +1,10 @@
 package com.example.immolocation.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -7,20 +12,24 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
 @Table(name="users")
-@Inheritance
-public class User  implements Serializable {
- @Id
- @GeneratedValue(strategy= GenerationType.IDENTITY)
- private Long user_id;
- @Column(unique = true )
+public class User implements Serializable {
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
+ private Long id;
+// @Column(unique = true )
+@Id
 protected String login;
 protected String mot_de_passe;
 
  @ManyToMany(fetch = FetchType.EAGER)
  @JoinTable(name="User_Role",
-            joinColumns= @JoinColumn(name ="User_id"),
-            inverseJoinColumns =@JoinColumn(name="Role_id")
+            joinColumns= @JoinColumn(name ="users_login"),
+            inverseJoinColumns =@JoinColumn(name="roles_role")
             )
  private List<Role> roles = new ArrayList<>();
 
@@ -29,44 +38,5 @@ protected String mot_de_passe;
         this.roles.add(role);
 
     }
- public User(){}
 
-    public User(Long user_id, String login, String mot_de_passe, List<Role> roles) {
-        this.user_id = user_id;
-        this.login = login;
-        this.mot_de_passe = mot_de_passe;
-        this.roles = roles;
-    }
-
-    public  Long getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(Long user_id) {
-        this.user_id = user_id;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getMot_de_passe() {
-        return mot_de_passe;
-    }
-
-    public void setMot_de_passe(String mot_de_passe) {
-        this.mot_de_passe = mot_de_passe;
-    }
-
-    public List<Role> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
 }

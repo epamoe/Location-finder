@@ -9,7 +9,6 @@ public class Propriete implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id_propriete;
-    private String name="inconnue";
     private String description="inconnue";
     private String localisation="inconnue";
     private String region="inconnue";
@@ -18,38 +17,21 @@ public class Propriete implements Serializable {
   //********************************************************************************************************************
     @Lob
     // @Column(name="Image",length = Integer.MAX_VALUE, nullable = true);
-    private byte[] image;
     private Date date;
 
-    public Propriete(String nom,String description, String localisation, String region,Date date, boolean disponible, long prix, byte[] image) {
-        this.name=nom;
+    public Propriete(Date date,String description, String localisation, String region, long prix) {
+
         this.description = description;
         this.localisation = localisation;
         this.region = region;
-        this.disponible = disponible;
+        this.disponible = true;
         this.prix = prix;
-        this.image = image;
         this.date =date;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 
     public boolean isDisponible() {
         return disponible;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
     }
 
     public Date getDate() {
@@ -69,12 +51,13 @@ public class Propriete implements Serializable {
         super();
     }
 
-    public Propriete(String description, String localisation, String region, boolean disponible, long prix) {
+    public Propriete(String description, String localisation, String region, boolean disponible, long prix,Bailleur bailleur) {
         this.description = description;
         this.localisation = localisation;
         this.region = region;
         this.disponible = disponible;
         this.prix = prix;
+        this.bailleur=bailleur;
 
     }
 
@@ -138,4 +121,20 @@ public class Propriete implements Serializable {
     public void setLocalisation(String localisation) {
         this.localisation = localisation;
     }
+
+
+    public String toString() {
+        return "Propriete{" +
+                "id_propriete=" + id_propriete +
+                ", description='" + description + '\'' +
+                ", localisation='" + localisation + '\'' +
+                ", region='" + region + '\'' +
+                ", disponible=" + disponible +
+                ", prix=" + prix +
+                ", date=" + date +
+                ", bailleur=" + bailleur +
+                '}';
+    }
+
+
 }

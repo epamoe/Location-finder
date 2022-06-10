@@ -17,8 +17,8 @@ public class MessageController {
     }
 
     @MessageMapping("/message-prive")
-    public Message recevoir_message_prive(@Payload Message message){
-        simpMessagingTemplate.convertAndSendToUser(message.getNom_recepteur(), "/private",message);
+    public Message recevoir_message_prive(@Payload Message message) {
+        simpMessagingTemplate.convertAndSendToUser(message.getNom_recepteur(), "/private", message);
         return message;
     }
 }

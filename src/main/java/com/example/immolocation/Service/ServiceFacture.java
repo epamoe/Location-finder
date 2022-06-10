@@ -1,10 +1,10 @@
 package com.example.immolocation.Service;
 
 import com.example.immolocation.Dao.FactureRepository;
-import com.example.immolocation.Dao.LocatireRepository;
+import com.example.immolocation.Dao.LocataireRepository;
 import com.example.immolocation.Model.Facture;
-import com.example.immolocation.Model.Locataire;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,13 +12,14 @@ import java.util.List;
 import static java.lang.Math.abs;
 
 @Service
+@Component
 public class ServiceFacture {
-
+/*
     @Autowired
     Facture facture;
 
     @Autowired
-    LocatireRepository locataireRepository;
+    LocataireRepository locataireRepository;
 
     @Autowired
     private FactureRepository factureRepository;
@@ -70,12 +71,12 @@ public class ServiceFacture {
                facture.setMontant(0);
                facture.setDette((int) montant_mensuel);
            }
-     /*
+
          if( locataireRepository.montant_mentuel(id)==soustraction_dette_montant)
           {
            facture.setDette(soustraction_dette_montant);
 
-        }*/
+        }
 
            if( locataireRepository.montant_mentuel(id)==soustraction_montant_dette)
            {
@@ -157,7 +158,7 @@ public class ServiceFacture {
     }
 }
 
-/*        Locataire locataire =locataireRepository.findById(id);
+  /*      Locataire locataire =locataireRepository.findById(id);
             facture.setLocataire(locataire);
           if (montant == (int) locataireRepository.montant_mentuel(id)){
               factureRepository.save(facture);
@@ -175,10 +176,10 @@ public class ServiceFacture {
           }
             facture.setMontant(montant);
            factureRepository.save(facture);
-*/
 
 
-   /* public void avertissement_dette() {
+
+    public void avertissement_dette() {
         chrono.schedule(new TimerTask() {
 
             @Override
@@ -188,3 +189,4 @@ public class ServiceFacture {
         }, 700000000, 70000000);
     }
 */
+}

@@ -1,21 +1,25 @@
-.paddindbody {
-    padding-top: 19%;
-}
-.alg {
-    position: center;
-    background-color: #ba6101;
-}
-.formcontrol {
-    border-radius: 0%;
-    border: none;
-    padding: 8px;
-    width: 100%;
-    font-size: 16px;
-    box-shadow: -1px 1px 60px 10px rgba(0,0,0,0.5);
-}
-.sg-image {
+.bg-image{
     background-image: url(../images/maison.jpg);
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+.fr{
+    box-shadow: -1px 1px 60px 10px rgba(0,0,0,0.5);
+    background-color: #ba6101;
+    padding: 15%;
+}
+.sr{
+    margin-top: 10%;
+}
+.formconrol{
+    border-radius: 0px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    border-bottom:1px solid white ;
+    color: white;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    box-shadow: -1px 1px 60px 10px rgba(0,0,0,0.5);
 }

@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class UserService {
 
-        private  User user;
+      private  User user;
     private UserRepository userRepository;
 
     private RoleRepository roleRepository;
@@ -35,10 +35,12 @@ public class UserService {
         userRepository.save(user);
     }
     public  Long id_utilisateur(){
-        return user.getUser_id();
+        return user.getId();
 
     }
     public List<User> listAll(){
         return userRepository.findAll();
     }
+
+
 }

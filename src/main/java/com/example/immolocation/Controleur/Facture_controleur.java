@@ -8,11 +8,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 
-@Controller
+@RestController
 public class Facture_controleur {
     @Autowired
      ServiceFacture serviceFacture;
@@ -24,7 +25,7 @@ public class Facture_controleur {
 
     @PostMapping(value ="/form")
     public String facturer(@RequestParam int id_locataire, @RequestParam int montant ) {
-        serviceFacture.attribuer_fact(id_locataire,montant);
+     //   serviceFacture.attribuer_fact(id_locataire,montant);
         //  System.out.println(serviceFacture.Liste_de_facture(id_locataire));
         return "Accueil";
     }

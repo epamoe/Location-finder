@@ -10,10 +10,10 @@ import java.util.List;
 @Repository
 public interface FactureRepository extends JpaRepository<Facture, Long> {
 
-    @Query("SELECT a FROM Facture a, Locataire b WHERE b.id_locataire= ?1")
+    @Query("SELECT a FROM Facture a inner join Locataire b WHERE b.id= ?1")
     List<Facture> liste_facture(long Id_Locataire);
 
-    @Query("SELECT a FROM Facture a JOIN a.locataire r where r.id_locataire=?1  order by a.id_facture desc " )
+    @Query("SELECT a FROM Facture a inner JOIN a.locataire r where r.id=?1  order by a.id_facture desc " )
                         List<Facture> dernier_facture_loc(long id);
 
 }

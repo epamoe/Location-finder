@@ -22,6 +22,13 @@ public class ProprieteServiceImp implements IProprieteServices{
     @Autowired
     private BailleurRepository bailleurRepository;
 
+    public Bailleur retourneBailleur(Propriete propriete){
+       Bailleur bailleur= propriete.getBailleur();
+       return bailleur;
+    }
+
+
+
 
     @Override
     public void ajouterProprieter(Propriete propriete,Bailleur bailleur) {
@@ -30,8 +37,8 @@ public class ProprieteServiceImp implements IProprieteServices{
     }
 
 
-    public void supprimerPropriete(Propriete propriete) {
-        proprieteRepository.delete(propriete);
+    public void supprimerPropriete(Long id) {
+        proprieteRepository.deleteById(id);
     }
 
 

@@ -2,13 +2,15 @@ package com.example.immolocation.Controleur;
 
 import com.example.immolocation.Service.ServiceFacture;
 import com.example.immolocation.Service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
+@AllArgsConstructor
 public class Bailleur_controlleur {
-    @Autowired
+  @Autowired
     ServiceFacture facture;
 
     @GetMapping("/Ajouter_locataire")
