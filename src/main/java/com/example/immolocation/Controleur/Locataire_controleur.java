@@ -50,16 +50,16 @@ public class  Locataire_controleur {
         return "Accueil";
     }
 
-<<<<<<< HEAD
+
         @GetMapping("/AjouterLocataire")
         public String formulaireLocataire (Model model){
            /* model.addAttribute("locataire", new Locataire());
             List<Propriete> proprieteList = iProprieteServices.listProprieteparBailleur() */;
             return "AjouterLocataire";
         }
-        @PostMapping("/SaveProcessing1")
+      /*  @PostMapping("/SaveProcessing1")
         public String SaveLocataire1 (Model model, Locataire locataire, String login){
-=======
+
   /*
    *//*  @GetMapping("/AjouterLocataire")
     public String formulaireLocataire(Model model){
@@ -82,4 +82,4 @@ public class  Locataire_controleur {
         return"redirect:Bailleur/GestionPropriete";
     }*/
 }
->>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
+

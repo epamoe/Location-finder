@@ -28,7 +28,7 @@ public class Image implements Serializable {
        this.date = new Date();
         this.propriete = propriete;
     }
-=======
+
     @Column(columnDefinition="MEDIUMBLOB")
     String image;
 

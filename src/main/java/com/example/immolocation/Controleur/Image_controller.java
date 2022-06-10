@@ -17,10 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 public class Image_controller {
-<<<<<<< HEAD
 
-=======
->>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
 
     @Autowired
     private IimageServices iimageServices;
@@ -42,14 +39,13 @@ public class Image_controller {
 
     return "redirect:/GestionPropriete";
     }
-<<<<<<< HEAD
+
   /*  @PostMapping("/saveImageProcessing")
     public @ResponseBody
     ResponseEntity<?> createImage(@RequestParam("name") String name,
                                   Model model)
 
 */
-=======
->>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
+
 
 }
