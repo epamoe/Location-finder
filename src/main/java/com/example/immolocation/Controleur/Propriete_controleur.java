@@ -32,7 +32,12 @@ public class Propriete_controleur {
 
 
     private Long nId;
-    private  Long Id_BailleurConnecter=1L;
+    private Bailleur bailleur;
+
+    private Bailleur findBailleur(){
+        this.bailleur=ibailleurServices.rechercherBailleurParId(1L);
+        return this.bailleur;
+    }
 
     //********************************************************
 
@@ -42,6 +47,7 @@ public class Propriete_controleur {
 
     @GetMapping("/AjouterPropriete")
     public String formulairePropriete(Model model){
+        model.addAttribute("bailleur",findBailleur());
         model.addAttribute("propriete",new Propriete());
         return "Bailleur/AjouterPropriete";
     }
@@ -51,34 +57,25 @@ public class Propriete_controleur {
     locataire concerné dans le cas contraire on lui
     retourne la page de gestion de propriete*/
 
-    @PostMapping("/GestionPropriete")
-    public String Save(Model model,Propriete propriete){
-
-
+    @PostMapping("/SavePropriete")
+    public String Save(Model model,Propriete propriete,@RequestParam("etat") String etat){
         model.addAttribute("propriete",new Propriete());
-      //  String direction=null;
-        iProprieteServices.ajouterProprieter(propriete,ibailleurServices.rechercherBailleurParId(Id_BailleurConnecter));
-        /*if(propriete.getDisponible()==true){
-            direction="redirect:/GestionPropriete";
-        }
-        else if(propriete.getDisponible()==false){
-            direction="redirect:/AjouterLocataire";
-        }
-        return direction;
-*/return "redirect:/GestionPropriete";
+        propriete=iProprieteServices.setDisponibilite(etat,propriete);
+        iProprieteServices.ajouterProprieter(propriete,findBailleur());
+    return "redirect:/GestionPropriete";
     }
 
 
     @GetMapping("/GestionPropriete")
     public String pageGestionPropriete(Model model){
-        Bailleur bailleur=ibailleurServices.rechercherBailleurParId(Id_BailleurConnecter);
-        List<Propriete> proprieteList=iProprieteServices.listProprieteparBailleur(bailleur);
+
+        List<Propriete> proprieteList=iProprieteServices.listProprieteparBailleur(findBailleur());
         List<Image> imageList=null;
         for(int i=0;i<proprieteList.size();i++){
            imageList= iimageServices.RechercherParPropriete(proprieteList.get(i));
         }
 
-        model.addAttribute("bailleur",bailleur);
+        model.addAttribute("bailleur",this.bailleur);
         model.addAttribute("listImage",imageList);
         model.addAttribute("proprieteList",proprieteList);
         return "Bailleur/GestionPropriete";
@@ -95,6 +92,7 @@ public class Propriete_controleur {
     public String Pageupdate(Long id,Model model){
         this.nId=id;
         Propriete propriete=iProprieteServices.consulterPropriete(this.nId);
+        model.addAttribute("bailleur",this.bailleur);
         model.addAttribute("propriete",propriete);
         return "Bailleur/ModifierPropriete";
 
@@ -114,7 +112,8 @@ public class Propriete_controleur {
 
     @GetMapping("/proprieteLibre")
     public String proprieteLibre(Model model){
-       List<Propriete>proprieteList= iProprieteServices.findAllFreePropriete();
+       List<Propriete>proprieteList= iProprieteServices.proprieteLibreParBailleur(findBailleur());
+        model.addAttribute("bailleur",this.bailleur);
        model.addAttribute("proprieteList",proprieteList);
         return "Bailleur/ProprieteLibre";
     }

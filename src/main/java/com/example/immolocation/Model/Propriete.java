@@ -13,9 +13,10 @@ public class Propriete implements Serializable {
     private String description="non precisé";
     private String localisation="non precisé";
     private String ville ="non precisé";
-    private boolean disponible;
+    private boolean disponible=true;
     private int prix=0;
     private Date date;
+
     //***********************************************************************
     @ManyToOne
     @JoinColumn(name = "id_bailleur")
@@ -23,18 +24,12 @@ public class Propriete implements Serializable {
 
 
 
-    public Propriete(String name, String description, String localisation, String ville, String etat, int prix, Date date, Bailleur bailleur) {
+    public Propriete(String name, String description, String localisation, String ville, boolean status, int prix, Date date, Bailleur bailleur) {
         this.name = name;
         this.description = description;
         this.localisation = localisation;
         this.ville = ville;
-        if(etat.equalsIgnoreCase("LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE")){
-            this.disponible = true;
-        }
-        else if(etat.equalsIgnoreCase("LA PROPRIETE EST OCCUPEE PAR UN LOCATAIRE")){
-            this.disponible=false;
-        }
-
+        this.disponible=status;
         this.prix = prix;
         this.date = date;
         this.bailleur = bailleur;

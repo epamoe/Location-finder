@@ -40,12 +40,12 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="SupprimerPropriete.html" th:href="@{/GestionrPropriete}>
-                                        <span class="text-white">Consulter Propriété(s)</span>
+                                    <a class="nav-link" href="SupprimerPropriete.html" th:href="@{/GestionPropriete}">
+                                        <span class="text-white" >Consulter Propriété(s)</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="ModifierPropriete.html" th:href="@{/proprieteLibre}>
+                                    <a class="nav-link" href="ModifierPropriete.html" th:href="@{/proprieteLibre}">
                                         <span class="text-white">Propriété(s) non occupée</span>
                                     </a>
                                 </li>
@@ -144,6 +144,8 @@
                 <tbody>
                 <tr th:each="p:${proprieteList}">
 
+
+                    <td th:text="${p.id_propriete}" ></td>
                     <td th:text="${p.name}" ></td>
                     <td th:text="${p.description}"></td>
                     <td th:text="${p.ville}"></td>

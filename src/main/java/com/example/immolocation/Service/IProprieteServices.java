@@ -29,8 +29,14 @@ public interface IProprieteServices {
     //retourne une liste de propriete par region
     public List<Propriete> findByRegion(String Region);
 
+    //attribut la disponibilité de la propriete
+    public Propriete setDisponibilite(String etat,Propriete propriete);
+
     //retourne une liste de propriete par description
     public List<Propriete> findByLocalisation(String localisation);
+
+    //retourne la liste des proprietes libre d'un bailleur
+    public List<Propriete> proprieteLibreParBailleur(Bailleur bailleur);
 
     //retourne une liste de propriete par intervalle de prix
     public List<Propriete> findByPrix(Long prixiInf,Long prixSup);

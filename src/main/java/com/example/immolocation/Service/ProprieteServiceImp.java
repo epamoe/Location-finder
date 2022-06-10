@@ -34,6 +34,17 @@ public class ProprieteServiceImp implements IProprieteServices{
        return bailleur;
     }
 
+    public List<Propriete> proprieteLibreParBailleur(Bailleur bailleur){
+       List<Propriete> proprieteList= listProprieteparBailleur(bailleur);
+       List<Propriete> listPropriete=new ArrayList<>();
+        for(int i=0;i<proprieteList.size();i++){
+            if(proprieteList.get(i).getDisponible()==true){
+                listPropriete.add(proprieteList.get(i));
+            }
+        }
+        return listPropriete;
+    }
+
     @Override
     public List<Propriete> findAllFreePropriete() {
        List<Propriete> proprieteList=proprieteRepository.findAll();
@@ -102,6 +113,17 @@ public class ProprieteServiceImp implements IProprieteServices{
     public List<Propriete> findByRegion(String Region) {
         List<Propriete> proprieteList = proprieteRepository.finfAllByRegion(Region);
         return proprieteList;
+    }
+
+    @Override
+    public Propriete setDisponibilite(String etat,Propriete propriete) {
+        if(etat.equals("LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE")){
+            propriete.setDisponible(true);
+        }
+        else if(etat.equals("LA PROPRIETE EST OCCUPEE PAR UN LOCATAIRE")){
+            propriete.setDisponible(false);
+        }
+        return propriete;
     }
 
     @Override
