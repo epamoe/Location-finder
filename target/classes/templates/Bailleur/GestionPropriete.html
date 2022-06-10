@@ -25,7 +25,8 @@
                     <nav>
                         <ul class="nav nav-tabs">
                             <ul class="nav flex-column flex-xs-row">
-                                <h3 style="text-align:center">Bonjour <br>Cher Bailleur!!!</h3>
+                                <h3>Salut Mr<br></h3>
+                                <h3 style="text-align:center" th:text="${bailleur.nom_bailleur}">Le Bailleur!!!</h3>
                             </ul>
                         </ul>
                     </nav>
@@ -34,18 +35,18 @@
                         <ul class="nav nav-tabs">
                             <ul class="nav flex-column flex-xs-row">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="AjouterPropriete.html">
+                                    <a class="nav-link" th:href="@{/AjouterPropriete}">
                                         <span class="text-white">Ajouter Propriété(s)</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="SupprimerPropriete.html">
-                                        <span class="text-white">Supprimer Propriété(s)</span>
+                                    <a class="nav-link"  th:href="@{/GestionPropriete} ">
+                                        <span class="text-white">Consulter Propriété(s)</span>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="ModifierPropriete.html">
-                                        <span class="text-white">Modifier Propriété(s)</span>
+                                    <a class="nav-link" th:href="@{/proprieteLibre}">
+                                        <span class="text-white">Propriété(s) non occupée</span>
                                     </a>
                                 </li>
                             </ul>
@@ -136,29 +137,26 @@
             <table class="table table-dark table-striped table-bordered table-hover">
                 <thead class="thead-light" style="color:#fff">
                 <tr>
-                    <th>Photo</th>  <th>description</th>  <th>region</th>  <th>localisation precise</th>  <th>etat</th> <th>prix(Fcfa)</th><th>Gestion</th>
+                    <th>photo</th><th>nom</th>  <th>description</th>  <th>ville</th>  <th>localisation precise</th>  <th>disponible</th> <th>prix(Fcfa)</th><th>Gestion</th>
 
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="p:${proprieteList}">
-                    <td th:text="${p.id_propriete}" ></td>
+
                     <td th:text="${p.name}" ></td>
                     <td th:text="${p.description}"></td>
                     <td th:text="${p.ville}"></td>
                     <td th:text="${p.localisation}"></td>
                     <td th:text="${p.disponible}"></td>
                     <td th:text="${p.prix}" ></td>
-                    <td><button class="btn1"><a th:href="@{/AjouterImage(id=${p.id_propriete})}" href="AjouterImage.html">Photo</a></button></td>
+                    <td><button class="btn1"><a th:href="@{/AjouterImage(id=${p.id_propriete})}" href="AjouterImage.html" >Photo</a></button></td>
                     <td><button class="btn2"><a th:href="@{update(id=${p.id_propriete})}">Modifier</a></button></td>
                     <td><button class="btn3"><a th:href="@{delete(id=${p.id_propriete})}">Supprimer</a></button></td>
 
                 </tr>
                 </tbody>
                 <tfoot>
-                <tr>
-                    <th><button class="btn-group"><a href="AjouterPropriete.html" th:href="@{/AjouterPropriete}" >Ajouter une nouvelle propriete à votre liste</a></button> </th>
-                </tr>
                 </tfoot>
             </table>
         </div>

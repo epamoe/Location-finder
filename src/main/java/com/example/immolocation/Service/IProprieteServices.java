@@ -14,7 +14,8 @@ public interface IProprieteServices {
 
     public Bailleur retourneBailleur(Propriete propriete);
 
-
+    //retourne la liste de toute les proprietes libres presente en bd,tout bailleur confondu
+    public List<Propriete> findAllFreePropriete();
 
     //supprime une propriete de la Bd
     public void supprimerPropriete(Long id);
@@ -37,11 +38,9 @@ public interface IProprieteServices {
     //retourne la liste des proprietes d'un bailleur d'identifiant idbailleur
     public List<Propriete> listProprieteparBailleur(Bailleur bailleur);
 
-    //cette methode permet de mettre automatiquement enligne des photos de proprietes libres
+    //retourne une propriete
+    public Propriete findByName(String name);
 
-
-
-    //
     public Optional<Propriete> consulterProp(Long id);
 
 

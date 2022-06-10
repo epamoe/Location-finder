@@ -69,6 +69,16 @@ public class Locataire implements Serializable {
         this.propriete = propriete;
     }
 
+
+    public Locataire(String nom_Locataire, String prenom_Locataire, String numero_cni, String telephone, String profession, List<Propriete> propriete) {
+        this.nom_Locataire = nom_Locataire;
+        this.prenom_Locataire = prenom_Locataire;
+        Numero_cni = numero_cni;
+        this.telephone = telephone;
+        this.profession = profession;
+        this.propriete = propriete;
+    }
+
     public Locataire(String login, String nom_Locataire, String prenom_Locataire, String mot_de_passe, String numero_cni, int montant_mensuel_a_payer, LocalDateTime date_entree_locataire, List<Propriete> propriete) {
         this.nom_Locataire = nom_Locataire;
         this.prenom_Locataire = prenom_Locataire;

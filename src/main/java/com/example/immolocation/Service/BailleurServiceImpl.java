@@ -18,4 +18,9 @@ public class BailleurServiceImpl implements IBailleurServices {
 
     }
 
+    @Override
+    public void ajouterBailleur(Bailleur bailleur) {
+        bailleurRepository.save(bailleur);
+    }
+
 }

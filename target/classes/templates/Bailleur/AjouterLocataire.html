@@ -2,13 +2,13 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" href="../../static/css/formulaire.css"/>
+    <link rel="stylesheet" href="../../static/css/formulaire.css" th:href="@{/css/formulaire.css}"/>
     <title>ajouter un locataire</title>
 </head>
 <body>
 <div class="formulaire">
-    <h1>veillez remplir le formulaire</h1>
-    <form th:action="@{SaveLocataire}" method="post">
+    <h1>Ajouter un Locataire</h1>
+    <form th:action="@{/SaveProcessing}" method="post">
 
         <label for="nom">Nom:</label>
         <input type="text" id="nom" name="nom_Locataire"><br/>
@@ -26,10 +26,10 @@
         <input type="text" id="telephone" name="telephone"><br/>
 
         <label for="propriete">selectionnez la propriete</label>
-        <select name="propriete" th:each="p:${proprieteList}" id="propriete">
-            <option th:text="${p.id_propriete}"></option>
+        <select name="propriete"  id="propriete">
+            <option th:each="p:${proprieteList}" th:text="${p.name}"></option>
         </select><br/>
-
+        <em>vous avez signaler que la propriete est occupée par un locataire alor</em><br/>
         <input type="submit" value="ajouter" class="btn1"><br/>
         <input type="reset" value="annuler" class="btn2">
 

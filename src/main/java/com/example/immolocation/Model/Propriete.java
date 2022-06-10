@@ -13,7 +13,7 @@ public class Propriete implements Serializable {
     private String description="non precisé";
     private String localisation="non precisé";
     private String ville ="non precisé";
-    private boolean disponible=true;
+    private boolean disponible;
     private int prix=0;
     private Date date;
     //***********************************************************************
@@ -22,16 +22,16 @@ public class Propriete implements Serializable {
     private Bailleur bailleur;
 
 
+
     public Propriete(String name, String description, String localisation, String ville, String etat, int prix, Date date, Bailleur bailleur) {
         this.name = name;
         this.description = description;
         this.localisation = localisation;
         this.ville = ville;
-
         if(etat.equalsIgnoreCase("LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE")){
             this.disponible = true;
         }
-        else{
+        else if(etat.equalsIgnoreCase("LA PROPRIETE EST OCCUPEE PAR UN LOCATAIRE")){
             this.disponible=false;
         }
 
@@ -55,16 +55,6 @@ public class Propriete implements Serializable {
 
     public Propriete(){
         super();
-    }
-
-    public Propriete(String description, String localisation, String region, boolean disponible, int prix,Bailleur bailleur) {
-        this.description = description;
-        this.localisation = localisation;
-        this.ville = region;
-        this.disponible = disponible;
-        this.prix = prix;
-        this.bailleur=bailleur;
-
     }
 
     public String getName() {
@@ -136,18 +126,7 @@ public class Propriete implements Serializable {
     }
 
 
-    public String toString() {
-        return "Propriete{" +
-                "id_propriete=" + id_propriete +
-                ", description='" + description + '\'' +
-                ", localisation='" + localisation + '\'' +
-                ", region='" + ville + '\'' +
-                ", disponible=" + disponible +
-                ", prix=" + prix +
-                ", date=" + date +
-                ", bailleur=" + bailleur +
-                '}';
-    }
+
 
 
 }

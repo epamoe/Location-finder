@@ -24,6 +24,7 @@ public interface ProprieteRepository
     public void updatePropriete(Propriete propriete);*/
 
     public List<Propriete> findAllByBailleur(Bailleur bailleur);
+       // Pageable findAllByBailleur(Bailleur bailleur);
 
     @Query("select p from  Propriete p where p.prix >:x and p.prix <:y ")
     public List<Propriete> finfAllByPrix(@Param("x") Long prixInf,@Param("y")Long prixSup);
@@ -33,6 +34,8 @@ public interface ProprieteRepository
 
     @Query("select p from  Propriete p where p.localisation like :x")
     public List<Propriete> finfAllByLocalisation(@Param("x")String localisation);
+
+    //public Page<Propriete> listProprieteParBailleur
 
 
 

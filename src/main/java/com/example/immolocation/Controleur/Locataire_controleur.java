@@ -28,6 +28,8 @@ public class  Locataire_controleur {
     @Autowired
     IProprieteServices iProprieteServices;
 
+    private Long IdBailleurConnecter=1L;
+
     @GetMapping("/Locataire/AuthentificationLocataire")
     public String authentificationlocataire()
     {
@@ -52,18 +54,30 @@ public class  Locataire_controleur {
         return "Accueil";
     }
 
-  /*
-   *//*  @GetMapping("/AjouterLocataire")
+   @GetMapping("/AjouterLocataire")
     public String formulaireLocataire(Model model){
+        List<Propriete> proprieteList = iProprieteServices.listProprieteparBailleur(iBailleurServices.rechercherBailleurParId(1L));
+        model.addAttribute("proprieteList",proprieteList);
         model.addAttribute("locataire",new Locataire());
         //List<Propriete> proprieteList= iProprieteServices.listProprieteparBailleur();
-    return "AjouterLocataire";
-    }*//* @PostMapping("/SaveProcessing")
-    public String SaveLocataire(Model model, Locataire locataire){
+    return "Bailleur/AjouterLocataire";
+
+
+    } @PostMapping("/SaveProcessing")
+    public String SaveLocataire(Model model,String name, Locataire locataire){
+       Propriete propriete= iProprieteServices.findByName(name);
 
         model.addAttribute("Locatiare",new Locataire());
 
-        iLocataireServices.addLocataire(locataire,iBailleurServices.rechercherBailleurParId(1L),new Propriete());
+        iLocataireServices.addLocataire(locataire,iBailleurServices.rechercherBailleurParId(this.IdBailleurConnecter),propriete);
         return"redirect:Bailleur/GestionPropriete";
-    }*/
+    }
+
+    @GetMapping("/GestionLocataire")
+    public String Gestion(Model model){
+       List<Locataire>locataireList= iLocataireServices.findByBailleur(iBailleurServices.rechercherBailleurParId(this.IdBailleurConnecter));
+       model.addAttribute("locataireList",locataireList);
+
+       return "Bailleur/GestionLocataire";
+    }
 }

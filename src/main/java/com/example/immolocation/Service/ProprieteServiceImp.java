@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,17 @@ public class ProprieteServiceImp implements IProprieteServices{
        return bailleur;
     }
 
-
+    @Override
+    public List<Propriete> findAllFreePropriete() {
+       List<Propriete> proprieteList=proprieteRepository.findAll();
+       List<Propriete> listPropriete=new ArrayList<>();
+       for(int i=0;i<proprieteList.size();i++){
+           if(proprieteList.get(i).getDisponible()==true){
+               listPropriete.add(proprieteList.get(i));
+           }
+       }
+        return listPropriete;
+    }
 
 
     @Override
@@ -77,6 +88,8 @@ public class ProprieteServiceImp implements IProprieteServices{
     }
 
 
+
+
     public Propriete consulterPropriete(Long id) {
         Propriete propriete=proprieteRepository.findById(id).get();
         if(id<=0) throw new RuntimeException("Il n'existe pas de propriete avec cet identifiant");
@@ -105,6 +118,13 @@ public class ProprieteServiceImp implements IProprieteServices{
     public List<Propriete> listProprieteparBailleur(Bailleur bailleur) {
         List<Propriete> proprieteList = proprieteRepository.findAllByBailleur(bailleur);
         return proprieteList;
+    }
+
+    @Override
+    public Propriete findByName(String name) {
+     //   proprieteRepository.findByName(name);
+
+        return null;
     }
     //////////////////////::::::encours de traitement!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

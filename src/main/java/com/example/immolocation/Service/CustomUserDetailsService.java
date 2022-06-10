@@ -16,7 +16,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String Login) throws UsernameNotFoundException {
         User user= repo.findByLogin(Login);
         if(user==null) {
-            throw new UsernameNotFoundException("cette user ne figure pas dans notre liste");
+            throw new UsernameNotFoundException("ce user ne figure pas dans notre liste");
         }
         else
         {

@@ -17,4 +17,6 @@ public interface IimageServices {
 
     //**********retourne les images associées a une propriete********************
     public List<Image> RechercherParPropriete(Propriete propriete);
+
+
 }

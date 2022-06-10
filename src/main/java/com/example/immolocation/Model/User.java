@@ -29,7 +29,12 @@ private String mot_de_passe;
 
     }
  public User(){}
-
+//**********************************************************************************************************************
+    public User(String login, String mot_de_passe) {
+        this.login = login;
+        this.mot_de_passe = mot_de_passe;
+    }
+//**********************************************************************************************************************
     public User(Long user_id, String login, String mot_de_passe, List<Role> roles) {
         this.user_id = user_id;
         this.login = login;
