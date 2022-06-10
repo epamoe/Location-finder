@@ -8,7 +8,10 @@
 </head>
 <body>
 <h1>Modifier les informations </h1>
-<form method="post" th:action="@{/GestionPropriete}" th:objet="${propriete}">
+<form method="post" th:action="@{/SaveUpdate}" th:objet="${propriete}">
+
+    <label for="name">Nommez la propriete </label>
+    <textarea id="name" name="name" required th:text="${propriete.name}"></textarea><br/>
 
     <label for="description">Description </label>
     <textarea id="description" name="description" required  th:text="${propriete.description}"></textarea><br/>
@@ -17,19 +20,26 @@
     <textarea type="text" id="localisation" name="localisation" required th:text="${propriete.localisation}"></textarea><br/>
 
 
-    <select class="listSelective" name="region" >
-        <option>CENTRE</option>
-        <option>LITTORAL</option>
-        <option>SUD</option>
-        <option>EST</option>
-        <option>OUEST</option>
-        <option>NORD-OUEST</option>
-        <option>SUD-OUEST</option>
-        <option>ADAMAOUA</option>
-        <option>NORD</option>
-        <option>EXTREME-NORD</option>
+    <label>ville</label>
+    <select class="listSelective" name="ville" th:texte="${propriete.ville}">
+        <option>DOUALA</option>
+        <option>YAOUNDE</option>
+        <option>EBOLOWA</option>
+        <option>BERTOUA</option>
+        <option>BAFOUSSAM</option>
+        <option>BAMENDA</option>
+        <option>BUEA</option>
+        <option>NGOUNDERE</option>
+        <option>GAROUA</option>
+        <option>MAROUA</option>
     </select><br/>
 
+    <label>etat</label>
+    <select class="listSelective" name="etat">
+        <option>LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE</option>
+        <option>LA PROPRIETE EST OCCUPEE PAR UN LOCATAIRE </option>
+
+    </select><br/>
     <label for="prix">Prix </label>
     <input type="number" id="prix" name="prix" required th:text="${propriete.prix}"><br/>
 

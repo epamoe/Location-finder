@@ -97,7 +97,9 @@ public class Propriete_controleur {
         Propriete propriete=iProprieteServices.consulterPropriete(this.nId);
         model.addAttribute("propriete",propriete);
         return "Bailleur/ModifierPropriete";
+
     }
+
 
     @PostMapping("/SaveUpdate")
     public String upadate(Model model,Propriete propriete){

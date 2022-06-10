@@ -79,11 +79,13 @@ public class ProprieteServiceImp implements IProprieteServices{
 
     public void modifierPropriete(Long id,Propriete propriete) {
        Propriete propriete1=proprieteRepository.findById(id).get();
+       propriete1.setName(propriete.getName());
+       propriete1.setDescription(propriete.getDescription());
        propriete1.setLocalisation(propriete.getLocalisation());
        propriete1.setVille(propriete.getVille());
        propriete1.setDisponible(propriete.getDisponible());
        propriete1.setDate(propriete.getDate());
-       propriete1.setName(propriete.getName());
+       propriete1.setPrix((int) propriete.getPrix());
         proprieteRepository.save(propriete1);
     }
 
