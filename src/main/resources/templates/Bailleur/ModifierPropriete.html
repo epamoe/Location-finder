@@ -4,7 +4,7 @@
         <meta charset="utf-8"/>
         <meta name="viewport" content="width-device-width, initial-scale=1"/>
         <title>
-            Ajouter Propriété
+            Modifier Propriété
         </title>
         <link rel="stylesheet" href="../../static/css/MEF.css" th:href="@{css/MEF.css}"/>
 
@@ -134,18 +134,18 @@
                         </div>
                     </header>
                     <form method="post" th:action="@{/GestionPropriete}">
-                        <h2 style="font-family:cambria;color:#000; text-align: center"> Ajouter une propriété</h2>
+                        <h2 style="font-family:cambria;color:#000; text-align: center"> Modifier une propriété</h2>
                             <div class="form-group">
                                 <label for="name" style="color: #000">Nommez la propriete </label>
-                                <textarea id="name" name="name" required class="form-control" placeholder="Entrez le nom de la propiété"></textarea>
+                                <textarea id="name" name="name" class="form-control" placeholder="Entrez le nouveau nom de la propiété si vous desirez le changer"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="description" style="color: #000">Description </label>
-                                <textarea id="description" name="description" required class="form-control" placeholder="Entrez une description de la propiété"></textarea>
+                                <textarea id="description" name="description" class="form-control" placeholder="Entrez une nouvelle description de la propiété  si vous desirez la changer"></textarea>
                             </div>
                             <div class="form-group">
-                                <label for="localisation" required style="color: #000">Localisation </label>
-                                <textarea type="text" id="localisation" name="localisation" required class="form-control" placeholder="Entrez la localisation de la propiété, où elle est situé"></textarea>
+                                <label for="localisation" style="color: #000">Localisation </label>
+                                <textarea type="text" id="localisation" name="localisation" required class="form-control" placeholder="Entrez la localisation de la propiété, où elle est situé  si vous desirez la changer"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>ville</label>
@@ -171,7 +171,7 @@
                             </div>-->
                             <div class="form-group">
                                 <label for="prix" style="color: #000">Prix </label>
-                                <input type="number" id="prix" name="prix" required class="form-control" placeholder="Entrez le prix de la propiété"><br/>
+                                <input type="number" id="prix" name="prix" required class="form-control" placeholder="Entrez le nouveau prix de la propiété  si vous desirez le changer"><br/>
                             </div>
                             <div  style="font-family:cambria;color:#000; text-align: center">
                                 <input type="submit" value="ajouter" class="btn btn-lg" style="background-color:#000; color:#fff">

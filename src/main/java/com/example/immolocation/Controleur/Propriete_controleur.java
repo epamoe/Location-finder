@@ -1,8 +1,7 @@
 package com.example.immolocation.Controleur;
 import com.example.immolocation.Dao.BailleurRepository;
-import com.example.immolocation.Dao.ProprieteRepository;
-import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Propriete;
+import com.example.immolocation.Service.IBailleurServices;
 import com.example.immolocation.Service.IProprieteServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -15,14 +14,16 @@ import java.util.List;
 @Controller
 public class Propriete_controleur {
 
+    private Long nId;
     @Autowired
     IProprieteServices iProprieteServices;
 
-    @Autowired
-    ProprieteRepository proprieteRepository;
     //ceci es temporaire**********************faudra remplacer par les services du bailleur***************
     @Autowired
-    BailleurRepository bailleurRepository;
+    IBailleurServices ibailleurServices;
+
+    private final Long Id_BailleurConnecter=1L;
+
     //********************************************************
 
 
@@ -33,27 +34,65 @@ public class Propriete_controleur {
     }
 
     //regler le probleme de date en bd**********************************************************************************
+<<<<<<< HEAD
     @PostMapping("/SaveProcessing")
     public String SavePropriete(Model model,Propriete propriete){
        /* model.addAttribute("Propriete",new Propriete());
         iProprieteServices.ajouterProprieter(propriete,bailleurRepository.findById(1L).get());*/
         return"redirect:Bailleur/GestionPropriete";
+=======
+
+    @PostMapping("/GestionPropriete")
+    public String Save(Model model,Propriete propriete){
+        model.addAttribute("propriete",new Propriete());
+        iProprieteServices.ajouterProprieter(propriete,ibailleurServices.rechercherBailleurParId(Id_BailleurConnecter));
+       /* List<Propriete> proprieteList=iProprieteServices.listProprieteparBailleur(ibailleurServices.rechercherBailleurParId(Id_BailleurConnecter));
+        model.addAttribute("proprieteList",proprieteList);*/
+        return "redirect:/GestionPropriete";
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
     }
 
 
-    @RequestMapping("/GestionPropriete")
+    @GetMapping("/GestionPropriete")
     public String pageGestionPropriete(Model model){
+<<<<<<< HEAD
       /*  List<Propriete> proprieteList=iProprieteServices.listProprieteparBailleur(bailleurRepository.findById(1L).get());
         model.addAttribute("proprieteList",proprieteList);*/
         return"Bailleur/GestionPropriete";
+=======
+        List<Propriete> proprieteList=iProprieteServices.listProprieteparBailleur(ibailleurServices.rechercherBailleurParId(Id_BailleurConnecter));
+        model.addAttribute("proprieteList",proprieteList);
+        return "Bailleur/GestionPropriete";
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
     }
 
 
     @RequestMapping("/delete")
     public String delete(Long id){
         iProprieteServices.supprimerPropriete(id);
-        return "redirect:Bailleur/GestionPropriete";
+        return "redirect:/GestionPropriete";
     }
 
+<<<<<<< HEAD
+=======
+    @GetMapping("/update")
+    public String Pageupdate(Long id,Model model){
+        this.nId=id;
+        Propriete propriete=iProprieteServices.consulterPropriete(this.nId);
+        model.addAttribute("propriete",propriete);
+        return "BAilleur/ModifierPropriete";
+    }
+
+    @PostMapping("/SaveUpdate")
+    public String upadate(Model model,Propriete propriete){
+        model.addAttribute("propriete",new Propriete());
+        iProprieteServices.modifierPropriete(this.nId,propriete);
+        return"redirect:/GestionPropriete";
+    }
+    @GetMapping("/annuler")
+    public String annuler(){
+        return "redirect:/GestionPropriete";
+    }
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
 
 }

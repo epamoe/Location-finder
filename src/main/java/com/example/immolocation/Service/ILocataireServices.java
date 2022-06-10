@@ -21,6 +21,10 @@ public interface ILocataireServices {
     //********retourne la liste des locataires par bailleurs
     public List<Locataire> findByBailleur(Bailleur bailleur);
 
+<<<<<<< HEAD
 
+=======
+    public Locataire rechercherParPropriete(Propriete propriete);
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
 
 }

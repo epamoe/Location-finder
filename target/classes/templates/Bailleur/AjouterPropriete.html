@@ -1,40 +1,60 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <link rel="stylesheet" href="../../static/formulaire.css" th:href="@{/formulaire.css}"/>
+    <link rel="stylesheet" href="../../static/css/formulaire.css" th:href="@{/css/formulaire.css}">
 
 
-    <title>ajouterPropriete</title>
+    <title>ajouter Propriete</title>
 </head>
 <body>
     <h1>veillez remplir le formulaire Svp</h1>
-        <form method="post" th:action="@{/SavePropriete}">
+        <form method="post" th:action="@{/GestionPropriete}">
+
+            <label for="name">Nommez la propriete </label>
+            <textarea id="name" name="name" required placeholder="@Exemple:Appatement 1"></textarea><br/>
 
             <label for="description">Description </label>
+<<<<<<< HEAD
             <textarea id="description" name="description"></textarea><br/>
 
             <label for="localisation">Localisation </label>
             <input type="text" id="localisation" name="localisation"><br/>
 
+=======
+            <textarea id="description" name="description" required placeholder="@Exemple:2 chambres salon,2 deux douches et une grande cours"></textarea><br/>
 
-            <select class="listSelective" name="region">
-                <option>CENTRE</option>
-                <option>LITTORAL</option>
-                <option>SUD</option>
-                <option>EST</option>
-                <option>OUEST</option>
-                <option>NORD-OUEST</option>
-                <option>SUD-OUEST</option>
-                <option>ADAMAOUA</option>
-                <option>NORD</option>
-                <option>EXTREME-NORD</option>
+            <label for="localisation" required>Localisation </label>
+            <textarea type="text" id="localisation" name="localisation" required placeholder="@Exemple: en face de carrefour le bon berger d'Essos"></textarea><br/>
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
+
+            <label>ville</label>
+            <select class="listSelective" name="ville">
+                <option>DOUALA</option>
+                <option>YAOUNDE</option>
+                <option>EBOLOWA</option>
+                <option>BERTOUA</option>
+                <option>BAFOUSSAM</option>
+                <option>BAMENDA</option>
+                <option>BUEA</option>
+                <option>NGOUNDERE</option>
+                <option>GAROUA</option>
+                <option>MAROUA</option>
             </select><br/>
 
-            <label for="prix">Prix </label>
-            <input type="number" id="prix" name="prix"><br/>
+            <label>etat</label>
+            <select class="listSelective" name="etat">
+                <option>LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE</option>
+                <option>LA PROPRIETE EST OCCUPEE PAR UN LOCATAIRE </option>
 
-            <input type="reset" value="annuler">
-            <input type="submit" value="ajouter"><br/>
+            </select><br/>
+
+
+            <label for="prix">Prix </label>
+            <input type="number" id="prix" name="prix" required placeholder="@Exemple:50000"><br/>
+
+
+            <input type="submit" value="ajouter" class="btn2"><br/>
+            <input type="reset" value="annuler" class="btn1">
 
 
 

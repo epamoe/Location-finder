@@ -2,11 +2,19 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD
     <link rel="stylesheet" href="../../static/formulaire.css"/>
     <title>ajouter un locataire</title>
 </head>
 <body>
 
+=======
+    <link rel="stylesheet" href="../../static/css/formulaire.css"/>
+    <title>ajouter un locataire</title>
+</head>
+<body>
+<div class="formulaire">
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
     <h1>veillez remplir le formulaire</h1>
     <form th:action="@{SaveLocataire}" method="post">
 
@@ -30,11 +38,20 @@
             <option th:text="${p.id_propriete}"></option>
         </select><br/>
 
+<<<<<<< HEAD
         <input type="submit" value="ajouter"><br/>
         <input type="reset" value="annuler">
 
 
     </form>
 
+=======
+        <input type="submit" value="ajouter" class="btn1"><br/>
+        <input type="reset" value="annuler" class="btn2">
+
+
+    </form>
+</div>
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
 </body>
 </html>

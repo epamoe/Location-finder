@@ -9,26 +9,36 @@ public class Propriete implements Serializable {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private long id_propriete;
-    private String description="inconnue";
-    private String localisation="inconnue";
-    private String region="inconnue";
+    private String name;
+    private String description="non precisé";
+    private String localisation="non precisé";
+    private String ville ="non precisé";
     private boolean disponible=true;
-    private long prix=0;
-  //********************************************************************************************************************
-    @Lob
-    // @Column(name="Image",length = Integer.MAX_VALUE, nullable = true);
+    private int prix=0;
     private Date date;
+    //***********************************************************************
+    @ManyToOne
+    @JoinColumn(name = "id_bailleur")
+    private Bailleur bailleur;
 
-    public Propriete(Date date,String description, String localisation, String region, long prix) {
 
+    public Propriete(String name, String description, String localisation, String ville, String etat, int prix, Date date, Bailleur bailleur) {
+        this.name = name;
         this.description = description;
         this.localisation = localisation;
-        this.region = region;
-        this.disponible = true;
-        this.prix = prix;
-        this.date =date;
-    }
+        this.ville = ville;
 
+        if(etat.equalsIgnoreCase("LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE")){
+            this.disponible = true;
+        }
+        else{
+            this.disponible=false;
+        }
+
+        this.prix = prix;
+        this.date = date;
+        this.bailleur = bailleur;
+    }
 
     public boolean isDisponible() {
         return disponible;
@@ -42,25 +52,28 @@ public class Propriete implements Serializable {
         this.date = date;
     }
 
-    //***********************************************************************
-    @ManyToOne
-    @JoinColumn(name = "id_bailleur")
-    private Bailleur bailleur;
 
     public Propriete(){
         super();
     }
 
-    public Propriete(String description, String localisation, String region, boolean disponible, long prix,Bailleur bailleur) {
+    public Propriete(String description, String localisation, String region, boolean disponible, int prix,Bailleur bailleur) {
         this.description = description;
         this.localisation = localisation;
-        this.region = region;
+        this.ville = region;
         this.disponible = disponible;
         this.prix = prix;
         this.bailleur=bailleur;
 
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
 
     public boolean getDisponible() {
         return disponible;
@@ -70,15 +83,15 @@ public class Propriete implements Serializable {
         this.disponible = disponible;
     }
 
-    public String getRegion() {
-        return region;
+    public String getVille() {
+        return ville;
     }
 
-    public void setRegion(String region) {
-        this.region = region;
+    public void setVille(String region) {
+        this.ville = region;
     }
 
-    public void setPrix(long prix) {
+    public void setPrix(int prix) {
         this.prix = prix;
     }
 
@@ -98,7 +111,7 @@ public class Propriete implements Serializable {
         return id_propriete;
     }
 
-    public Long getPrix_lcation() {
+    public int getPrix_lcation() {
         return prix;
     }
 
@@ -128,7 +141,7 @@ public class Propriete implements Serializable {
                 "id_propriete=" + id_propriete +
                 ", description='" + description + '\'' +
                 ", localisation='" + localisation + '\'' +
-                ", region='" + region + '\'' +
+                ", region='" + ville + '\'' +
                 ", disponible=" + disponible +
                 ", prix=" + prix +
                 ", date=" + date +

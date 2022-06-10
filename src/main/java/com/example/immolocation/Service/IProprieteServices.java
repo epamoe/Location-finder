@@ -20,7 +20,7 @@ public interface IProprieteServices {
     public void supprimerPropriete(Long id);
 
     //modifie une propriete existante
-    public void modifierPropriete(Propriete propriete);
+    public void modifierPropriete(Long id,Propriete propriete);
 
     //retourne un propriete ayant l'id mis en parametre
     public Propriete consulterPropriete(Long id);

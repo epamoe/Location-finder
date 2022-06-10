@@ -1,38 +1,55 @@
 package com.example.immolocation.Controleur;
 
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.ResponseEntity;
+import com.example.immolocation.Model.Propriete;
+import com.example.immolocation.Service.IProprieteServices;
+import com.example.immolocation.Service.IimageServices;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
-import java.util.Date;
 
 
 @Controller
 public class Image_controller {
+<<<<<<< HEAD
 
+=======
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
 
-    @Value("$(uploadDir)")
-    private String uploadFolder;
+    @Autowired
+    private IimageServices iimageServices;
 
-    private final Logger logger= LoggerFactory.getLogger(this.getClass());
+    @Autowired
+    IProprieteServices iproprieteServices;
 
-    @GetMapping(value="/Ajouterimage")
-    public String addImage(){
-        return"formImg";
+    private Long nId;
+
+    @GetMapping("/AjouterImage")
+    public String ajouterImage(Long id){
+        this.nId=id;
+        return "Bailleur/AjouterImage";
     }
+    @PostMapping("/saveImage")
+    public String SaveImage(@RequestParam("image")MultipartFile file){
+        Propriete propriete=iproprieteServices.consulterPropriete(this.nId);
+        iimageServices.AjouterImage(file,propriete);
+
+    return "redirect:/GestionPropriete";
+    }
+<<<<<<< HEAD
   /*  @PostMapping("/saveImageProcessing")
     public @ResponseBody
     ResponseEntity<?> createImage(@RequestParam("name") String name,
                                   Model model)
 
 */
+=======
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
 
 }

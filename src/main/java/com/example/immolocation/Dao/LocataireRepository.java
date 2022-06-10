@@ -16,6 +16,7 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
       
 
 
+               public Locataire findLocataireByPropriete(Propriete propriete);
                   Locataire findById(long Id);
 
                  public List<Locataire> findByPropriete(Propriete propriete);

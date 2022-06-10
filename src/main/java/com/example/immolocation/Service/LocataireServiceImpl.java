@@ -34,7 +34,7 @@ public class LocataireServiceImpl implements ILocataireServices {
 
     @Override
     public void deleteLocatire(Locataire locataire) {
-
+        locataireRepository.delete(locataire);
     }
 
     @Override
@@ -47,5 +47,13 @@ public class LocataireServiceImpl implements ILocataireServices {
         return null;
     }
 
+<<<<<<< HEAD
 
+=======
+    @Override
+    public Locataire rechercherParPropriete(Propriete propriete) {
+       Locataire locataire=locataireRepository.findLocataireByPropriete(propriete);
+       return locataire;
+    }
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
 }

@@ -1,3 +1,4 @@
+/*
 package com.example.immolocation.Controleur;
 
 import com.example.immolocation.Dao.ImageRepository;
@@ -76,6 +77,11 @@ public class test {
             imageRepository.save(image);
 
 
+<<<<<<< HEAD
+=======
+             */
+/*
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
 
 /*
                 iProprieteServices.ajouterProprieter(propriete,bailleur);
@@ -88,7 +94,8 @@ public class test {
 
                 ajouter locataire
 
-                }*/
+                }*//*
+
             logger.info("HttpStatus===" + new ResponseEntity<>(HttpStatus.OK));
             return new ResponseEntity<>("propriete enregistrée avec comme nom de fichier -" + fileName, HttpStatus.OK);
 
@@ -99,6 +106,7 @@ public class test {
         }
     }
 }
+<<<<<<< HEAD
 
 
 
@@ -106,3 +114,6 @@ public class test {
 
 
 
+=======
+*/
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba

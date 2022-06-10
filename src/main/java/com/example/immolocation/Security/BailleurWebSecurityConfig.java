@@ -56,7 +56,11 @@ import javax.sql.DataSource;
 
 
             http
+<<<<<<< HEAD
                     .authorizeRequests().antMatchers("/bootstrap-5.1.3-dist/**","/authentification", "/h2/**", "/form", "/en", "/moi", "/val", "/home", "/css/**", "/images/**", "/AjouterPropriete", "Bailleur/GestionPropriete", "/GestionPropriete", "/SavePropriete", "/GestionPropriete", "/delete").permitAll()
+=======
+                    .authorizeRequests().antMatchers("/**","/bootstrap-5.1.3-dist/**","/h2/**", "/form","/en", "/moi","/val", "/home", "/css/**", "/images/**","/AjouterPropriete","Bailleur/GestionPropriete","/GestionPropriete","/SavePropriete","/GestionPropriete","/delete","/AjouterImage","/saveImage","/SaveProprieteProcessing").permitAll()
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
                     .anyRequest().authenticated()  // (1)
                     .and()
                     .formLogin().loginPage("/authentification");
