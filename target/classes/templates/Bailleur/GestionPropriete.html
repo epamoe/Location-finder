@@ -166,29 +166,4 @@
 </div>
 
 </body>
-<<<<<<< HEAD
-    <table class="table">
-        <thead>
-        <tr>
-            <th>Id</th>  <th>description</th>  <th>region</th>  <th>localisation precise</th>  <th>etat</th> <th>prix</th>
-
-        </tr>
-        </thead>
-        <tbody>
-            <tr th:each="p:${proprieteList}">
-                <td th:text="${p.id_propriete}"></td>
-                <td th:text="${p.description}"></td>
-                <td th:text="${p.region}"></td>
-                <td th:text="${p.localisation}"></td>
-                <td th:text="${p.disponible}"></td>
-                <td th:text="${p.prix}"></td>
-                <td><a th:href="@{delete(id=${p.id_propriete})}">Supprimer</a></td>
-                <td><a th:href="@{update(id=${p.id_propriete})}">Modifier</a></td>
-                <td><a th:href="@{addpicture(id=${p.id_propriete})}">jouter photo</a></td>
-                <td><a th:href="@{consult(id=${p.id_propriete})}">consulter</a></td>
-            </tr>
-        </tbody>
-    </table>
-=======
->>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
 </html>

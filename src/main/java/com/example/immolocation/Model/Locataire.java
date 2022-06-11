@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -17,6 +18,7 @@ import java.util.List;
 @NoArgsConstructor
 @Getter
 @Setter
+@Component
 public class Locataire  extends User implements Serializable {
     // precise que l'attribut qui est juste en bas est l'identifiant
     private String nom_Locataire;
@@ -26,7 +28,7 @@ public class Locataire  extends User implements Serializable {
 
 
    @ManyToOne
-    @JoinColumn(name="Id_Bailleur")
+    @JoinColumn(name="Id_Bailleur")//faudra changer ce nom de table avec login_Bailleur
     private Bailleur bailleur;
 
     //liason de la table locataire a la table facture

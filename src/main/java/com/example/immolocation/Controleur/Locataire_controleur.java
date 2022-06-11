@@ -8,11 +8,15 @@ import com.example.immolocation.Service.ILocataireServices;
 import com.example.immolocation.Service.IProprieteServices;
 import com.example.immolocation.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -33,8 +37,15 @@ public class  Locataire_controleur {
         return "/Locataire/AuthentificationLocataire";
     }
 
+   // @Secured(value="ROLE_LOCATAIRE") Faudra retirer les commentaires une fois qu'on poura ajouter un locataire avec son role
     @GetMapping("/locataire")
-    public String locataire() {
+    public String locataire(HttpServletRequest httpServletRequest) {
+        HttpSession httpSession= httpServletRequest.getSession();
+        SecurityContext securityContext= (SecurityContext)
+                httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+        String login =securityContext.getAuthentication().getName();
+
+        System.out.println(login);
         return "/Locataire/Locataire";
     }
 

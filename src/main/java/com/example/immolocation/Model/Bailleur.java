@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -14,6 +15,7 @@ import java.util.*;
 @NoArgsConstructor
 @Getter
 @Setter
+@Component
 public class Bailleur extends User  implements Serializable   {
 
     @GeneratedValue(strategy= GenerationType.IDENTITY)

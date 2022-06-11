@@ -20,38 +20,51 @@ public class ImageServceImpl implements IimageServices {
     @Autowired
     ImageRepository imageRepository;
 
-    public void AjouterImage(MultipartFile file,Propriete propriete){
-
+    public void AjouterImage(MultipartFile file, Propriete propriete) {
+/*
         Image image = new Image();
         String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-        if(fileName.contains("..")){
+        if (fileName.contains("..")) {
             System.out.println("fichier non valide");
         }
         try {
-                image.setImage(Base64.getEncoder().encodeToString(file.getBytes()) );
+            image.setImage(Base64.getEncoder().encodeToString(file.getBytes()));
 
-            }
-            catch(IOException e){
-                e.printStackTrace();
-            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
         image.setPropriete(propriete);
         imageRepository.save(image);
-        }
+        */
 
-    @Override
-    public void SupprimmerImage(Image image) {
-        imageRepository.delete(image);
     }
 
     @Override
+    public void supprimerImage(Image image) {
+
+    }
+
+    @Override
+    public Optional<Image> getImageById(Long id) {
+        return Optional.empty();
+    }
+
+  /*  @Override
+    public void SupprimmerImage(Image image) {
+        imageRepository.delete(image);
+
+
+    }*/
+
+    @Override
     public List<Image> RechercherParPropriete(Propriete propriete) {
-        List<Image> images =imageRepository.findByPropriete(propriete);
+        List<Image> images = imageRepository.findByPropriete(propriete);
         return images;
     }
 
 
-<<<<<<< HEAD
+}
     /*
     public List<Image> AllImageParIdPropriete(Propriete propriete) {
 =======

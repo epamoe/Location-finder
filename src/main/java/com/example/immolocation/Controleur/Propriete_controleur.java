@@ -26,7 +26,7 @@ public class Propriete_controleur {
 
     //********************************************************
 
-
+/*
     @GetMapping("/AjouterPropriete")
     public String formulairePropriete(Model model){
         model.addAttribute("propriete",new Propriete());
@@ -34,47 +34,42 @@ public class Propriete_controleur {
     }
 
     //regler le probleme de date en bd**********************************************************************************
-<<<<<<< HEAD
+
     @PostMapping("/SaveProcessing")
     public String SavePropriete(Model model,Propriete propriete){
        /* model.addAttribute("Propriete",new Propriete());
-        iProprieteServices.ajouterProprieter(propriete,bailleurRepository.findById(1L).get());*/
+        iProprieteServices.ajouterProprieter(propriete,bailleurRepository.findById(1L).get());*//*
         return"redirect:Bailleur/GestionPropriete";
-=======
+
 
     @PostMapping("/GestionPropriete")
     public String Save(Model model,Propriete propriete){
         model.addAttribute("propriete",new Propriete());
         iProprieteServices.ajouterProprieter(propriete,ibailleurServices.rechercherBailleurParId(Id_BailleurConnecter));
        /* List<Propriete> proprieteList=iProprieteServices.listProprieteparBailleur(ibailleurServices.rechercherBailleurParId(Id_BailleurConnecter));
-        model.addAttribute("proprieteList",proprieteList);*/
+        model.addAttribute("proprieteList",proprieteList);*//*
         return "redirect:/GestionPropriete";
->>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
+
     }
 
 
     @GetMapping("/GestionPropriete")
     public String pageGestionPropriete(Model model){
-<<<<<<< HEAD
+
       /*  List<Propriete> proprieteList=iProprieteServices.listProprieteparBailleur(bailleurRepository.findById(1L).get());
-        model.addAttribute("proprieteList",proprieteList);*/
+        model.addAttribute("proprieteList",proprieteList);*//*
         return"Bailleur/GestionPropriete";
-=======
-        List<Propriete> proprieteList=iProprieteServices.listProprieteparBailleur(ibailleurServices.rechercherBailleurParId(Id_BailleurConnecter));
-        model.addAttribute("proprieteList",proprieteList);
-        return "Bailleur/GestionPropriete";
->>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
+
+
     }
 
 
-    @RequestMapping("/delete")
+ /*   @RequestMapping("/delete")
     public String delete(Long id){
         iProprieteServices.supprimerPropriete(id);
         return "redirect:/GestionPropriete";
     }
 
-<<<<<<< HEAD
-=======
     @GetMapping("/update")
     public String Pageupdate(Long id,Model model){
         this.nId=id;
@@ -93,6 +88,9 @@ public class Propriete_controleur {
     public String annuler(){
         return "redirect:/GestionPropriete";
     }
->>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
-
+*/
+    @GetMapping("/proprietes")
+    public String afficher_propreites(){
+        return "/propriete/proprietes";
+    }
 }

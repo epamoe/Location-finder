@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<center>
+    <form th:action="@{/form}" method="post">
+    <label><u><h1>Facture Locataire</h1></u></label>
+    <p></p><label> nom du locataire:</label><label th:text="${listeDesLocataireDeBailleur.nom_Locataire}"></label>
+    <p> <label>Motif:</label> <label>Loyer</label>
+    <p></p> <label>Montant mensuel à payer</label><label th:text="${listeDesLocataireDeBailleur.montant_mensuel_a_payer}"></label>
+    <p><label>Montant:</label><input type="text" th:name="montant"/>
+        <p><label>Dette:</label><label th:text="${listeDesFactureDuLocTel.dette}"></label>
+        <input type="submit">
+    </form>
+</center>
+</body>
+</html>

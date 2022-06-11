@@ -1,6 +1,7 @@
 package com.example.immolocation.Controleur;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
 @Controller
@@ -12,7 +13,8 @@ public class Accuiel {
         return "Accueil";
     }
     @GetMapping("/authentification")
-    public String authentification(){
+    public String authentification(Model model){
+
         return "Bailleur/AuthentificationBailleur";
     }
 }

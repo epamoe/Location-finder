@@ -12,13 +12,13 @@ import java.util.List;
 @Repository
 public interface ImageRepository
         extends JpaRepository<Image,Long> {
-<<<<<<< HEAD
+
 /*
     @Query("select i from  Image i where i.propriete like :x")
     public List<Image> findByPropriete(Propriete propriete);
 */
-=======
+
     List<Image> findByPropriete(Propriete propriete);
 
->>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
+
 }

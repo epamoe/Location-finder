@@ -133,6 +133,52 @@
 							</nav>
 						</div>
 					</header>
+
+					<center><table border="3">
+						<thead>
+						<tr>
+							<td>nom du Locataire</td>
+							<td> Numero_cni</td>
+							<td>montant_mensuel_a_payer</td>
+							<td>date_entree_locatair</td>
+							<td>procceder à une facturation </td>
+							<td>consulter historique facturation</td>
+						</tr>
+						</thead>
+						<tbody>
+
+						<tr th:each="locataire:${listeDesLocataireDeBailleur}">
+							<td th:text="${locataire.login}" >nom du Locataire</td>
+							<td th:text="${locataire.nom_Locataire}" >nom du Locataire</td>
+							<td th:text="${locataire.Numero_cni}" >Numero_cni</td>
+							<td th:text="${locataire.montant_mensuel_a_payer}" >montant_mensuel_a_payer</td>
+							<td th:text="${locataire.date_entree_locataire}" >date_entree_locatair</td>
+							<td><a th:href="@{'/locataire/facturer/'+${locataire.login} }">procceder à une facturation</a> </td>
+							<td><a th:href="@{/locataire/hidtorique/${locataire.login} }">consulter historique facturation</a></td>
+						</tr>
+						</tbody>
+
+
+					</table></center>
+
+</table></center>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					<!--
 					<form  method="post" action="">
 			   			<h2 style="font-family:cambria;color:#000; text-align: center;"> Facture </h2>
 			   			<div class="form-group">
@@ -160,7 +206,8 @@
 		    				<input type="text" class="form-control" id="nomp" placeholder="Nom du Bailleur ">
 		   				</div>
 			   			<button class="w-100 btn btn-lg" style="background-color:#000; color:#fff" type="submit">Valider</button>
-					</form>
+
+					</form>-->
 				</div>
 			</div>
 		</div>

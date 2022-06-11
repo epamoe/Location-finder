@@ -16,11 +16,11 @@ import java.util.List;
 
 @SpringBootTest
 class ImmolocationApplicationTests {
-/*
+
     @Autowired
     BailleurRepository bailleurRepository;
 
-    @Autowired
+  /*  @Autowired
     IProprieteServices iProprieteServices;
 
     @Autowired
@@ -31,9 +31,9 @@ class ImmolocationApplicationTests {
 
         Bailleur bailleur=new Bailleur("alex","deparie",21,"marvel","ankara");
         bailleurRepository.save(bailleur);
-       /* Propriete propriete1 = new Propriete("tres enorme","ankara","loundesk",true,1600);
+        Propriete propriete1 = new Propriete("tres enorme","ankara","loundesk",true,1600);
         e.ajouterProprieter(propriete1,bailleur);
-        System.out.println(propriete1.getBailleur().toString());*/
+        System.out.println(propriete1.getBailleur().toString());
 
 }
     /*
@@ -73,18 +73,16 @@ class ImmolocationApplicationTests {
     }
 */
 
-<<<<<<< HEAD
-=======
-    @Test
+ /*   @Test
     public void bailleur(){
         Bailleur bailleur=bailleurRepository.findById(1L).get();
         System.out.println(bailleur.toString());
     }
 
 
-
+*/
 
 
 
 }
->>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
+
