@@ -157,4 +157,20 @@ public class Locataire implements Serializable {
     public void setDate_entree_locataire(LocalDateTime date_entree_locataire) {
         this.date_entree_locataire = date_entree_locataire;
     }
+
+    public String getTelephone() {
+        return telephone;
+    }
+
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
+    }
+
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
+    }
 }
