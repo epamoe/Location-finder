@@ -46,7 +46,7 @@ class ImmolocationApplicationTests {
         System.out.println(propriete1.getBailleur().toString());*/
 
     }
-    @Test
+   /* @Test
     public void findprop(){
         List<Propriete> proprieteList=iProprieteServices.listProprieteparBailleur(bailleurRepository.findById(1L).get());
         System.out.println(proprieteList.get(0).toString());
@@ -107,7 +107,7 @@ class ImmolocationApplicationTests {
             System.out.println("locaalisation: "+proprieteList.get(j).getLocalisation());
 
             System.out.println("prix de la propriete: "+proprieteList.get(j).getPrix());
-        }
+        }*/
     }
   /*  @Test
     public void publier2(){
@@ -134,4 +134,4 @@ class ImmolocationApplicationTests {
     }*/
 
 
-}
+

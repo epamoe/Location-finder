@@ -12,17 +12,10 @@ public class ImmolocationApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(ImmolocationApplication.class, args);
-        /*BCryptPasswordEncoder crypt= new BCryptPasswordEncoder();
-        String mdp="aaaa";
-        String mdpcrypte=crypt.encode(mdp);
-        System.out.println(mdpcrypte);
+        BCryptPasswordEncoder crypte= new BCryptPasswordEncoder();
+        String mot_de_passe_code= crypte.encode("123");
+        System.out.println(mot_de_passe_code);
 
-        System.out.print("bonjour");
-        LocalDateTime myDateObj = LocalDateTime.now();
-        DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
-        String formattedDate = myDateObj.format(myFormatObj);
-        System.out.println(myDateObj);
-*/
     }
 
 }

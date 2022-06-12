@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public class UserService implements IUserServices {
 
-        private  User user;
+      private  User user;
     private UserRepository userRepository;
 
     private RoleRepository roleRepository;
@@ -47,10 +47,12 @@ public class UserService implements IUserServices {
     }
 
     public  Long id_utilisateur(){
-        return user.getUser_id();
+        return user.getId();
 
     }
     public List<User> listAll(){
         return userRepository.findAll();
     }
+
+
 }

@@ -72,16 +72,17 @@ public class ProprieteServiceImp implements IProprieteServices{
         if(propriete.getDisponible()== true){
             for(int i=0;i<images.size();i++){
                 Image image=images.get(i);
-                iimageServices.SupprimmerImage(image);
+                iimageServices.supprimerImage(image);
             }
             proprieteRepository.delete(propriete );
         }
         else{
             for(int i=0;i<images.size();i++){
                 Image image=images.get(i);
-                iimageServices.SupprimmerImage(image);
+                iimageServices.supprimerImage(image);
             }
-        Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
+                   Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
+
         iLocataireServices.deleteLocatire(locataire);
         proprieteRepository.delete(propriete);
         }

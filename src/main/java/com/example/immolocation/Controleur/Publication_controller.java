@@ -17,11 +17,7 @@ public class Publication_controller {
     @Autowired
     IBailleurServices iBailleurServices;
 
-    @RequestMapping("/")
-    public String index() {
 
-        return "/Accueil";
-    }
 /*
     @RequestMapping("/publication")
     public String publication(Model model) {

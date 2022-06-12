@@ -17,7 +17,7 @@ public class User_controleur {
     private Role role;
     private User userConnecté;
 
-    @RequestMapping("/Authentification")
+   /* @RequestMapping("/Authentification")
     public String AuthitificationPage (Model model) {
         model.addAttribute("user",new User());
         return "Bailleur/AuthentificationBailleur";
@@ -31,5 +31,5 @@ public class User_controleur {
 
             }
         }return "";
-    }
+    }*/
 }
