@@ -178,14 +178,11 @@ BailleurRepository bailleurRepository;
             document.add(espace2);
 
             document.add(etat_de_votre_paiment_);
-
-            document.add(espace1);
             document.add(espace1);
             document.add(espace2);
 
             document.add(table2);
 
-            document.add(espace1);
             document.add(espace2);
             document.add(espace2);
             document.add(moyen);
@@ -209,7 +206,7 @@ BailleurRepository bailleurRepository;
         }
 
 
-    private void corps_de_pdfContratDeBail(PdfPTable table, String Salle) {
+    private void corps_de_pdfContratDeBail(int id_facture) {
 
     }
         public void Contrat_de_baillePDF (HttpServletResponse response, String Salle) throws IOException {

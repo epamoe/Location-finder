@@ -179,7 +179,7 @@
                                 <td th:text="${facture.avance}" >Dettes</td>
                                 <td th:text="${facture.surplus}">Avance sur prochain paiment Enregistrée </td>
                                 <td th:text="${facture.date_Facturation}">date facturation</td>
-                                <td><a th:href="@{/Facture/historique/${facture.id_facture} }">telecharger cette facture</a></td>
+                                <td><a th:href="@{'/Facture/historique/'+${facture.id_facture} }">telecharger cette facture</a></td>
                             </tr>
 
                         </table>
