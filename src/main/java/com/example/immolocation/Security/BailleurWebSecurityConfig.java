@@ -21,10 +21,10 @@ import javax.sql.DataSource;
 @EnableGlobalMethodSecurity(securedEnabled = true)
  class BailleurWebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
-    private DataSource dataSource;
+    private DataSource dataSource ;
 
 
-        @Bean
+       @Bean
         public UserDetailsService userDetailsService() {
             return new CustomUserDetailsService();
         }
@@ -33,8 +33,8 @@ import javax.sql.DataSource;
         public BCryptPasswordEncoder passwordEncoder () {
             return new BCryptPasswordEncoder();
         }
-    @Bean
-    public DaoAuthenticationProvider authenticationProvider () {
+        @Bean
+        public DaoAuthenticationProvider authenticationProvider () {
         DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
         authProvider.setUserDetailsService(userDetailsService());
         authProvider.setPasswordEncoder(passwordEncoder());
@@ -43,6 +43,12 @@ import javax.sql.DataSource;
         @Override
         protected void configure (AuthenticationManagerBuilder auth) throws Exception {
             auth.authenticationProvider(authenticationProvider());
+            auth.jdbcAuthentication().dataSource(dataSource)
+ .usersByUsernameQuery("select login as principal,mot_de_passe as credentials,true from users" +
+                            " where login=?")
+.authoritiesByUsernameQuery("select users_login as principal,roles_role as role from " +
+        "User_Role where users_login=? ").rolePrefix("ROLE_");
+
         }
 
         @Override
@@ -50,15 +56,17 @@ import javax.sql.DataSource;
 
 
             http
-                    .authorizeRequests().antMatchers("/**","/bootstrap-5.1.3-dist/**","/h2/**", "/form","/en", "/moi","/val", "/home", "/css/**", "/images/**","/AjouterPropriete","Bailleur/GestionPropriete","/GestionPropriete","/SavePropriete","/GestionPropriete","/delete","/AjouterImage","/saveImage","/SaveProprieteProcessing").permitAll()
+
+                    .authorizeRequests().antMatchers("/bootstrap-5.1.3-dist/**","/proprietes","/authentification", "/h2/**", "/form", "/en", "/moi", "/val", "/home", "/css/**", "/images/**", "/AjouterPropriete", "Bailleur/GestionPropriete", "/GestionPropriete", "/SavePropriete", "/GestionPropriete", "/delete").permitAll()
+
                     .anyRequest().authenticated()  // (1)
                     .and()
-                    .formLogin();
+                    .formLogin().loginPage("/authentification");
 
             http.csrf().disable();
             http.headers().frameOptions().disable();
 
-
+        }
 /*
 .loginPage("/Bailleur/AuthentificationBailleur").permitAll()
    http.authorizeRequests().antMatchers("/h2/**", "/css/**", "/images/**")
@@ -77,7 +85,7 @@ import javax.sql.DataSource;
     }.and()
                 .logout().logoutSuccessUrl("/home").permitAll();*/
 
-        }
+
 
 
 }

@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -33,7 +34,28 @@ public class ProprieteServiceImp implements IProprieteServices{
        return bailleur;
     }
 
+    public List<Propriete> proprieteLibreParBailleur(Bailleur bailleur){
+       List<Propriete> proprieteList= listProprieteparBailleur(bailleur);
+       List<Propriete> listPropriete=new ArrayList<>();
+        for(int i=0;i<proprieteList.size();i++){
+            if(proprieteList.get(i).getDisponible()==true){
+                listPropriete.add(proprieteList.get(i));
+            }
+        }
+        return listPropriete;
+    }
 
+    @Override
+    public List<Propriete> findAllFreePropriete() {
+       List<Propriete> proprieteList=proprieteRepository.findAll();
+       List<Propriete> listPropriete=new ArrayList<>();
+       for(int i=0;i<proprieteList.size();i++){
+           if(proprieteList.get(i).getDisponible()==true){
+               listPropriete.add(proprieteList.get(i));
+           }
+       }
+        return listPropriete;
+    }
 
 
     @Override
@@ -50,16 +72,17 @@ public class ProprieteServiceImp implements IProprieteServices{
         if(propriete.getDisponible()== true){
             for(int i=0;i<images.size();i++){
                 Image image=images.get(i);
-                iimageServices.SupprimmerImage(image);
+                iimageServices.supprimerImage(image);
             }
             proprieteRepository.delete(propriete );
         }
         else{
             for(int i=0;i<images.size();i++){
                 Image image=images.get(i);
-                iimageServices.SupprimmerImage(image);
+                iimageServices.supprimerImage(image);
             }
-        Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
+                   Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
+
         iLocataireServices.deleteLocatire(locataire);
         proprieteRepository.delete(propriete);
         }
@@ -68,13 +91,17 @@ public class ProprieteServiceImp implements IProprieteServices{
 
     public void modifierPropriete(Long id,Propriete propriete) {
        Propriete propriete1=proprieteRepository.findById(id).get();
+       propriete1.setName(propriete.getName());
+       propriete1.setDescription(propriete.getDescription());
        propriete1.setLocalisation(propriete.getLocalisation());
        propriete1.setVille(propriete.getVille());
        propriete1.setDisponible(propriete.getDisponible());
        propriete1.setDate(propriete.getDate());
-       propriete1.setName(propriete.getName());
+       propriete1.setPrix((int) propriete.getPrix());
         proprieteRepository.save(propriete1);
     }
+
+
 
 
     public Propriete consulterPropriete(Long id) {
@@ -87,6 +114,17 @@ public class ProprieteServiceImp implements IProprieteServices{
     public List<Propriete> findByRegion(String Region) {
         List<Propriete> proprieteList = proprieteRepository.finfAllByRegion(Region);
         return proprieteList;
+    }
+
+    @Override
+    public Propriete setDisponibilite(String etat,Propriete propriete) {
+        if(etat.equals("LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE")){
+            propriete.setDisponible(true);
+        }
+        else if(etat.equals("LA PROPRIETE EST OCCUPEE PAR UN LOCATAIRE")){
+            propriete.setDisponible(false);
+        }
+        return propriete;
     }
 
     @Override
@@ -105,6 +143,13 @@ public class ProprieteServiceImp implements IProprieteServices{
     public List<Propriete> listProprieteparBailleur(Bailleur bailleur) {
         List<Propriete> proprieteList = proprieteRepository.findAllByBailleur(bailleur);
         return proprieteList;
+    }
+
+    @Override
+    public Propriete findByName(String name) {
+     //   proprieteRepository.findByName(name);
+
+        return null;
     }
     //////////////////////::::::encours de traitement!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 

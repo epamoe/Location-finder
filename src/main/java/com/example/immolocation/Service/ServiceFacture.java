@@ -4,6 +4,7 @@ import com.example.immolocation.Dao.FactureRepository;
 import com.example.immolocation.Dao.LocataireRepository;
 import com.example.immolocation.Model.Facture;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -11,6 +12,7 @@ import java.util.List;
 import static java.lang.Math.abs;
 
 @Service
+@Component
 public class ServiceFacture {
 
     @Autowired
@@ -24,77 +26,81 @@ public class ServiceFacture {
 
 
     //retoure la liste des facture selon les id
+    public Facture dernier_facture_loc(String login){
 
-    public List<Facture> Liste_de_facture(long id) {
+        return factureRepository.dernier_facture_loc(login).get(0);
+    }
 
-       return factureRepository.liste_facture(id);
+    public List<Facture> Liste_de_facture(String login) {
+
+       return factureRepository.liste_facture(login);
     }
 
 
-    public int derniere_dette_loc(long id) {
+    public int derniere_dette_loc(String login) {
 
-        List<Facture> test= factureRepository.dernier_facture_loc(id);
+        List<Facture> test= factureRepository.dernier_facture_loc(login);
 
        return  test.get(0).getDette();
     }
 
 
-    public int dernier_avance_loc(long id) {
+    public int dernier_avance_loc(String login) {
 
-        List<Facture> test= factureRepository.dernier_facture_loc(id);
+        List<Facture> test= factureRepository.dernier_facture_loc(login);
 
         return  test.get(0).getAvance();
     }
 
 
-    public int dernier_surplus_loc(long id) {
+    public int dernier_surplus_loc(String login) {
 
-        List<Facture> test= factureRepository.dernier_facture_loc(id);
+        List<Facture> test= factureRepository.dernier_facture_loc(login);
 
         return  test.get(0).getSurplus();
     }
     //methode permetant de facture elle attriebut une facture facture a un locatiare
 
-    public void attribuer_fact(long id, int montant)
+    public void attribuer_fact(String longin, int montant)
     {
-        long montant_mensuel=locataireRepository.montant_mentuel(id);
+        long montant_mensuel=locataireRepository.montant_mentuel(longin);
 
-       if( derniere_dette_loc(id)>0 && dernier_avance_loc(id)==0)
+       if( derniere_dette_loc(longin)>0 && dernier_avance_loc(longin)==0)
        {
-           int soustraction_dette_montant=derniere_dette_loc(id)-montant;
-           int soustraction_montant_dette=montant-derniere_dette_loc(id);
+           int soustraction_dette_montant=derniere_dette_loc(longin)-montant;
+           int soustraction_montant_dette=montant-derniere_dette_loc(longin);
 
 
            if (soustraction_dette_montant==0) {
                facture.setMontant(0);
                facture.setDette((int) montant_mensuel);
            }
-     /*
-         if( locataireRepository.montant_mentuel(id)==soustraction_dette_montant)
+
+         if( locataireRepository.montant_mentuel(longin)==soustraction_dette_montant)
           {
            facture.setDette(soustraction_dette_montant);
 
-        }*/
+        }
 
-           if( locataireRepository.montant_mentuel(id)==soustraction_montant_dette)
+           if( locataireRepository.montant_mentuel(longin)==soustraction_montant_dette)
            {
                facture.setMontant(soustraction_montant_dette);
             }
 
 
            if ( montant_mensuel>soustraction_montant_dette){
-               facture.setAvance( abs(soustraction_montant_dette + dernier_avance_loc(id)));
+               facture.setAvance( abs(soustraction_montant_dette + dernier_avance_loc(longin)));
                facture.setDette((int) (montant_mensuel-soustraction_montant_dette));
            }
 
            if( montant_mensuel<soustraction_montant_dette){
-               facture.setMontant((int) locataireRepository.montant_mentuel(id));
+               facture.setMontant((int) locataireRepository.montant_mentuel(longin));
                facture.setSurplus((int) (soustraction_dette_montant-montant_mensuel));
            }
 
        }
 
-        if(derniere_dette_loc(id)==0 && dernier_surplus_loc(id)==0){
+        if(derniere_dette_loc(longin)==0 && dernier_surplus_loc(longin)==0){
             if (montant_mensuel>montant){
                 //facture.setAvance(montant);
                 facture.setDette((int) abs(montant_mensuel-montant));
@@ -107,8 +113,8 @@ public class ServiceFacture {
 
 
         ////////////////////////////valide
-        if(derniere_dette_loc(id)==0 && dernier_surplus_loc(id)>0){
-           long avance =dernier_surplus_loc(id)-montant_mensuel;
+        if(derniere_dette_loc(longin)==0 && dernier_surplus_loc(longin)>0){
+           long avance =dernier_surplus_loc(longin)-montant_mensuel;
             int  somme_montant_avance = (int) (avance+montant);
             if(avance<0){
                         if( somme_montant_avance<montant_mensuel ){
@@ -133,9 +139,9 @@ public class ServiceFacture {
             }
 
         }
-        if(dernier_avance_loc(id)>0 && derniere_dette_loc(id)==0) {
+        if(dernier_avance_loc(longin)>0 && derniere_dette_loc(longin)==0) {
 
-          int somme_avance_montant = dernier_avance_loc(id) + montant;
+          int somme_avance_montant = dernier_avance_loc(longin) + montant;
           if (somme_avance_montant==montant_mensuel){
               facture.setMontant(somme_avance_montant);
           }
@@ -151,12 +157,13 @@ public class ServiceFacture {
 
 
         }
-                  facture.setLocataire(locataireRepository.findById(id));
+                  facture.setLocataire(locataireRepository.chercher_loc_parLOGIN(longin));
                   factureRepository.save(facture);
     }
 }
 
-/*        Locataire locataire =locataireRepository.findById(id);
+
+  /*      Locataire locataire =locataireRepository.findById(id);
             facture.setLocataire(locataire);
           if (montant == (int) locataireRepository.montant_mentuel(id)){
               factureRepository.save(facture);
@@ -174,10 +181,10 @@ public class ServiceFacture {
           }
             facture.setMontant(montant);
            factureRepository.save(facture);
-*/
 
 
-   /* public void avertissement_dette() {
+
+    public void avertissement_dette() {
         chrono.schedule(new TimerTask() {
 
             @Override

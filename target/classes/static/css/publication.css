@@ -1,0 +1,16 @@
+.infoPropriete{
+    border-style: solid;
+    background: #0dcaf0;
+}
+.infoBailleur{
+    border-style: solid ;
+    background: #6f42c1;
+}
+.publication{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: black;
+    font-family: monospace,Cambria;
+
+}

@@ -11,9 +11,9 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class UserService {
+public class UserService implements IUserServices {
 
-        private  User user;
+      private  User user;
     private UserRepository userRepository;
 
     private RoleRepository roleRepository;
@@ -34,11 +34,25 @@ public class UserService {
         user.addRole(RoleUser);
         userRepository.save(user);
     }
+
+    public void ajouterUtilsateurRoleBailleur(User user){
+
+        BCryptPasswordEncoder crypte= new BCryptPasswordEncoder();
+        String mot_de_passe_code= crypte.encode(user.getMot_de_passe());
+        user.setMot_de_passe( mot_de_passe_code);
+
+        Role RoleUser = roleRepository.findByName("Bailleur");
+        user.addRole(RoleUser);
+        userRepository.save(user);
+    }
+
     public  Long id_utilisateur(){
-        return user.getUser_id();
+        return user.getId();
 
     }
     public List<User> listAll(){
         return userRepository.findAll();
     }
+
+
 }

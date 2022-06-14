@@ -1,111 +1,34 @@
 package com.example.immolocation.Model;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.*;
 
 @Entity
-public class Bailleur  implements Serializable {
-    @Id
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Component
+public class Bailleur extends User  implements Serializable   {
+
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    private Long id_bailleur;
     private String nom_bailleur;
     private String prenom_bailleur;
-    private int age;
-    private String Login;
-    private String mot_de_passe;
+    private String Numero_cni;
+    private String telephone;
 
 
     @OneToMany(mappedBy="bailleur")
     private Collection<Propriete> propriete;
 
-    @OneToMany(mappedBy="bailleur")
+    @OneToMany()
     private List<Locataire> locataire =new ArrayList<Locataire>();
 
-
-    public Bailleur() {
-
-    }
-
-    public Bailleur( String nom_bailleur, String prenom_bailleur, int age, String mot_de_passe, String login, Collection<Propriete> propriete, List<Locataire> locataire) {
-        this.nom_bailleur = nom_bailleur;
-        this.prenom_bailleur = prenom_bailleur;
-        this.age = age;
-        this.mot_de_passe = mot_de_passe;
-        Login = login;
-        this.propriete = propriete;
-        this.locataire = locataire;
-    }
-
-    public Bailleur(String nom_bailleur, String prenom_bailleur, int age, String login, String mot_de_passe) {
-        this.nom_bailleur = nom_bailleur;
-        this.prenom_bailleur = prenom_bailleur;
-        this.age = age;
-        Login = login;
-        this.mot_de_passe = mot_de_passe;
-    }
-
-    // getters et setters
-
-
-
-    public Collection<Propriete> getPropriete() {
-        return propriete;
-    }
-
-    public void setPropriete(Collection<Propriete> propriete) {
-        this.propriete = propriete;
-    }
-
-    public String getMot_de_passe() {
-        return mot_de_passe;
-    }
-
-    public void setMot_de_passe(String mot_de_passe) {
-        this.mot_de_passe = mot_de_passe;
-    }
-
-    public String getLogin() {
-        return Login;
-    }
-
-    public void setLogin(String login) {
-        Login = login;
-    }
-
-    public Long getId_bailleur() {
-        return id_bailleur;
-    }
-
-    public String getNom_bailleur() {
-        return nom_bailleur;
-    }
-
-    public void setNom_bailleur(String nom_bailleur) {
-        this.nom_bailleur = nom_bailleur;
-    }
-
-    public String getPrenom_bailleur() {
-        return prenom_bailleur;
-    }
-
-    public void setPrenom_bailleur(String prenom_bailleur) {
-        this.prenom_bailleur = prenom_bailleur;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public List<Locataire> getLocataire() {
-        return locataire;
-    }
-
-    public void setLocataire(List<Locataire> locataire) {
-        this.locataire = locataire;
-    }
 }
