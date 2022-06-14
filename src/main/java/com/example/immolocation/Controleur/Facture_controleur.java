@@ -35,6 +35,8 @@ public class Facture_controleur {
        Locataire locataire;
     @Autowired
     PdfService pdfService;
+    @Autowired
+    FactureRepository factureRepository;
 
     @GetMapping("/factureLocataire")
     public String factureloc() {
@@ -45,7 +47,8 @@ public class Facture_controleur {
     @GetMapping("/factureLocataire1")
     public String factureloc12() {
 
-      System.out.println(bailleur.getLogin());
+
+
         return "/Locataire/Facture";
     }
 
@@ -57,7 +60,7 @@ public class Facture_controleur {
         return "Accueil";
     }
 @GetMapping("/telecahrgerFacture")
-    public String telechargerpdf(HttpServletResponse response1, String login, HttpServletRequest httpServletRequest) throws IOException {
+    public String telechargerpdf(HttpServletResponse response1, HttpServletRequest httpServletRequest) throws IOException {
         response1.setContentType("application/pdf");
         DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
         String currentDate = dateFormater.format(new Date());
@@ -68,14 +71,29 @@ public class Facture_controleur {
     HttpSession httpSession= httpServletRequest.getSession();
     SecurityContext securityContext= (SecurityContext)
             httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
-    String login1 =securityContext.getAuthentication().getName();
+    String login =securityContext.getAuthentication().getName();
+     locataire.setLogin(login);
 
 
-    pdfService.facture_pdf(response1,"login1");
+    pdfService.facture_pdf(response1,login);
         return "/Locataire/Facture";
     }
 @GetMapping("/facture")
-    public String telecharger_facture(){
+    public String telecharger_facture(Model model,HttpServletRequest httpServletRequest){
+
+    HttpSession httpSession= httpServletRequest.getSession();
+    SecurityContext securityContext= (SecurityContext)
+            httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+    String login =securityContext.getAuthentication().getName();
+
+
+    System.out.println(login);
+    System.out.println(factureRepository.liste_facture(login));
+    System.out.println(locataireRepository.montantMensuel(login));
+
+    model.addAttribute("listeFacture",factureRepository.liste_facture(login));
+    model.addAttribute("montantMensuel",locataireRepository.montant_mentuel(login));
+
         return "/Locataire/Facture";
 }
 

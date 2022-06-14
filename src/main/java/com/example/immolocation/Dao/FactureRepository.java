@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface FactureRepository extends JpaRepository<Facture, Long> {
 
-    @Query("SELECT a FROM Facture a inner join Locataire b WHERE b.login= ?1")
+    @Query("SELECT a FROM Facture a inner join a.locataire b WHERE b.login= ?1")
     List<Facture> liste_facture(String login);
 
     @Query("SELECT a FROM Facture a inner JOIN a.locataire r where r.login=?1  order by a.id_facture desc " )

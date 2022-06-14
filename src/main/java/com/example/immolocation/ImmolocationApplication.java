@@ -25,8 +25,8 @@ public class ImmolocationApplication {
         Date date =new Date();
         BCryptPasswordEncoder crypte= new BCryptPasswordEncoder();
         String mot_de_passe_code= crypte.encode("123" );
-
-        System.out.println(date);
+        System.out.println(mot_de_passe_code);
+        System.out.println( LocalDateTime.now());
 
     }
 

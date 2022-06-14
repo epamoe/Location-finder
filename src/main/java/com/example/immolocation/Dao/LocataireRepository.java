@@ -21,7 +21,9 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
     String contact_locataire( String login);
 
     @Query("select u.montant_mensuel_a_payer from Locataire u where u.login=?1 ")
-    int montant_mensuel( String login);
+    String montantMensuel( String login);
+
+
     @Query("select u.date_entree_locataire from Locataire u where u.login=?1 ")
     LocalDateTime dateDentre(String login);
 
@@ -32,7 +34,7 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
     @Query("Select r.prenom_bailleur from Locataire u inner join u.bailleur r where u.login =?1 ")
     String prenom_Bailleur(String login);
 
-    @Query("Select r.Numero_de_telephone from Locataire u inner join u.bailleur r where u.login =?1 ")
+    @Query("Select r.telephone from Locataire u inner join u.bailleur r where u.login =?1 ")
     String contact_Bailleur(String login);
 
     @Query("Select r.description from Locataire u inner join u.propriete r where u.login =?1 ")

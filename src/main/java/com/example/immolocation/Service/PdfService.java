@@ -11,6 +11,7 @@ import com.lowagie.text.Rectangle;
 import com.lowagie.text.pdf.PdfPCell;
 import com.lowagie.text.pdf.PdfPTable;
 import com.lowagie.text.pdf.PdfWriter;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +23,7 @@ import java.util.List;
 import java.util.concurrent.Phaser;
 
 @Service
+@AllArgsConstructor
 public class PdfService {
     @Autowired
 LocataireRepository locataireRepository;
@@ -84,7 +86,7 @@ BailleurRepository bailleurRepository;
             PdfPCell cellule3 = new PdfPCell(new Phrase("Dette Enregistrée"));
             PdfPCell cellule4 = new PdfPCell(new Phrase("Avance du prochain paiment Enregistrée "));
 
-            PdfPCell cellule5 = new PdfPCell(new Phrase(locataireRepository.montant_mensuel(login)));
+            PdfPCell cellule5 = new PdfPCell(new Phrase(locataireRepository.montantMensuel(login)));
             PdfPCell cellule6 = new PdfPCell(new Phrase(factureRepository.dernier_montant_enregistre(login).get(0)));
             PdfPCell cellule7 = new PdfPCell(new Phrase(factureRepository.dernier_dette_enregistre(login).get(0)));
             PdfPCell cellule8 = new PdfPCell(new Phrase(factureRepository.dernier_surplus_enregistre(login).get(0)));
