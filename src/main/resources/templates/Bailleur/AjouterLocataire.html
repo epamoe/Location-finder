@@ -139,10 +139,6 @@
                                 <input type="text" id="nom" name="nom_Locataire" class="form-control" placeholder="Entrez le nom du nouveau locataire">
                             </div>
                             <div class="form-group">
-                                <label for="prenom" style="color: #000">Prenom:</label>
-                                <input type="text" id="prenom" name="prenom_Locataire" class="form-control" placeholder="Entrez le prénom du nouveau locataire">
-                            </div>
-                            <div class="form-group">
                                 <label for="cni" style="color: #000">Numero cni:</label>
                                 <input type="text" id="cni" name="Numero_cni" class="form-control" placeholder="Entrez le numéro de cni du nouveau locataire">
                             </div>
@@ -159,6 +155,10 @@
                                 <select name="propriete" th:each="p:${proprieteList}" id="propriete">
                                     <option th:text="${p.id_propriete}"></option>
                                 </select><br/>
+                            </div>
+                            <div class="form-group">
+                                <label for="montant" style="color: #000">Montant mensuel à payer:</label>
+                                <input type="text" id="prenom" name="montant" class="form-control" placeholder="Entrez le montant que le locataire doit payer chaque mois">
                             </div>
                             <div  style="font-family:cambria;color:#000; text-align: center">
                                 <input type="submit" value="ajouter" class="btn btn-lg" style="background-color:#000; color:#fff">
