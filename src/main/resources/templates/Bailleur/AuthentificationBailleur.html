@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 	<head>
 		<meta charset="utf-8">
-		<meta name="viewport" content="width-device-width, initial-scale=1"/>
+		<meta name="viewport" content="width-device-width, initial-scale=1">
 		<title>
 			Authentification Bailleur
 		</title>
@@ -32,7 +32,8 @@
 			        <input type="checkbox" value="remember-me"> Remember me
 			      </label>
 			    </div>
-			    <button class="w-100 btn btn-lg" style="background-color:#adb4da" type="submit">Valider</button>
+			    <button class="w-100 btn btn-lg" style="background-color:#adb4da" type="submit">Valider</button><br/><br/>
+				<button class="btn-link" style="background-color:#adb4da" type="submit"><a th:href="@{/AjouterBailleur}">Devenir Bailleur</a></button>
 			</form>
 		</main>
 	</body>

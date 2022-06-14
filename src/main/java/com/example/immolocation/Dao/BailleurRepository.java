@@ -14,4 +14,10 @@ public interface  BailleurRepository extends CrudRepository<Bailleur, String> {
 
         @Query("select u from Bailleur r inner join r.locataire u where r.login=?1")
         List<Locataire> liste_loc_selon_Bailleurlogin(String loginBailleur);
+        @Query("select u from Bailleur u where u.login=?1")
+        Bailleur retoureBailleur(String login);
+
+        Bailleur findById(long id);
+
+
 }

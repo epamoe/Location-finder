@@ -20,8 +20,8 @@ import java.util.List;
 @Table(name="users")
 public class User implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
- private Long id;
-@Column(unique = true )
+ protected Long id;
+// @Column(unique = true )
 @Id
 protected String login;
 protected String mot_de_passe;
@@ -39,4 +39,11 @@ protected String mot_de_passe;
 
     }
 
+    public List<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(List<Role> roles) {
+        this.roles = roles;
+    }
 }

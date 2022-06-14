@@ -32,18 +32,20 @@ public class  Locataire_controleur {
     @Autowired
     IProprieteServices iProprieteServices;
 
+    private Long IdBailleurConnecter = 1L;
+
     @GetMapping("/Locataire/AuthentificationLocataire")
     public String authentificationlocataire() {
         return "/Locataire/AuthentificationLocataire";
     }
 
-   // @Secured(value="ROLE_LOCATAIRE") Faudra retirer les commentaires une fois qu'on poura ajouter un locataire avec son role
+    // @Secured(value="ROLE_LOCATAIRE") Faudra retirer les commentaires une fois qu'on poura ajouter un locataire avec son role
     @GetMapping("/locataire")
     public String locataire(HttpServletRequest httpServletRequest) {
-        HttpSession httpSession= httpServletRequest.getSession();
-        SecurityContext securityContext= (SecurityContext)
+        HttpSession httpSession = httpServletRequest.getSession();
+        SecurityContext securityContext = (SecurityContext)
                 httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
-        String login =securityContext.getAuthentication().getName();
+        String login = securityContext.getAuthentication().getName();
 
         System.out.println(login);
         return "/Locataire/Locataire";
@@ -62,20 +64,32 @@ public class  Locataire_controleur {
     }
 
 
-        @GetMapping("/AjouterLocataire")
-        public String formulaireLocataire (Model model){
+    @GetMapping("/AjouterLocataire")
+    public String formulaireLocataire(Model model) {
            /* model.addAttribute("locataire", new Locataire());
-            List<Propriete> proprieteList = iProprieteServices.listProprieteparBailleur() */;
-            return "AjouterLocataire";
-        }
+            List<Propriete> proprieteList = iProprieteServices.listProprieteparBailleur() */
+        ;
+        return "AjouterLocataire";
+    }
+
+}
       /*  @PostMapping("/SaveProcessing1")
         public String SaveLocataire1 (Model model, Locataire locataire, String login){
 
   /*
    *//*  @GetMapping("/AjouterLocataire")
+   @GetMapping("/AjouterLocataire")
     public String formulaireLocataire(Model model){
+        List<Propriete> proprieteList = iProprieteServices.listProprieteparBailleur(iBailleurServices.rechercherBailleurParId(1L));
+        model.addAttribute("proprieteList",proprieteList);
         model.addAttribute("locataire",new Locataire());
         //List<Propriete> proprieteList= iProprieteServices.listProprieteparBailleur();
+    return "Bailleur/AjouterLocataire";
+
+
+    } @PostMapping("/SaveProcessing")
+    public String SaveLocataire(Model model,String name, Locataire locataire){
+       Propriete propriete= iProprieteServices.findByName(name);
     return "AjouterLocataire";
     }*//* @PostMapping("/SaveProcessing")
     public String SaveLocataire(Model model, Locataire locataire){
@@ -83,14 +97,16 @@ public class  Locataire_controleur {
 
             model.addAttribute("Locatiare", new Locataire());
 
-<<<<<<< HEAD
-            iLocataireServices.addLocataire(locataire, iBailleurServices.rechercherBailleurParId(login), new Propriete());
-            return "redirect:Bailleur/GestionPropriete";
-        }
-    }
-=======
-        iLocataireServices.addLocataire(locataire,iBailleurServices.rechercherBailleurParId(1L),new Propriete());
+        iLocataireServices.addLocataire(locataire,iBailleurServices.rechercherBailleurParId(this.IdBailleurConnecter),propriete);
         return"redirect:Bailleur/GestionPropriete";
-    }*/
-}
+    }
 
+    @GetMapping("/GestionLocataire")
+    public String Gestion(Model model){
+       List<Locataire>locataireList= iLocataireServices.findByBailleur(iBailleurServices.rechercherBailleurParId(this.IdBailleurConnecter));
+       model.addAttribute("locataireList",locataireList);
+
+       return "Bailleur/GestionLocataire";
+    }
+}
+*/

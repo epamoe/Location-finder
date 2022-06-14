@@ -14,13 +14,31 @@ public class BailleurServiceImpl implements IBailleurServices {
     @Autowired
     BailleurRepository bailleurRepository;
 
-    public Bailleur rechercherBailleurParId(String login) {
 
-        Bailleur bailleur = bailleurRepository.findById(login).get();
-        return bailleur;
 
+    @Override
+    public Bailleur rechercherBailleur(String login) {
+        return bailleurRepository.retoureBailleur(login);
     }
 
+
+    @Override
+    public void ajouterBailleur(Bailleur bailleur) {
+        bailleurRepository.save(bailleur);
+    }
+
+    @Override
+    public Bailleur rechercherParId(Long id) {
+        return bailleurRepository.findById(id);
+    }
+
+    public Bailleur rechercherBailleurParLogin(String login) {
+
+        Bailleur bailleur = bailleurRepository.retoureBailleur(login);
+        return bailleur;
+
+
+    }
     public List<Locataire> locataireselonloginBailleur(String login) {
         List<Locataire> locataire = bailleurRepository.liste_loc_selon_Bailleurlogin(login);
         return locataire;

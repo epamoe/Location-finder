@@ -42,6 +42,7 @@ public class ImageServceImpl implements IimageServices {
 
     @Override
     public void supprimerImage(Image image) {
+        imageRepository.delete(image);
 
     }
 

@@ -22,7 +22,8 @@ public class Bailleur extends User  implements Serializable   {
     private String nom_bailleur;
     private String prenom_bailleur;
     private String Numero_cni;
-    public String Numero_de_telephone;
+    private String telephone;
+
 
     @OneToMany(mappedBy="bailleur")
     private Collection<Propriete> propriete;
