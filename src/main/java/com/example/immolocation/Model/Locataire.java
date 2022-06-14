@@ -24,11 +24,13 @@ public class Locataire  extends User implements Serializable {
     private String nom_Locataire;
     private String Numero_cni;
     private int montant_mensuel_a_payer;
+    private String Profession;
+    private String contact;
     private LocalDateTime date_entree_locataire= LocalDateTime.now();
 
 
    @ManyToOne
-    @JoinColumn(name="Id_Bailleur")//faudra changer ce nom de table avec login_Bailleur
+    //faudra changer ce nom de table avec login_Bailleur
     private Bailleur bailleur;
 
     //liason de la table locataire a la table facture
@@ -39,6 +41,7 @@ public class Locataire  extends User implements Serializable {
     //liason de la table locataire a la table propriete
 
         @OneToMany
+        @JoinColumn(name="login_loc")
     private List<Propriete> propriete = new ArrayList<Propriete>();
 
 

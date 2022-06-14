@@ -27,15 +27,15 @@ import java.util.List;
 @Controller
 @AllArgsConstructor
 public class Bailleur_controlleur {
-  @Autowired
-    ServiceFacture facture;
-  @Autowired
-Bailleur bailleur;
-    @Autowired
+   @Autowired
+   ServiceFacture facture;
+   @Autowired
+   Bailleur bailleur;
+   @Autowired
    ServiceFacture serviceFacture;
-@Autowired
-LocataireRepository locataireRepository;
-  @Autowired
+   @Autowired
+   LocataireRepository locataireRepository;
+   @Autowired
     BailleurServiceImpl bailleurService;
 
   @Autowired
@@ -45,6 +45,7 @@ LocataireRepository locataireRepository;
         return "/Bailleur/AjoutLocataire";
     }
    // @Secured(value="ROLE_BAILLEUR")
+
     @GetMapping("/Bailleur/AuthentificationBailleur")
     public String authentification_locataire(HttpServletRequest httpServletRequest) {
        // facture.avertissement_dette();
@@ -52,7 +53,8 @@ LocataireRepository locataireRepository;
         SecurityContext securityContext= (SecurityContext)
         httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
         String login =securityContext.getAuthentication().getName();
-        bailleur.setLogin(login);
+
+        bailleur.setLogin("login");
         System.out.println(login);
         return "/Bailleur/Bailleur";
     }

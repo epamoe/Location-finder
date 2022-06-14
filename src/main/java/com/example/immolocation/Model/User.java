@@ -21,7 +21,7 @@ import java.util.List;
 public class User implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
  private Long id;
-// @Column(unique = true )
+@Column(unique = true )
 @Id
 protected String login;
 protected String mot_de_passe;
