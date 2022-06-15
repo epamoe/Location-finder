@@ -20,6 +20,7 @@ public class Proprietes {
 	private String name;
 	private String description;
 	private String Localisation;
+	private boolean disponible;
 	//private String ville;
 	private int prix;
 	//private boolean disponible;
@@ -29,6 +30,8 @@ public class Proprietes {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "create_date", nullable = false)
     private Date createDate;
+	@ManyToOne
+	private Bailleur bailleur;
 
 	public Proprietes() {}
 

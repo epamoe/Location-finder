@@ -107,6 +107,7 @@ LocataireRepository locataireRepository;
         model.addAttribute("Bailleur",new Bailleur());
 
         iUserServices.ajouterUtilsateurRoleBailleur(user);
+        bailleur.setLogin("marco");
         iBailleurServices.ajouterBailleur(bailleur);
 
         return "redirect:/Bailleur/AuthentificationBailleur";

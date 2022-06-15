@@ -31,7 +31,7 @@ public class Propriete_controleur {
     private IimageServices iimageServices;
     IUserServices iUserServices;
 
-
+/*
 
   private String userConnect;
   private  Bailleur bailleur;
@@ -50,12 +50,12 @@ public class Propriete_controleur {
         return "Bailleur/AjouterPropriete";
     }
 
-   /*
+   *//*
    apres l'envoie du formulaire d'ajout si la propriete est occupé par un locataire,
    on demande au bailleur de renseigner les info du
     locataire concerné dans le cas contraire on lui
     retourne la page de gestion de propriete
-     */
+     *//*
     @PostMapping("/SavePropriete")
     public String Save(Model model,Propriete propriete,@RequestParam("etat") String etat){
         model.addAttribute("propriete",new Propriete());
@@ -65,10 +65,10 @@ public class Propriete_controleur {
     }
 
 
-    /*
+    *//*
     renvoie le dashbord de gestion de propriete,
      locataire et de facturation
-     */
+     *//*
     @GetMapping("/GestionPropriete")
     public String pageGestionPropriete(Model model,Authentication authentication){
        this.bailleur=ibailleurServices.rechercherBailleur(authentication.getName());//recuperation du bailleur connecté
@@ -90,10 +90,10 @@ public class Propriete_controleur {
         return "redirect:/GestionPropriete";
     }
 
-    /*
+    *//*
     permet de mettre a jour une propriete dont on lui passe l'id
     en parametre
-     */
+     *//*
     @GetMapping("/update")
     public String Pageupdate(Long id,Model model){
         this.nId=id;
@@ -121,5 +121,5 @@ public class Propriete_controleur {
         model.addAttribute("bailleur",this.bailleur);
        model.addAttribute("proprieteList",proprieteList);
         return "Bailleur/ProprieteLibre";
-    }
+    }*/
 }

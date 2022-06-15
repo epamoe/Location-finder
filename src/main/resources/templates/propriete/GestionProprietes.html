@@ -57,7 +57,7 @@
                         <ul class="nav nav-tabs">
                             <ul class="nav flex-column flex-xs-row">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="AjouterLocataire.html">
+                                    <a class="nav-link" href="../Bailleur/AjouterLocataire.html">
                                         <span class="text-white">Ajouter Locataire(s)</span>
                                     </a>
                                 </li>
@@ -77,7 +77,7 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="Facturer.html">
+                                    <a class="nav-link" href="../Bailleur/Facturer.html">
                                         <span class="text-white">Facturer un Locataire</span>
                                     </a>
                                 </li>
@@ -89,7 +89,7 @@
                         <ul class="nav nav-tabs">
                             <ul class="nav flex-column flex-xs-row">
                                 <li class="nav-item" style="background-color:#adb4da">
-                                    <a class="nav-link" href="TableauDeBord.html">
+                                    <a class="nav-link" href="../Bailleur/TableauDeBord.html">
                                         <span style="color:#000">Tableau de bords</span>
                                     </a>
                                 </li>
@@ -158,7 +158,7 @@
                     <td th:text="${propriete.prix}"></td>
                     <td th:text="${#dates.format({propriete.createDate}, 'dd-MM-yyyy')}"/></td>
                     <td><a th:href="@{/image/imageDetails(id=${propriete.id})}" class="btn btn-info text-right" target="_blank">visualiser</a></td>
-                    <td><button class="btn btn-outline-warning"><a th:href="@{/AjouterImage(id=${propriete.id})}" href="AjouterImage.html" >Photo</a></button></td>
+                    <td><button class="btn btn-outline-warning"><a th:href="@{/AjouterImage(id=${propriete.id})}" href="../Bailleur/AjouterImage.html" >Photo</a></button></td>
                     <td><button class="btn btn-danger"><a th:href="@{update(id=${propriete.id})}">Modifier</a></button></td>
                     <td><button class="btn btn-close"><a th:href="@{delete(id=${propriete.id})}">  </a></button></td>
                 </tr>

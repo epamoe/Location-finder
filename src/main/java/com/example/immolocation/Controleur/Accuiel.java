@@ -23,7 +23,7 @@ public class Accuiel {
 
     @GetMapping("/Bailleur/AuthentificationBailleur")
     public String pageBailleur() {
-        return "redirect:/GestionPropriete";
+        return "redirect:/GestionProprietes";
     }
 
 }
