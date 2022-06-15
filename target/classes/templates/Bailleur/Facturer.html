@@ -133,23 +133,21 @@
 							</nav>
 						</div>
 					</header>
-
-					<center><table border="3">
-						<thead>
-						<tr>
-							<td>nom du Locataire</td>
-							<td> Numero_cni</td>
-							<td>montant_mensuel_a_payer</td>
-							<td>date_entree_locatair</td>
-							<td>procceder à une facturation </td>
-							<td>consulter historique facturation</td>
-						</tr>
+					<table class="table table-dark table-striped table-bordered table-hover">
+						<thead class="thead-light" style="color:#fff">
+							<tr>
+								<th>nom du Locataire</td>
+								<th> Numero_cni</td>
+								<th>montant_mensuel_a_payer</td>
+								<th>date_entree_locatair</td>
+								<th>procceder à une facturation </td>
+								<th>consulter historique facturation</td>
+							</tr>
 						</thead>
 						<tbody>
 
 						<tr th:each="locataire:${listeDesLocataireDeBailleur}">
 							<td th:text="${locataire.login}" >nom du Locataire</td>
-							<td th:text="${locataire.nom_Locataire}" >nom du Locataire</td>
 							<td th:text="${locataire.Numero_cni}" >Numero_cni</td>
 							<td th:text="${locataire.montant_mensuel_a_payer}" >montant_mensuel_a_payer</td>
 							<td th:text="${locataire.date_entree_locataire}" >date_entree_locatair</td>
@@ -159,7 +157,7 @@
 						</tbody>
 
 
-					</table></center>
+					</table>
 
 </table></center>
 

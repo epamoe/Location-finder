@@ -133,23 +133,23 @@
                             </nav>
                         </div>
                     </header>
-                    <form method="post" th:action="@{/GestionPropriete}">
+                    <form method="post" th:action="@{/update}" th:objet="${propriete}">
                         <h2 style="font-family:cambria;color:#000; text-align: center"> Modifier une propriété</h2>
                             <div class="form-group">
                                 <label for="name" style="color: #000">Nommez la propriete </label>
-                                <textarea id="name" name="name" class="form-control" placeholder="Entrez le nouveau nom de la propiété si vous desirez le changer"></textarea>
+                                <textarea id="name" name="name" th:text="${propriete.name}" class="form-control" placeholder="Entrez le nouveau nom de la propiété si vous desirez le changer"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="description" style="color: #000">Description </label>
-                                <textarea id="description" name="description" class="form-control" placeholder="Entrez une nouvelle description de la propiété  si vous desirez la changer"></textarea>
+                                <textarea id="description" name="description" th:text="${propriete.description}"  class="form-control" placeholder="Entrez une nouvelle description de la propiété  si vous desirez la changer"></textarea>
                             </div>
                             <div class="form-group">
                                 <label for="localisation" style="color: #000">Localisation </label>
-                                <textarea type="text" id="localisation" name="localisation" required class="form-control" placeholder="Entrez la localisation de la propiété, où elle est situé  si vous desirez la changer"></textarea>
+                                <textarea type="text" id="localisation" name="localisation" th:text="${propriete.localisation}"  required class="form-control" placeholder="Entrez la localisation de la propiété, où elle est situé  si vous desirez la changer"></textarea>
                             </div>
                             <div class="form-group">
                                 <label>ville</label>
-                                <select class="form-control" name="ville">
+                                <select class="form-control" name="ville" th:text="${propriete.ville}" >
                                     <option>DOUALA</option>
                                     <option>YAOUNDE</option>
                                     <option>EBOLOWA</option>
@@ -162,15 +162,9 @@
                                     <option>MAROUA</option>
                                 </select>
                             </div>
-                            <!--<div class="form-group"> une propriété créée est automatiquement vide donc pas v=besoin de ce champ
-                                <label for="etat" style="color: #000">etat</label>
-                                <select class="form-control" name="etat">
-                                    <option>LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE</option>
-                                    <option>LA PROPRIETE EST OCCUPEE PAR UN LOCATAIRE </option>
-                                </select>
-                            </div>-->
+
                             <div class="form-group">
-                                <label for="prix" style="color: #000">Prix </label>
+                                <label for="prix" th:text="${propriete.prix}"  style="color: #000">Prix </label>
                                 <input type="number" id="prix" name="prix" required class="form-control" placeholder="Entrez le nouveau prix de la propiété  si vous desirez le changer"><br/>
                             </div>
                             <div  style="font-family:cambria;color:#000; text-align: center">

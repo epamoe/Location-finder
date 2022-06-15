@@ -7,12 +7,45 @@ import com.example.immolocation.Model.Proprietes;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 
 public interface LocataireRepository extends CrudRepository<Locataire, String> {
 
-     @Query("SELECT u.montant_mensuel_a_payer FROM Locataire u WHERE u.login=?1")
+
+    @Query("select u.nom_Locataire from Locataire u where u.login=?1 ")
+    String non_locataire( String login);
+    @Query("select u.Profession from Locataire u where u.login=?1 ")
+    String prefession_locataire( String login);
+    @Query("select u.contact from Locataire u where u.login=?1 ")
+    String contact_locataire( String login);
+
+    @Query("select u.montant_mensuel_a_payer from Locataire u where u.login=?1 ")
+    String montantMensuel( String login);
+
+
+    @Query("select u.date_entree_locataire from Locataire u where u.login=?1 ")
+    LocalDateTime dateDentre(String login);
+
+
+    @Query("Select r.nom_bailleur from Locataire u inner join u.bailleur r where u.login =?1 ")
+                    String nom_Bailleur(String login);
+
+    @Query("Select r.prenom_bailleur from Locataire u inner join u.bailleur r where u.login =?1 ")
+    String prenom_Bailleur(String login);
+
+    @Query("Select r.telephone from Locataire u inner join u.bailleur r where u.login =?1 ")
+    String contact_Bailleur(String login);
+
+    @Query("Select r.description from Locataire u inner join u.propriete r where u.login =?1 ")
+    String description_propriete(String login);
+
+    @Query("Select r.localisation from Locataire u inner join u.propriete r where u.login =?1 ")
+    String localisation_propriete(String login);
+
+
+    @Query("SELECT u.montant_mensuel_a_payer FROM Locataire u WHERE u.login=?1")
                long montant_mentuel(String login);
       
 
