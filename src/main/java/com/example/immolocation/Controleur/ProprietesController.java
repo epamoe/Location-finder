@@ -54,6 +54,11 @@ public class ProprietesController {
 
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+	@GetMapping("/public")
+	public String page(){
+		return "propriete/proprietes";
+	}
+
 
 	@GetMapping("/GestionProprietes")
 	public String pageGestionPropriete(Model model, Authentication authentication,HttpServletRequest httpServletRequest){
@@ -62,6 +67,7 @@ public class ProprietesController {
 				httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
 		String login =securityContext.getAuthentication().getName();
 		this.bailleur=ibailleurServices.rechercherBailleur(login);//recuperation du bailleur connecté
+		System.out.println(bailleur.getLogin());
 		List<Proprietes> propriete=iProprietesServices.listProprieteparBailleur(this.bailleur);
 		model.addAttribute("bailleur",this.bailleur);
 		model.addAttribute("propriete", propriete);
