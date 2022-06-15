@@ -13,6 +13,6 @@ div
 }
 #fond
 {
-    background-image: url(../images/fond.jpg);
+    background-image: url(../../templates/Locataire/images/fond.jpg);
     background-size: cover;
 }

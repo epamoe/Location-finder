@@ -12,7 +12,7 @@
         <script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.js}"></script>
         <script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.min.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.min.js}"></script>
     </head>
-    <body style="background-image: url(../images/fond.jpg);background-size: cover;")>
+    <body th:style="|background:url(@{/images/fond.jpg});|" style="background-image: url(../images/fond.jpg);background-size: cover;")>
 		<div  style="text-align:center; margin-top:70px">
 			<h1 style="font-family:cambria;color:#000">veillez remplir le formulaire S'il vous plait</h1>
 			<form method="post" th:action="@{/saveImage}" enctype="multipart/form-data">

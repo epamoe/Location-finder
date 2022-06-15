@@ -99,6 +99,15 @@ public class Facture_controleur {
 
         return "/Locataire/Facture";
 }
+
+    @PostMapping ("/enregistrerfacture/{login}")
+    public String enregistre_facture(@RequestParam int montant , @PathVariable String login){
+        System.out.println(montant);
+        System.out.println(login);
+      serviceFacture.attribuer_fact(login,montant);
+
+        return "/Bailleur/Facturer";
+    }
     @GetMapping("/Facture/historique/{id}")
     public String telechargerpdfgeneral(HttpServletResponse response1, HttpServletRequest httpServletRequest, @PathVariable("id") int id ) throws IOException {
         response1.setContentType("application/pdf");

@@ -12,7 +12,7 @@ body {
 }
 body[id=aut]
 {
-  background-image: url(static/images/fond.jpg);
+  background-image: url(../../templates/Locataire/images/fond.jpg);
   background-size: cover;
 }
 

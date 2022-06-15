@@ -13,7 +13,7 @@
 		<script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.js}"></script>
 		<script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.min.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.min.js}"></script>
 	</head>
-	<body style="background-image: url(../images/fond.jpg);background-size: cover;")>
+	<body th:style="|background:url(@{/images/fond.jpg});|" style="background-image: url(../images/fond.jpg);background-size: cover;")>
 		<div class="container-fluid">
 			<div class="row">
 				<!--side bar-->
@@ -150,7 +150,7 @@
 								<td th:text="${locataire.montant_mensuel_a_payer}" >montant</td>
 								<td th:text="${locataire.date_entree_locataire}" >date</td>
 								<td><a th:href="@{'/locataire/facturer/'+${locataire.login} }">procceder</a> </td>
-								<td><a th:href="@{/locataire/hidtorique/${locataire.login} }">consulter historique</a></td>
+								<td><a th:href="@{/locataire/historique/${locataire.login} }">consulter historique</a></td>
 							</tr>
 						</tbody>
 					</table>
