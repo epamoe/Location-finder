@@ -25,7 +25,7 @@
                         <ul class="nav nav-tabs">
                             <ul class="nav flex-column flex-xs-row">
                                 <h3>Salut Mr<br></h3>
-                                <h3 style="text-align:center" th:text="${bailleur.nom_bailleur}">Le Bailleur!!!</h3>
+                                <h3 style="text-align:center">Le Bailleur!!!</h3>
                             </ul>
                         </ul>
                     </nav>
@@ -138,14 +138,22 @@
                             <div class="form-group">
                                 <label for="name" style="color: #000">Nommez la propriete </label>
                                 <textarea id="name" name="name" required class="form-control" placeholder="Entrez le nom de la propiété"></textarea>
+                                <p id="error_name"></p>
                             </div>
+                        <div class="col-md-6 col-sm-6 contact-form1 form-group">
+                            <label for="name" style="color: #000">Image </label>
+                            <input type="file" class="form-control" placeholder="" name="image" id="image" required="required">
+                            <p id="error_file"></p>
+                        </div>
                             <div class="form-group">
                                 <label for="description" style="color: #000">Description </label>
                                 <textarea id="description" name="description" required class="form-control" placeholder="Entrez une description de la propiété"></textarea>
+                                <p id="error_description"></p>
                             </div>
                             <div class="form-group">
                                 <label for="localisation" required style="color: #000">Localisation </label>
                                 <textarea type="text" id="localisation" name="localisation" required class="form-control" placeholder="Entrez la localisation de la propiété, où elle est situé"></textarea>
+                                <p id="error_localisation"></p>
                             </div>
                             <div class="form-group">
                                 <label>ville</label>
@@ -172,6 +180,7 @@
                             <div class="form-group">
                                 <label for="prix" style="color: #000">Prix </label>
                                 <input type="number" id="prix" name="prix" required class="form-control" placeholder="Entrez le prix de la propiété"><br/>
+                                <p id="error_price"></p>
                             </div>
                             <div  style="font-family:cambria;color:#000; text-align: center">
                                 <input type="submit" value="ajouter" class="btn btn-lg" style="background-color:#000; color:#fff">
