@@ -77,7 +77,7 @@ public class  Locataire_controleur {
         public String SaveLocataire1 (Model model, Locataire locataire, String login){
 
   /*
-   *//*  @GetMapping("/AjouterLocataire")
+     @GetMapping("/AjouterLocataire")
    @GetMapping("/AjouterLocataire")
     public String formulaireLocataire(Model model){
         List<Propriete> proprieteList = iProprieteServices.listProprieteparBailleur(iBailleurServices.rechercherBailleurParId(1L));

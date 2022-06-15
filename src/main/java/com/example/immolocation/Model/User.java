@@ -19,13 +19,13 @@ import java.util.List;
 @Setter
 @Table(name="users")
 public class User implements Serializable {
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
- protected Long id;
+
 // @Column(unique = true )
 @Id
-protected String login;
-protected String mot_de_passe;
-
+private String login;
+private String mot_de_passe;
+@GeneratedValue(strategy= GenerationType.IDENTITY)
+protected Long id;
  @ManyToMany(fetch = FetchType.EAGER)
  @JoinTable(name="User_Role",
             joinColumns= @JoinColumn(name ="users_login"),

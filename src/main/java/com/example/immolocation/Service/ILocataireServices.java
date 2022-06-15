@@ -4,6 +4,7 @@ package com.example.immolocation.Service;
 import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Model.Propriete;
+import com.example.immolocation.Model.Proprietes;
 
 import java.util.List;
 
@@ -24,5 +25,6 @@ public interface ILocataireServices {
 
     public Locataire rechercherParPropriete(Propriete propriete);
 
+    public Locataire rechercherParPropriete(Proprietes propriete);
 
 }

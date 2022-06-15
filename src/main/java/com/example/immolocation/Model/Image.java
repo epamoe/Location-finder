@@ -17,59 +17,12 @@ public class Image implements Serializable {
     private Long id;
 
     @Lob
+    @Column(columnDefinition="MEDIUMLOB")
+    private String image;
 
+    @ManyToOne()
+     private  Propriete propriete;
     // @Column(name="Image",length = Integer.MAX_VALUE, nullable = true);
-    private byte[] image;
-   private Date date;
-
-    @ManyToOne
-    @JoinColumn(name = "id_propriete")
-    private Propriete propriete;
 
 
-
-/*
-
-    public Image() {
-
-    }
-
-    public Image( String image, Propriete propriete) {
-        this.image = image;
-
-    }
-
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-
-        this.propriete = propriete;
-
-    }
-
-    public Propriete getPropriete() {
-        return propriete;
-    }
-
-    public void setPropriete(Propriete propriete) {
-        this.propriete = propriete;
-    }
-
-
-    public Long getId() {
-        return id;
-    }
-
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-*/
 }

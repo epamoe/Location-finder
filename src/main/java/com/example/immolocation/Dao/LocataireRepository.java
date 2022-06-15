@@ -3,6 +3,7 @@ package com.example.immolocation.Dao;
 
 import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Model.Propriete;
+import com.example.immolocation.Model.Proprietes;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 
@@ -57,6 +58,8 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
                   Locataire chercher_loc_parLOGIN(String  login);
 
                  public List<Locataire> findByPropriete(Propriete propriete);
+
+                Locataire findByPropriete(Proprietes propriete);
 
 
 

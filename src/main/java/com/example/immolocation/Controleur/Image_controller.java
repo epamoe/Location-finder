@@ -5,6 +5,7 @@ import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Service.IProprieteServices;
 import com.example.immolocation.Service.IimageServices;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,8 +19,9 @@ import org.springframework.web.multipart.MultipartFile;
 public class Image_controller {
 
 
+
     @Autowired
-    private IimageServices iimageServices;
+   IimageServices iimageServices;
 
     @Autowired
     IProprieteServices iproprieteServices;
@@ -33,8 +35,10 @@ public class Image_controller {
     }
     @PostMapping("/saveImage")
     public String SaveImage(@RequestParam("image")MultipartFile file){
-        Propriete propriete=iproprieteServices.consulterPropriete(this.nId);
-        iimageServices.AjouterImage(file,propriete);
+       // Propriete propriete=iproprieteServices.consulterPropriete(1L);
+
+        Propriete propriete=new Propriete();
+        iimageServices.AjoutImage(file,propriete);
 
     return "redirect:/GestionPropriete";
     }

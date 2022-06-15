@@ -67,12 +67,13 @@ public class Propriete_controleur {
 @GetMapping("/propriete")
 public String propreite(){
 
+    *//*
         return "/propriete/proprietes";
 }
     /*
     renvoie le dashbord de gestion de propriete,
      locataire et de facturation
-     */
+     *//*
     @GetMapping("/GestionPropriete")
     public String pageGestionPropriete(Model model,Authentication authentication){
        this.bailleur=ibailleurServices.rechercherBailleur(authentication.getName());//recuperation du bailleur connecté
@@ -94,10 +95,10 @@ public String propreite(){
         return "redirect:/GestionPropriete";
     }
 
-    /*
+    *//*
     permet de mettre a jour une propriete dont on lui passe l'id
     en parametre
-     */
+     *//*
     @GetMapping("/update")
     public String Pageupdate(Long id,Model model){
         this.nId=id;
@@ -125,5 +126,5 @@ public String propreite(){
         model.addAttribute("bailleur",this.bailleur);
        model.addAttribute("proprieteList",proprieteList);
         return "Bailleur/ProprieteLibre";
-    }
+    }*/
 }

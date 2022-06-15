@@ -4,6 +4,7 @@ import com.example.immolocation.Dao.LocataireRepository;
 import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Model.Propriete;
+import com.example.immolocation.Model.Proprietes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -52,6 +53,11 @@ public class LocataireServiceImpl implements ILocataireServices {
     public Locataire rechercherParPropriete(Propriete propriete) {
        Locataire locataire=locataireRepository.findLocataireByPropriete(propriete);
        return locataire;
+    }
+
+    public Locataire rechercherParPropriete(Proprietes propriete) {
+        Locataire locataire=locataireRepository.findByPropriete(propriete);
+        return locataire;
     }
 
 }

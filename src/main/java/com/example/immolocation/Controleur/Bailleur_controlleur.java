@@ -4,6 +4,7 @@ import com.example.immolocation.Dao.LocataireRepository;
 import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Facture;
 import com.example.immolocation.Model.Locataire;
+import com.example.immolocation.Model.User;
 import com.example.immolocation.Service.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -80,14 +81,7 @@ public class Bailleur_controlleur {
         }
     */
 
-    public Bailleur bailleur(){
-        return this.bailleur;
-    }
-    @GetMapping("/AjouterBailleur")
-    public String AjouterBailleur(Model model) {
-        model.addAttribute("Bailleur", new Bailleur());
-        return "Bailleur/AjouterBailleur";
-    }
+
     @GetMapping("/factureBailleur")
     public String facturebail(Model model,HttpServletRequest httpServletRequest){
 
@@ -104,15 +98,29 @@ public class Bailleur_controlleur {
         System.out.println(locataires);
         return "/Bailleur/Facturer";
     }
-   /* @PostMapping("/SaveBailleurProcessing")
+
+    public Bailleur bailleur(){
+        return this.bailleur;
+    }
+
+    @GetMapping("/AjouterBailleur")
+    public String AjouterBailleur(Model model) {
+        model.addAttribute("Bailleur", new Bailleur());
+        return "Bailleur/AjouterBailleur";
+    }
+
+    @PostMapping("/SaveBailleurProcessing")
     public String save(Model model, Bailleur bailleur, User user){
         model.addAttribute("user",new User());
         model.addAttribute("Bailleur",new Bailleur());
-        iBailleurServices.ajouterBailleur(bailleur);
+
         iUserServices.ajouterUtilsateurRoleBailleur(user);
+        bailleur.setLogin("marco");
+        iBailleurServices.ajouterBailleur(bailleur);
+
         return "redirect:/Bailleur/AuthentificationBailleur";
     }
-*/
+
     @RequestMapping("/locataire/facturer/{login}")
     public String proccederFacture(Model model, @PathVariable("login") String login) {
 

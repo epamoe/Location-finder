@@ -13,7 +13,7 @@ public interface IimageServices {
     public void AjouterImage(MultipartFile file,Propriete propriete);
     //**********supprime une image en BD
     public void supprimerImage(Image image);
-
+    public void AjoutImage(MultipartFile file, Propriete propriete);
     //**********retourne l'image de l'id
     public Optional<Image> getImageById(Long id);
     //**********retourne les images associées a une propriete********************
