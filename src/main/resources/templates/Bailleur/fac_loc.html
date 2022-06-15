@@ -12,7 +12,15 @@
         <link rel="stylesheet" href="../../static/bootstrap-5.1.3-dist/css/bootstrap.min.css" th:href="@{/bootstrap-5.1.3-dist/css/bootstrap.min.css}"/>
         <script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.js}"></script>
         <script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.min.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.min.js}"></script>
+        <script type="text/javascript">
+
+            function testAlertDialog()  {
+
+                alert("Facture enregistre et enevoye");
+            }
+        </script>
     </head>
+
     <body th:style="|background:url(@{/images/fond.jpg});|" style="background-image: url(../images/fond.jpg);background-size: cover;")>
         <div class="container-fluid">
             <div class="row">
@@ -96,7 +104,7 @@
                     <header class="container-fluid; site-header sticky-top py-5">
                         <div class="container-fluid bg-light border mt-0 text-white bg-dark p-0 rounded-top rounded-bottom" style="font-size:25px">
                             <nav id="navAccueilS.html" class="d-flex justify-content-center py-3">
-                                <a class="py-2" href="../Accueil.html" title="Accueil" style="text-decoration:none">
+                                <a class="py-2" href="../Accueil.html" title="Accueil"  th:href="@{/home}"  style="text-decoration:none">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-house-door" viewBox="0 0 16 16">
                                       <path d="M8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4.5a.5.5 0 0 0 .5-.5v-4h2v4a.5.5 0 0 0 .5.5H14a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146zM2.5 14V7.707l5.5-5.5 5.5 5.5V14H10v-4a.5.5 0 0 0-.5-.5h-3a.5.5 0 0 0-.5.5v4H2.5z">
                                       </path>
@@ -130,22 +138,24 @@
                         <u><h1 style="text-align:center">Facture Locataire</h1></u>
 
                         <form th:action="@{'/enregistrerfacture/'+${listeDesLocataireDeBailleur.login}}" method="post">
-                            <table border="0">
+                           <center> <table border="0">
 
                             <tr><td><label> nom du locataire  :</label></td><td><label  th:text="${listeDesLocataireDeBailleur.nom_Locataire}"></label></tr>
 
-                            <tr> <label>Motif:</label> </td><td> <label>Loyer:</label></td></tr>
+                            <tr> <td><label>Motif:</label> </td><td> <label>Loyer du Locataire</label></td></tr>
 
                            <tr> <td><label>Montant mensuel à payer</label></td><td><label th:text="${listeDesLocataireDeBailleur.montant_mensuel_a_payer}"><label></td></tr>
 
+                               <tr><td> <label>Dette:</label></td><td><label th:text="${listeDesFactureDuLocTel.dette}" ></label> </td></tr>
                            <tr><td><label>Montant:</label><td>
-                            <td><input type="text" th:name="montant" class="form-control" id="montant" placeholder="Entrez le montant de la facture"/><td>
+                            <td><left><input type="text" th:name="montant" class="form-control" id="montant" placeholder="Entrez le montant de la facture"/></left><td>
                            </tr>
 
-                            <tr><td> <label>Dette:</label></td><td><label th:text="${listeDesFactureDuLocTel.dette}" ></label> </td></tr>
 
-                            <tr><center><button class="w-100 btn btn-lg" style="background-color:#000; color:#fff" type="submit">Valider</button></center><tr>
-                            </table>
+
+                            <tr><td><intput type="submit"  onclick="testAlertDialog()"  class="w-100 btn btn-lg" style="background-color:#000; color:#fff" >Valider</intput></td></tr>
+                            </table></center>
+
                         </form>
                     </div>
                 </div>

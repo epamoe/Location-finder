@@ -116,6 +116,7 @@ public class Bailleur_controlleur {
     @RequestMapping("/locataire/facturer/{login}")
     public String proccederFacture(Model model, @PathVariable("login") String login) {
 
+
         Facture facture = serviceFacture.dernier_facture_loc(login);
         Locataire locataires = locataireRepository.chercher_loc_parLOGIN(login);
         model.addAttribute("listeDesLocataireDeBailleur", locataires);
