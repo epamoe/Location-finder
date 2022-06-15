@@ -45,9 +45,9 @@ public class ProprietesController {
 	}
 
 	@PostMapping("/image/saveImageDetails")
-	public @ResponseBody ResponseEntity<?> createProduct(@RequestParam("name") String name,final @RequestParam("image") MultipartFile file, @RequestParam("description") String description,
-			 @RequestParam("localisation") String localisation,@RequestParam("ville") String ville,@RequestParam("etat") String etat,@RequestParam("prix") int prix, Model model, HttpServletRequest request)
-			 {
+	public @ResponseBody ResponseEntity<?> createProduct(@RequestParam("name") String name,
+														 @RequestParam("prix") int prix, @RequestParam("description") String description, @RequestParam("localisation") String localisation, Model model, HttpServletRequest request
+			,final @RequestParam("image") MultipartFile file) {
 		try {
 			//String uploadDirectory = System.getProperty("user.dir") + uploadFolder;
 			String uploadDirectory = request.getServletContext().getRealPath(uploadFolder);
@@ -66,9 +66,6 @@ public class ProprietesController {
 			log.info("description: " + descriptions[0]);
 			log.info("prix: " + prix);
 			log.info("localisation: " +localisation);
-			log.info("ville" +ville);
-			log.info("etat" +etat);
-
 			try {
 				File dir = new File(uploadDirectory);
 				if (!dir.exists()) {
@@ -89,7 +86,6 @@ public class ProprietesController {
 			propriete.setImage(imageData);
 			propriete.setPrix(prix);
 			propriete.setDescription(descriptions[0]);
-			propriete.setVille(ville);
 			propriete.setCreateDate(createDate); propriete.setLocalisation(localisation);
 			proprietesService.savePropriete(propriete);
 			log.info("HttpStatus===" + new ResponseEntity<>(HttpStatus.OK));
@@ -100,7 +96,8 @@ public class ProprietesController {
 			return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
 		}
 	}
-	
+
+
 	@GetMapping("/image/display/{id}")
 	@ResponseBody
 	void showImage(@PathVariable("id") Long id, HttpServletResponse response, Optional<Proprietes> propriete)

@@ -36,6 +36,7 @@ public class Image_controller {
     @PostMapping("/saveImage")
     public String SaveImage(@RequestParam("image")MultipartFile file){
        // Propriete propriete=iproprieteServices.consulterPropriete(1L);
+
         Propriete propriete=new Propriete();
         iimageServices.AjoutImage(file,propriete);
 
