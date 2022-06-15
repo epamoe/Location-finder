@@ -68,7 +68,9 @@ public class ProprietesController {
 		String login =securityContext.getAuthentication().getName();
 		this.bailleur=ibailleurServices.rechercherBailleur(login);//recuperation du bailleur connecté
 		System.out.println(bailleur.getLogin());
-		List<Proprietes> propriete=iProprietesServices.listProprieteparBailleur(this.bailleur);
+		///**/List<Proprietes> propriete=iProprietesServices.listProprieteparBailleur(this.bailleur);
+		List<Proprietes> propriete = iProprietesServices.getAllActivePropriete();
+		model.addAttribute("propriete", propriete);
 		model.addAttribute("bailleur",this.bailleur);
 		model.addAttribute("propriete", propriete);
 		return "propriete/GestionProprietes";
@@ -204,7 +206,7 @@ public class ProprietesController {
      */
 
 
-	@RequestMapping("/delete")
+	@RequestMapping("/delete" )
 	public String delete(Long id){
 		iProprietesServices.supprimerPropriete(id);
 		return "redirect:/GestionProprietes";
