@@ -64,7 +64,11 @@ public class Propriete_controleur {
     return "redirect:/GestionPropriete";
     }
 
+@GetMapping("/propriete")
+public String propreite(){
 
+        return "/propriete/proprietes";
+}
     /*
     renvoie le dashbord de gestion de propriete,
      locataire et de facturation
