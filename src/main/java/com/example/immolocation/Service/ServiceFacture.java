@@ -157,7 +157,9 @@ public class ServiceFacture {
 
 
         }
+                  facture.setDernier_montant_Enregistre(String.valueOf(montant));
                   facture.setLocataire(locataireRepository.chercher_loc_parLOGIN(longin));
+
                   factureRepository.save(facture);
     }
 }

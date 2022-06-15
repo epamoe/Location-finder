@@ -83,10 +83,16 @@ public class Bailleur_controlleur {
 
 
     @GetMapping("/factureBailleur")
-    public String facturebail(Model model){
+    public String facturebail(Model model,HttpServletRequest httpServletRequest){
+
+        HttpSession httpSession= httpServletRequest.getSession();
+        SecurityContext securityContext= (SecurityContext)
+                httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+        String login =securityContext.getAuthentication().getName();
+
         List<Locataire> locataires= new ArrayList<>();
-        System.out.println(bailleur.getLogin());
-        locataires.addAll(bailleurService.locataireselonloginBailleur(bailleur.getLogin()));
+        System.out.println(login);
+        locataires.addAll(bailleurService.locataireselonloginBailleur(login));
         model.addAttribute("listeDesLocataireDeBailleur",locataires);
         model.addAttribute("listeDesLocataireDeBailleur",locataires);
         System.out.println(locataires);

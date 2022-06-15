@@ -13,7 +13,11 @@
         <script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.js}"></script>
         <script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.min.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.min.js}"></script>
     </head>
+<<<<<<< HEAD
     <body style="background-image: url(../images/fond.jpg);background-size: cover;")>
+=======
+    <body th:style="|background:url(@{/images/fond.jpg});|" style="background-image: url(../images/fond.jpg);background-size: cover;")>
+>>>>>>> origin/main
         <div class="container-fluid">
             <div class="row">
                 <!--side bar-->
@@ -127,6 +131,7 @@
                         </div>
                     </header>
                     <div>
+<<<<<<< HEAD
                         <form th:action="@{/form}" method="post">
                             <u><h1 style="text-align:center">Facture Locataire</h1></u>
                             <div class="form-group">
@@ -155,6 +160,27 @@
                                 <input type="number" th:text="${listeDesFactureDuLocTel.dette}" class="form-control" id="dette" placeholder="Entrez le numero de la facture "/>
                             </div>
                             <button class="w-100 btn btn-lg" style="background-color:#000; color:#fff" type="submit">Valider</button>
+=======
+                        <u><h1 style="text-align:center">Facture Locataire</h1></u>
+
+                        <form th:action="@{'/enregistrerfacture/'+${listeDesLocataireDeBailleur.login}}" method="post">
+                            <table border="0">
+
+                            <tr><td><label> nom du locataire  :</label></td><td><label  th:text="${listeDesLocataireDeBailleur.nom_Locataire}"></label></tr>
+
+                            <tr> <label>Motif:</label> </td><td> <label>Loyer:</label></td></tr>
+
+                           <tr> <td><label>Montant mensuel à payer</label></td><td><label th:text="${listeDesLocataireDeBailleur.montant_mensuel_a_payer}"><label></td></tr>
+
+                           <tr><td><label>Montant:</label><td>
+                            <td><input type="text" th:name="montant" class="form-control" id="montant" placeholder="Entrez le montant de la facture"/><td>
+                           </tr>
+
+                            <tr><td> <label>Dette:</label></td><td><label th:text="${listeDesFactureDuLocTel.dette}" ></label> </td></tr>
+
+                            <tr><center><button class="w-100 btn btn-lg" style="background-color:#000; color:#fff" type="submit">Valider</button></center><tr>
+                            </table>
+>>>>>>> origin/main
                         </form>
                     </div>
                 </div>

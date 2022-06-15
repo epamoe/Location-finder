@@ -9,7 +9,7 @@ import org.springframework.stereotype.Controller;
 
 @Controller
 public class MessageController {
-    private SimpMessagingTemplate simpMessagingTemplate;
+  /*  private SimpMessagingTemplate simpMessagingTemplate;
     @MessageMapping("/message")
     @SendTo("/chatroom/public")
     private Message recevoir_message_public(@Payload Message message){
@@ -20,5 +20,5 @@ public class MessageController {
     public Message recevoir_message_prive(@Payload Message message) {
         simpMessagingTemplate.convertAndSendToUser(message.getNom_recepteur(), "/private", message);
         return message;
-    }
+    }*/
 }

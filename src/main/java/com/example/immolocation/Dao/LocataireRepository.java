@@ -13,6 +13,8 @@ import java.util.List;
 
 public interface LocataireRepository extends CrudRepository<Locataire, String> {
 
+    @Query("select u.login from Locataire u inner join u.factures r where r.id_facture=?1 ")
+    String recupererloginLocataire(int id_facture);
 
     @Query("select u.nom_Locataire from Locataire u where u.login=?1 ")
     String non_locataire( String login);

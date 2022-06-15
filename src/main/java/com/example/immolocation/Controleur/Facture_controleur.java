@@ -7,6 +7,7 @@ import com.example.immolocation.Model.Facture;
 import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Service.PdfService;
 import com.example.immolocation.Service.ServiceFacture;
+import com.example.immolocation.Service.pdfServicegeneral;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContext;
@@ -37,6 +38,8 @@ public class Facture_controleur {
     PdfService pdfService;
     @Autowired
     FactureRepository factureRepository;
+    @Autowired
+    pdfServicegeneral pdfServicegeneral;
 
     @GetMapping("/factureLocataire")
     public String factureloc() {
@@ -96,5 +99,35 @@ public class Facture_controleur {
 
         return "/Locataire/Facture";
 }
+
+    @PostMapping ("/enregistrerfacture/{login}")
+    public String enregistre_facture(@RequestParam int montant , @PathVariable String login){
+        System.out.println(montant);
+        System.out.println(login);
+      serviceFacture.attribuer_fact(login,montant);
+
+        return "/Bailleur/Facturer";
+    }
+    @GetMapping("/Facture/historique/{id}")
+    public String telechargerpdfgeneral(HttpServletResponse response1, HttpServletRequest httpServletRequest, @PathVariable("id") int id ) throws IOException {
+        response1.setContentType("application/pdf");
+        DateFormat dateFormater = new SimpleDateFormat("yyyy-MM-dd-hh-mm-ss");
+        String currentDate = dateFormater.format(new Date());
+        String headerkey ="content-Disposition";
+        String headerValue="attachement;filename=FACTURE"+ currentDate +".pdf";
+        response1.setHeader(headerkey,headerValue);
+
+        HttpSession httpSession= httpServletRequest.getSession();
+        SecurityContext securityContext= (SecurityContext)
+                httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+        String login =securityContext.getAuthentication().getName();
+
+
+       System.out.println(id);
+       pdfServicegeneral.facture_pdfGeneral(response1,id);
+
+        return "/Locataire/Facture";
+    }
+
 
 }

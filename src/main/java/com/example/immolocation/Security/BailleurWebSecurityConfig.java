@@ -57,11 +57,16 @@ import javax.sql.DataSource;
 
             http
 
+<<<<<<< HEAD
                     .authorizeRequests().antMatchers("/bootstrap-5.1.3-dist/**","/**","/proprietes","/authentification", "/h2/**", "/form", "/en", "/moi", "/val", "/home", "/css/**", "/images/**", "/AjouterPropriete", "Bailleur/GestionPropriete", "/GestionPropriete", "/SavePropriete", "/GestionPropriete", "/delete").permitAll()
+=======
+                    .authorizeRequests().antMatchers("/bootstrap-5.1.3-dist/**","/home","/proprietes","/authentification", "/h2/**", "/form", "/en", "/moi", "/val", "/", "/css/**", "/images/**", "/AjouterPropriete", "Bailleur/GestionPropriete", "/GestionPropriete", "/SavePropriete", "/GestionPropriete", "/delete").permitAll()
+>>>>>>> origin/main
 
                     .anyRequest().authenticated()  // (1)
                     .and()
-                    .formLogin().loginPage("/authentification");
+                    .formLogin().loginPage("/authentification").failureUrl("/login-error").and()
+                    .logout().logoutUrl("/home").logoutSuccessUrl("/");
 
             http.csrf().disable();
             http.headers().frameOptions().disable();
