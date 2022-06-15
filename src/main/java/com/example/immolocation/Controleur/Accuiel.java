@@ -17,13 +17,14 @@ public class Accuiel {
     @GetMapping("/authentification")
     public String authentification(Model model){
 
-        return "Bailleur/AuthentificationBailleur";
+        return "propriete/GestionProprietes";
 
     }
-
-    @GetMapping("/Bailleur/AuthentificationBailleur")
-    public String pageBailleur() {
-        return "redirect:/GestionProprietes";
+    @GetMapping("/Bailleur/AuthentificationBailleur\"")
+    public String log(){
+        return "propriete/GestionProprietes";
     }
+
+
 
 }
