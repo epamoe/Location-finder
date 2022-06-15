@@ -17,7 +17,7 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 @Component
 public class WebSocketEventListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class); 
+   /* private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
 
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
@@ -44,6 +44,6 @@ public class WebSocketEventListener {
 
             messagingTemplate.convertAndSend("/chatroom/public", message);
         }
-    }
+    }*/
 
 }

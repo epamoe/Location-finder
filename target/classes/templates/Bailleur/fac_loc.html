@@ -28,7 +28,7 @@
                                     </ul>
                                 </ul>
                             </nav>
-                            <br>
+                            <br/>
                             <nav><h4 style="color:#adb4da">Gérer les propriétés:</h4>
                                 <ul class="nav nav-tabs">
                                     <ul class="nav flex-column flex-xs-row">
@@ -45,6 +45,11 @@
                                         <li class="nav-item">
                                             <a class="nav-link" href="ModifierPropriete.html">
                                                 <span class="text-white">Modifier Propriété(s)</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="AjouterImage.html">
+                                                <span class="text-white">Ajouter des images à une propriété(s)</span>
                                             </a>
                                         </li>
                                     </ul>
@@ -74,26 +79,15 @@
                                                 <span class="text-white">Erire à un Locataire</span>
                                             </a>
                                         </li>
-                                        <li class="nav-item" style="background-color:#adb4da">
-                                            <a class="nav-link" href="Facturer.html">
-                                                <span style="color:#000">Facturer un Locataire</span>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="Facturer.html" th:href="@{/factureBailleur}">
+                                                <span class="text-white">Facturer un Locataire</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </ul>
                             </nav>
                             <br/>
-                            <nav><h4 style="color:#adb4da">Récapitulatif:</h4>
-                                <ul class="nav nav-tabs">
-                                    <ul class="nav flex-column flex-xs-row">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="TableauDeBord.html">
-                                                <span class="text-white">Tableau de bords</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </ul>
-                            </nav>                          
                         </div>
                     </div>
                     <br/>
@@ -133,34 +127,25 @@
                         </div>
                     </header>
                     <div>
+                        <u><h1 style="text-align:center">Facture Locataire</h1></u>
+
                         <form th:action="@{'/enregistrerfacture/'+${listeDesLocataireDeBailleur.login}}" method="post">
-                            <u><h1 style="text-align:center">Facture Locataire</h1></u>
-                            <div class="form-group">
-                                <label> nom du locataire:</label>
-                                <salect th:text="${listeDesLocataireDeBailleur.nom_Locataire}" class="form-control" id="nom_loc">
-                                    <option>Nom du locataire</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Motif:</label>
-                                <select class="form-control">
-                                    <option>Loyer</option>
-                                    <option>Aéré de Loyer</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Montant mensuel à payer</label>
-                                <input type="number" th:text="${listeDesLocataireDeBailleur.montant_mensuel_a_payer}" class="form-control" id="mt_mensuel" placeholder="Entrez le montant mensuel à payer"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Montant:</label>
-                                <input type="number" th:name="montant" class="form-control" id="montant" placeholder="Entrez le montant de la facture"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Dette:</label>
-                                <input type="number" th:text="${listeDesFactureDuLocTel.dette}" class="form-control" id="dette" placeholder="Entrez le numero de la facture "/>
-                            </div>
-                            <button class="w-100 btn btn-lg" style="background-color:#000; color:#fff" type="submit">Valider</button>
+                            <table border="0">
+
+                            <tr><td><label> nom du locataire  :</label></td><td><label  th:text="${listeDesLocataireDeBailleur.nom_Locataire}"></label></tr>
+
+                            <tr> <label>Motif:</label> </td><td> <label>Loyer:</label></td></tr>
+
+                           <tr> <td><label>Montant mensuel à payer</label></td><td><label th:text="${listeDesLocataireDeBailleur.montant_mensuel_a_payer}"><label></td></tr>
+
+                           <tr><td><label>Montant:</label><td>
+                            <td><input type="text" th:name="montant" class="form-control" id="montant" placeholder="Entrez le montant de la facture"/><td>
+                           </tr>
+
+                            <tr><td> <label>Dette:</label></td><td><label th:text="${listeDesFactureDuLocTel.dette}" ></label> </td></tr>
+
+                            <tr><center><button class="w-100 btn btn-lg" style="background-color:#000; color:#fff" type="submit">Valider</button></center><tr>
+                            </table>
                         </form>
                     </div>
                 </div>
