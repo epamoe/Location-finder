@@ -29,18 +29,9 @@ public class Accuiel {
     @GetMapping("/authentification")
     public String authentification(Model model){
 
-        return "propriete/GestionProprietes";
+        return "Bailleur/AuthentificationBailleur";
 
     }
-<<<<<<< HEAD
-    @GetMapping("/Bailleur/AuthentificationBailleur\"")
-    public String log(){
-        return "propriete/GestionProprietes";
-    }
-
-
-
-=======
 
     @GetMapping("/Bailleur/AuthentificationBailleur")
     public String pageBailleur() {
@@ -62,7 +53,6 @@ public class Accuiel {
         model.addAttribute("errorMessage", errorMessage);
         return "Bailleur/AuthentificationBailleur";
     }
->>>>>>> origin/main
 }
 
 

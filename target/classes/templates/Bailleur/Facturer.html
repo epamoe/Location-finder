@@ -144,11 +144,7 @@
 								<td th:text="${locataire.montant_mensuel_a_payer}" >montant</td>
 								<td th:text="${locataire.date_entree_locataire}" >date</td>
 								<td><a th:href="@{'/locataire/facturer/'+${locataire.login} }">procceder</a> </td>
-<<<<<<< HEAD
-								<td><a th:href="@{/locataire/hidtorique/${locataire.login} }">consulter historique</a></td>
-=======
 								<td><a th:href="@{/locataire/historique/${locataire.login} }">consulter historique</a></td>
->>>>>>> origin/main
 							</tr>
 						</tbody>
 					</table>

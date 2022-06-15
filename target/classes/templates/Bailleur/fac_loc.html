@@ -13,11 +13,7 @@
         <script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.js}"></script>
         <script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.min.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.min.js}"></script>
     </head>
-<<<<<<< HEAD
-    <body style="background-image: url(../images/fond.jpg);background-size: cover;")>
-=======
     <body th:style="|background:url(@{/images/fond.jpg});|" style="background-image: url(../images/fond.jpg);background-size: cover;")>
->>>>>>> origin/main
         <div class="container-fluid">
             <div class="row">
                 <!--side bar-->
@@ -131,36 +127,6 @@
                         </div>
                     </header>
                     <div>
-<<<<<<< HEAD
-                        <form th:action="@{/form}" method="post">
-                            <u><h1 style="text-align:center">Facture Locataire</h1></u>
-                            <div class="form-group">
-                                <label> nom du locataire:</label>
-                                <salect th:text="${listeDesLocataireDeBailleur.nom_Locataire}" class="form-control" id="nom_loc">
-                                    <option>Nom du locataire</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Motif:</label>
-                                <select class="form-control">
-                                    <option>Loyer</option>
-                                    <option>Aéré de Loyer</option>
-                                </select>
-                            </div>
-                            <div class="form-group">
-                                <label>Montant mensuel à payer</label>
-                                <input type="number" th:text="${listeDesLocataireDeBailleur.montant_mensuel_a_payer}" class="form-control" id="mt_mensuel" placeholder="Entrez le montant mensuel à payer"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Montant:</label>
-                                <input type="number" th:name="montant" class="form-control" id="montant" placeholder="Entrez le montant de la facture"/>
-                            </div>
-                            <div class="form-group">
-                                <label>Dette:</label>
-                                <input type="number" th:text="${listeDesFactureDuLocTel.dette}" class="form-control" id="dette" placeholder="Entrez le numero de la facture "/>
-                            </div>
-                            <button class="w-100 btn btn-lg" style="background-color:#000; color:#fff" type="submit">Valider</button>
-=======
                         <u><h1 style="text-align:center">Facture Locataire</h1></u>
 
                         <form th:action="@{'/enregistrerfacture/'+${listeDesLocataireDeBailleur.login}}" method="post">
@@ -180,7 +146,6 @@
 
                             <tr><center><button class="w-100 btn btn-lg" style="background-color:#000; color:#fff" type="submit">Valider</button></center><tr>
                             </table>
->>>>>>> origin/main
                         </form>
                     </div>
                 </div>
