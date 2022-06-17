@@ -26,7 +26,7 @@
                         <ul class="nav nav-tabs">
                             <ul class="nav flex-column flex-xs-row">
                                 <h3>Salut Mr<br></h3>
-                                <h3 style="text-align:center" ></h3>
+                                <h3 style="text-align:center" th:text="${bailleur.nom_bailleur}"></h3>
                             </ul>
                         </ul>
                     </nav>
@@ -149,7 +149,7 @@
                 </thead>
                 <tbody th:with="count=0">
                 <tr th:each = "propriete, hh : ${propriete}">
-                    <td th:with="count=${count + 1}" th:text="${count}"></td>
+                    <td th:text="${propriete.id}"></td>
                     <td th:text="${propriete.name}"></td>
                     <td><img th:src="@{${'/image/display/'+ propriete.id}}"
                              class="card img-fluid" style="width:300px;height: 100px" alt=""/></td>
@@ -159,8 +159,8 @@
                     <td th:text="${#dates.format({propriete.createDate}, 'dd-MM-yyyy')}"/></td>
                     <td><a th:href="@{/image/imageDetails(id=${propriete.id})}" class="btn btn-info text-right" target="_blank">visualiser</a></td>
                     <td><button class="btn btn-outline-warning"><a th:href="@{/AjouterImage(id=${propriete.id})}" href="../Bailleur/AjouterImage.html" >Photo</a></button></td>
-                    <td><button class="btn btn-danger"><a th:href="@{update(id=${propriete.id})}">Modifier</a></button></td>
-                    <td><button class="btn btn-close"><a th:href="@{delete(id=${propriete.id})}">  </a></button></td>
+                    <td><button class="btn btn-danger"><a th:href="@{/update(id=${propriete.id})}">Modifier</a></button></td>
+                    <td><button class="btn btn-close"><a th:href="@{/delete(id=${propriete.id})}">  </a></button></td>
                 </tr>
                 </tbody>
             </table>

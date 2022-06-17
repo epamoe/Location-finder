@@ -20,7 +20,7 @@ public class Proprietes {
 	private String name;
 	private String description;
 	private String Localisation;
-	private boolean disponible;
+	private boolean disponible=true;
 	//private String ville;
 	private int prix;
 	//private boolean disponible;

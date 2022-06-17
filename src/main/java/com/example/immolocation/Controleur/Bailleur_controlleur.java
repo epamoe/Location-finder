@@ -113,9 +113,10 @@ public class Bailleur_controlleur {
     public String save(Model model, Bailleur bailleur, User user){
         model.addAttribute("user",new User());
         model.addAttribute("Bailleur",new Bailleur());
-
+        user.setId(bailleur.getId());
         iUserServices.ajouterUtilsateurRoleBailleur(user);
-        bailleur.setLogin("marco");
+        //bailleur.setLogin(user.getLogin());
+        System.out.println(user.getId());
         iBailleurServices.ajouterBailleur(bailleur);
 
         return "redirect:/Bailleur/AuthentificationBailleur";
