@@ -1,12 +1,7 @@
 package com.example.immolocation.Controleur;
 
-import com.example.immolocation.Model.Locataire;
-import com.example.immolocation.Model.Propriete;
-import com.example.immolocation.Model.User;
-import com.example.immolocation.Service.IBailleurServices;
-import com.example.immolocation.Service.ILocataireServices;
-import com.example.immolocation.Service.IProprieteServices;
-import com.example.immolocation.Service.UserService;
+import com.example.immolocation.Model.*;
+import com.example.immolocation.Service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.core.context.SecurityContext;
@@ -14,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -30,9 +26,10 @@ public class  Locataire_controleur {
     IBailleurServices iBailleurServices;
 
     @Autowired
-    IProprieteServices iProprieteServices;
+    IProprietesServices iProprietesServices;
 
-    private Long IdBailleurConnecter = 1L;
+    @Autowired
+    private Bailleur bailleur;
 
     @GetMapping("/Locataire/AuthentificationLocataire")
     public String authentificationlocataire() {
@@ -46,7 +43,7 @@ public class  Locataire_controleur {
         SecurityContext securityContext = (SecurityContext)
                 httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
         String login = securityContext.getAuthentication().getName();
-
+       this.bailleur= iBailleurServices.rechercherBailleur(login);
         System.out.println(login);
         return "/Locataire/Locataire";
     }
@@ -66,10 +63,17 @@ public class  Locataire_controleur {
 
     @GetMapping("/AjouterLocataire")
     public String formulaireLocataire(Model model) {
-           /* model.addAttribute("locataire", new Locataire());
-            List<Propriete> proprieteList = iProprieteServices.listProprieteparBailleur() */
-        ;
+            model.addAttribute("locataire", new Locataire());
+            List<Proprietes> proprieteList = iProprietesServices.proprieteLibreParBailleur(this.bailleur);
+            model.addAttribute("proprieteList",proprieteList);
         return "AjouterLocataire";
+    }
+
+    @PostMapping("/SaveLocataire")
+    public String save(Model model, Locataire locataire, @RequestParam("propriete") String name){
+        Proprietes proprietes=iProprietesServices.findByName(name);
+        iLocataireServices.addLocataire(locataire,this.bailleur,proprietes);
+        return "propriete/GestionProprietes";
     }
 
 }

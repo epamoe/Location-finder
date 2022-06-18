@@ -19,8 +19,9 @@ import java.util.List;
 @Getter
 @Setter
 @Component
-public class Locataire  extends User implements Serializable {
+public class Locataire extends User implements Serializable {
     // precise que l'attribut qui est juste en bas est l'identifiant
+
     private String nom_Locataire;
     private String Numero_cni;
     private int montant_mensuel_a_payer;
@@ -40,9 +41,9 @@ public class Locataire  extends User implements Serializable {
 
     //liason de la table locataire a la table propriete
 
-        @OneToMany
-        @JoinColumn(name="login_loc")
-    private List<Propriete> propriete = new ArrayList<Propriete>();
+
+    @OneToMany
+    private List<Proprietes> propriete = new ArrayList<>();
 
 
 }

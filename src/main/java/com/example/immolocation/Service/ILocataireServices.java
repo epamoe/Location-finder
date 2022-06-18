@@ -11,7 +11,7 @@ import java.util.List;
 public interface ILocataireServices {
 
     //*********ajoute un locataire
-    public void addLocataire(Locataire locataire, Bailleur bailleur, Propriete propriete);
+    public void addLocataire(Locataire locataire, Bailleur bailleur, Proprietes propriete);
 
     //*********supprime un locataire
     public void deleteLocatire(Locataire locataire);

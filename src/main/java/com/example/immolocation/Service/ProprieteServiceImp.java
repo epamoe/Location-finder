@@ -20,6 +20,7 @@ public class ProprieteServiceImp implements IProprieteServices{
 
     @Autowired
     ILocataireServices iLocataireServices;
+/*
 
     @Autowired
     private ProprieteRepository proprieteRepository;
@@ -159,5 +160,6 @@ public class ProprieteServiceImp implements IProprieteServices{
         return proprieteRepository.findById(id);
     }
 
+*/
 
 }

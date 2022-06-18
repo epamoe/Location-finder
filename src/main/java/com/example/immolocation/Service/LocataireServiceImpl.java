@@ -17,17 +17,22 @@ public class LocataireServiceImpl implements ILocataireServices {
     IBailleurServices iBailleurServices;
     @Autowired
     LocataireRepository locataireRepository;
+    @Autowired
+    IProprietesServices iProprietesServices;
 
+    /*
+    cette methode permet d'enregistrer un locataire
+    en définissant la proprieté qu'il occupe comme
+    non disponible et en definissant qui est le bailleur
+    de ce locataire
+     */
     @Override
-    public void addLocataire(Locataire locataire,Bailleur bailleur,Propriete propriete) {
-        List<Propriete> proprieteList = locataire.getPropriete();//lorsque on alloue une propriete elle devient occupé
-        for (int i = 0; i < proprieteList.size(); i++) {
-            proprieteList.get(i).setDisponible(false);
-        }
-
-        locataire.setBailleur(bailleur);
-        locataire.setPropriete(proprieteList);
-        locataireRepository.save(locataire);
+    public void addLocataire(Locataire locataire,Bailleur bailleur,Proprietes propriete) {
+        List<Proprietes> proprieteList = locataire.getPropriete();//lorsque on alloue une propriete elle devient occupé
+        propriete=iProprietesServices.setDisponibilite("LA PROPRIETE EST OCCUPEE PAR UN LOCATAIRE",propriete);//changement d'etat de la propriete(passage de l'etat libre a occupé)
+        locataire.setBailleur(bailleur);// definit le bailleur qui enregistre la propriete
+        locataireRepository.save(locataire);//senregistrement du locataire
+        iProprietesServices.modifierPropriete(propriete.getId(),propriete);//modification de la propriete le rendant occupée
 
     }
 

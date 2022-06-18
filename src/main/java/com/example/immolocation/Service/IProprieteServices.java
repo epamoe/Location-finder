@@ -9,7 +9,7 @@ import java.util.Optional;
 
 public interface IProprieteServices {
 
-    //ajoute une propriete dans la bd
+   /* //ajoute une propriete dans la bd
     public void ajouterProprieter(Propriete propriete,Bailleur bailleur);
 
     public Bailleur retourneBailleur(Propriete propriete);
@@ -52,5 +52,5 @@ public interface IProprieteServices {
 
 
 
-
+*/
 }

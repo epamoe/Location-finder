@@ -16,8 +16,8 @@ import java.util.Optional;
 @Service
 public class ProprietesServiceImpl implements  IProprietesServices {
 
-	@Autowired
-	ILocataireServices iLocataireServices;
+	//@Autowired
+	//ILocataireServices iLocataireServices;
 
 	@Autowired
 	private BailleurRepository bailleurRepository;
@@ -69,9 +69,9 @@ public class ProprietesServiceImpl implements  IProprietesServices {
 		}
 		else{
 
-			Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
+			//Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
 
-			iLocataireServices.deleteLocatire(locataire);
+			//iLocataireServices.deleteLocatire(locataire);
 			proprietesRepository.delete(propriete);
 		}
 	}

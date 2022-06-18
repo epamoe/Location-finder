@@ -126,7 +126,7 @@
                             </nav>
                         </div>
                     </header>
-                    <form th:action="@{SaveLocataire}" method="post">
+                    <form th:action="@{/SaveLocataire}" method="post">
                         <h2 style="font-family:cambria;color:#000; text-align: center"> Ajouter un locataire</h2>
                             <div class="form-group">
                                 <label for="nom" style="color: #000">Nom:</label>
@@ -146,13 +146,13 @@
                             </div>
                             <div class="form-group">
                                 <label for="propriete" style="color: #000">selectionnez la propriete</label>
-                                <select name="propriete" th:each="p:${proprieteList}" id="propriete">
-                                    <option th:text="${p.id_propriete}"></option>
+                                <select name="propriete" id="propriete">
+                                    <option  th:each="p:${proprieteList}" th:text="${p.id_propriete}"></option>
                                 </select><br/>
                             </div>
                             <div class="form-group">
                                 <label for="montant" style="color: #000">Montant mensuel à payer:</label>
-                                <input type="text" id="prenom" name="montant" class="form-control" placeholder="Entrez le montant que le locataire doit payer chaque mois"><br/>
+                                <input type="text" id="montant" name="montant" class="form-control" placeholder="Entrez le montant que le locataire doit payer chaque mois"><br/>
                             </div>
                             <div  style="font-family:cambria;color:#000; text-align: center">
                                 <input type="submit" value="ajouter" class="btn btn-lg" style="background-color:#000; color:#fff">
