@@ -95,12 +95,12 @@ public class  Locataire_controleur {
                 httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
         String login = securityContext.getAuthentication().getName();
         this.bailleur= iBailleurServices.rechercherBailleur(login);
-
+        System.out.println(login);
 
 
         List<Locataire> locataires= new ArrayList<>();
 
-        List<Proprietes> proprietes=iProprietesServices.listProprieteparBailleur(iBailleurServices.rechercherBailleur("al"));
+        List<Proprietes> proprietes=iProprietesServices.listProprieteparBailleur(iBailleurServices.rechercherBailleur("max"));
         for (int i=0;i<proprietes.size();i++){
             locataires.add(iLocataireServices.rechercherParPropriete(proprietes.get(i)));
         }
