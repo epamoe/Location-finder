@@ -3,6 +3,7 @@ package com.example.immolocation.Controleur;
 
 
 import com.example.immolocation.Model.Bailleur;
+import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
 import com.example.immolocation.Service.*;
@@ -28,6 +29,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -52,7 +54,11 @@ public class ProprietesController {
 	@Autowired
 	IProprietesServices iProprietesServices;
 
+	@Autowired
+	ILocataireServices iLocataireServices;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+
 
 	@GetMapping("/public")
 	public String page(Model model){
@@ -71,8 +77,8 @@ public class ProprietesController {
 		String login =securityContext.getAuthentication().getName();
 		this.bailleur=ibailleurServices.rechercherBailleur(login);//recuperation du bailleur connecté
 		System.out.println(bailleur.getLogin());
-		///**/List<Proprietes> propriete=iProprietesServices.listProprieteparBailleur(this.bailleur);
-		List<Proprietes> propriete = iProprietesServices.getAllActivePropriete();
+		List<Proprietes> propriete=iProprietesServices.listProprieteparBailleur(this.bailleur);
+		//List<Proprietes> propriete = iProprietesServices.proprieteLibreParBailleur(this.bailleur);
 		model.addAttribute("propriete", propriete);
 		model.addAttribute("bailleur",this.bailleur);
 		model.addAttribute("propriete", propriete);
@@ -260,6 +266,7 @@ public class ProprietesController {
 		model.addAttribute("propriete",proprieteList);
 		return "propriete/GestionProprietes";
 	}
+
 
 }	
 

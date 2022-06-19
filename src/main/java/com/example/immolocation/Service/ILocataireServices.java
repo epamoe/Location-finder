@@ -16,6 +16,8 @@ public interface ILocataireServices {
     //*********supprime un locataire
     public void deleteLocatire(Locataire locataire);
 
+    public  List<Locataire> findAllByBailleur(Bailleur bailleur);
+
     //*********retourne les info sur les proprietes occupée par le locataire
     public List<Locataire> findByPropriete();
 

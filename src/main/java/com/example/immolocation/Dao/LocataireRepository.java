@@ -1,6 +1,7 @@
 package com.example.immolocation.Dao;
 
 
+import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
@@ -51,6 +52,7 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
                long montant_mentuel(String login);
       
 
+                      List<Locataire> findAllByBailleur(Bailleur bailleur);
 
                public Locataire findLocataireByPropriete(Propriete propriete);
 

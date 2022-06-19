@@ -29,7 +29,7 @@ public interface IProprietesServices {
 
     public List<Proprietes> findByPrix(Long prixiInf, Long prixSup);
     public List<Proprietes> listProprieteparBailleur(Bailleur bailleur);
-    public Proprietes findByName(String name);
+    public Proprietes findByName(String name,Bailleur bailleur);
 
 
     public Optional<Proprietes> consulterProp(Long id);

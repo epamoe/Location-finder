@@ -2,13 +2,8 @@ package com.example.immolocation;
 
 import com.example.immolocation.Dao.BailleurRepository;
 import com.example.immolocation.Dao.ProprieteRepository;
-import com.example.immolocation.Model.Bailleur;
-import com.example.immolocation.Model.Image;
-import com.example.immolocation.Model.Propriete;
-import com.example.immolocation.Service.IBailleurServices;
-import com.example.immolocation.Service.IProprieteServices;
-import com.example.immolocation.Service.IimageServices;
-import com.example.immolocation.Service.ProprieteServiceImp;
+import com.example.immolocation.Model.*;
+import com.example.immolocation.Service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +20,7 @@ class ImmolocationApplicationTests {
     BailleurRepository bailleurRepository;
 
     @Autowired
-    IProprieteServices iProprieteServices;
+    IProprietesServices iProprietesServices;
 
     @Autowired
     ProprieteRepository proprieteRepository;
@@ -36,6 +31,11 @@ class ImmolocationApplicationTests {
     @Autowired
     IBailleurServices iBailleurServices;
 
+    @Autowired
+    ILocataireServices iLocataireServices;
+    @Autowired
+            Bailleur bailleur;
+
     @Test
     public void save(){
 
@@ -44,6 +44,35 @@ class ImmolocationApplicationTests {
        /* Propriete propriete1 = new Propriete("tres enorme","ankara","loundesk",true,1600);
         e.ajouterProprieter(propriete1,bailleur);
         System.out.println(propriete1.getBailleur().toString());*/
+
+    }
+
+    @Test
+    public void AddLocataire(){
+        Locataire locataire=new Locataire();
+        Proprietes propriete=new Proprietes();
+        List<Proprietes> proprietes=iProprietesServices.proprieteLibreParBailleur(iBailleurServices.rechercherBailleur("marc"));
+        propriete=proprietes.get(0);
+    iLocataireServices.addLocataire(locataire,iBailleurServices.rechercherBailleur("marc"),propriete);
+
+    }
+
+    @Test
+     public void findByName(){
+        Bailleur bailleur= iBailleurServices.rechercherBailleur("marc");
+        Proprietes propriete =iProprietesServices.findByName("X²",bailleur);
+        System.out.println(propriete.toString());
+    }
+
+    @Test
+    public void listLocataire(){
+        List<Locataire> locataires= new ArrayList<>();
+        this.bailleur=iBailleurServices.rechercherBailleur("al");
+        List<Proprietes> proprietes=iProprietesServices.listProprieteparBailleur(this.bailleur);
+        for (int i=0;i<proprietes.size();i++){
+            locataires.add(iLocataireServices.rechercherParPropriete(proprietes.get(i)));
+        }
+            System.out.println(locataires.size());
 
     }
    /* @Test

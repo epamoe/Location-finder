@@ -55,14 +55,14 @@
     <div class="publication">
 
 
-                 <div class="infoBailleur" th:each="b:${bailleurList}">
-                     <div th:each = "propriete, hh : ${propriete}">
-                         <div class="image"><img th:src="@{${'/image/display/'+ propriete.id}}"
+<!--                 <div class="infoBailleur" th:each="b:${proprietes}">-->
+                     <div th:each = "p:${proprietes}">
+                         <div class="image"><img th:src="@{${'/image/display/'+ p.id}}"
                                   class="card img-fluid" style="width:300px;height: 100px" alt=""/></div>
-                         <div class="description" th:text="${propriete.description}"></div>
-                         <div class="localisation" th:text="${propriete.localisation}"></div>
-                         <div class="prix" th:text="${propriete.prix}"></div>
-                         <div class="detail"><a th:href="@{/image/imageDetails(id=${propriete.id})}"  target="_blank">visualiser</a></div>
+                         <div class="description" th:text="${p.description}"></div>
+                         <div class="localisation" th:text="${p.localisation}"></div>
+                         <div class="prix" th:text="${p.prix}"></div>
+                         <div class="detail"><a th:href="@{/image/imageDetails(id=${p.id})}"  target="_blank">visualiser</a></div>
 
                      </div>
              </div>
