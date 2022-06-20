@@ -69,14 +69,11 @@ public class LocataireServiceImpl implements ILocataireServices {
 
 
     @Override
-    public Locataire rechercherParPropriete(Propriete propriete) {
+    public Locataire rechercherParPropriete(Proprietes propriete) {
        Locataire locataire=locataireRepository.findLocataireByPropriete(propriete);
        return locataire;
     }
 
-    public Locataire rechercherParPropriete(Proprietes propriete) {
-        Locataire locataire=locataireRepository.findByPropriete(propriete);
-        return locataire;
-    }
+
 
 }

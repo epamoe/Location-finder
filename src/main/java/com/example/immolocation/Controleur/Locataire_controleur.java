@@ -100,7 +100,7 @@ public class  Locataire_controleur {
 
         List<Locataire> locataires= new ArrayList<>();
 
-        List<Proprietes> proprietes=iProprietesServices.listProprieteparBailleur(iBailleurServices.rechercherBailleur("max"));
+        List<Proprietes> proprietes=iProprietesServices.listProprieteparBailleur(this.bailleur);
         for (int i=0;i<proprietes.size();i++){
             locataires.add(iLocataireServices.rechercherParPropriete(proprietes.get(i)));
         }

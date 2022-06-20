@@ -3,8 +3,6 @@ package com.example.immolocation.Controleur;
 
 
 import com.example.immolocation.Model.Bailleur;
-import com.example.immolocation.Model.Locataire;
-import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
 import com.example.immolocation.Service.*;
 import org.slf4j.Logger;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContext;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -29,7 +26,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -91,7 +87,7 @@ public class ProprietesController {
 	@GetMapping("/AjouterPropriete")
 	public String formulairePropriete(Model model){
 		model.addAttribute("bailleur",bailleur);
-		model.addAttribute("propriete",new Propriete());
+		model.addAttribute("propriete",new Proprietes());
 		return "propriete/AjouterPropriete";
 	}
 
@@ -185,8 +181,6 @@ public class ProprietesController {
 			
 				log.info("products :: " + propriete);
 				if (propriete.isPresent()) {
-					model.addAttribute("login_bailleur",propriete.get().getBailleur().getLogin());
-					model.addAttribute("telephone_Bailleur",propriete.get().getBailleur().getTelephone());
 					model.addAttribute("id", propriete.get().getId());
 					model.addAttribute("description", propriete.get().getDescription());
 					model.addAttribute("name", propriete.get().getName());
@@ -212,7 +206,7 @@ public class ProprietesController {
       */
 	@PostMapping("/SavePropriete")
 	public String Save(Model model,Proprietes propriete,@RequestParam("etat") String etat){
-		model.addAttribute("propriete",new Propriete());
+		model.addAttribute("propriete",new Proprietes());
 		propriete=iProprietesServices.setDisponibilite(etat,propriete);
 		iProprietesServices.ajouterProprieter(propriete,this.bailleur);
 		return "redirect:/GestionProprietes";
@@ -225,9 +219,16 @@ public class ProprietesController {
      */
 
 
-	@RequestMapping("/delete/{id}" )
-	public String delete(@PathVariable("id") Long id){
-		iProprietesServices.supprimerPropriete(id);
+	@RequestMapping("/delete" )
+	public String delete(Long id){
+		boolean statut=iProprietesServices.consulterPropriete(id).isDisponible();
+		if(statut==true){
+			iProprietesServices.supprimerPropriete(id);
+		}
+		else{
+			//creer une methode de suppression de proprieté occupé
+		}
+
 		return "redirect:/GestionProprietes";
 	}
 
@@ -235,8 +236,8 @@ public class ProprietesController {
     permet de mettre a jour une propriete dont on lui passe l'id
     en parametre
      */
-	@GetMapping("/update/{id}")
-	public String Pageupdate(@PathVariable("id") Long id,Model model){
+	@GetMapping("/update")
+	public String Pageupdate( Long id,Model model){
 		this.nId=id;
 		Proprietes propriete=iProprietesServices.consulterPropriete(id);
 		model.addAttribute("bailleur",this.bailleur);
@@ -250,7 +251,7 @@ public class ProprietesController {
 	 */
 	@PostMapping("/SaveUpdate")
 	public String upadate(Model model,Proprietes propriete){
-		model.addAttribute("propriete",new Propriete());
+		model.addAttribute("propriete",new Proprietes());
 		iProprietesServices.modifierPropriete(this.nId,propriete);
 		return"redirect:/GestionPropriete";
 	}

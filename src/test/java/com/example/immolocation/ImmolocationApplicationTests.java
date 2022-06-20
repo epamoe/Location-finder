@@ -1,16 +1,13 @@
 package com.example.immolocation;
 
 import com.example.immolocation.Dao.BailleurRepository;
-import com.example.immolocation.Dao.ProprieteRepository;
 import com.example.immolocation.Model.*;
 import com.example.immolocation.Service.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.ui.Model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
@@ -21,12 +18,6 @@ class ImmolocationApplicationTests {
 
     @Autowired
     IProprietesServices iProprietesServices;
-
-    @Autowired
-    ProprieteRepository proprieteRepository;
-
-    @Autowired
-    IimageServices iimageServices;
 
     @Autowired
     IBailleurServices iBailleurServices;

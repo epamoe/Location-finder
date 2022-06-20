@@ -61,7 +61,7 @@ import javax.sql.DataSource;
 
 
 
-                            "/SaveLocataire","/AjouterLocataire","/SaveBailleurProcessing","/image/display/{id}","/AjouterBailleur","/publication/**","/bootstrap-5.1.3-dist/**","/home","/proprietes","/authentification", "/h2/**", "/form", "/en", "/moi", "/val", "/", "/css/**", "/images/**", "/AjouterPropriete", "Bailleur/GestionPropriete", "/GestionPropriete", "/SavePropriete", "/GestionPropriete", "/delete").permitAll()
+                            "/SaveLocataire","/SaveBailleurProcessing","/image/imageDetails","/AjouterBailleur","/publication/**","/bootstrap-5.1.3-dist/**","/home","/proprietes","/authentification", "/h2/**", "/form", "/en", "/moi", "/val", "/", "/css/**", "/image/**").permitAll()
 
                     .anyRequest().authenticated()  // (1)
                     .and()

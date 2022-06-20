@@ -2,7 +2,6 @@ package com.example.immolocation.Service;
 
 
 import com.example.immolocation.Dao.BailleurRepository;
-import com.example.immolocation.Dao.ProprieteRepository;
 import com.example.immolocation.Dao.ProprietesRepository;
 import com.example.immolocation.Model.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +23,7 @@ public class ProprietesServiceImpl implements  IProprietesServices {
 
 	@Autowired
 	private ProprietesRepository proprietesRepository;
+
 
 	public Bailleur retourneBailleur(Proprietes propriete){
 		Bailleur bailleur= propriete.getBailleur();
@@ -188,8 +188,17 @@ public class ProprietesServiceImpl implements  IProprietesServices {
 		return proprietesRepository.findAll();
 	}
 
+
+
+
 	public Optional<Proprietes> getProprieteById(Long id) {
 		return proprietesRepository.findById(id);
+	}
+
+	@Override
+	public void supprimerProprieteOccupe(Long id) {
+		Proprietes proprietes=consulterPropriete(id);
+
 	}
 
 

@@ -13,7 +13,15 @@ import java.util.Date;
 @AllArgsConstructor
 @Entity
 public class Proprietes {
-
+/*
+	private long id_propriete;
+	private String name;
+	private String description="non precisé";
+	private String localisation="non precisé";
+	private String ville ="non precisé";
+	private boolean disponible=true;
+	private int prix=0;
+	private Date date;*/
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;

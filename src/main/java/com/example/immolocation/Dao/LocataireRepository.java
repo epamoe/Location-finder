@@ -3,15 +3,15 @@ package com.example.immolocation.Dao;
 
 import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Locataire;
-import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-
+@Repository
 public interface LocataireRepository extends CrudRepository<Locataire, String> {
 
     @Query("select u.login from Locataire u inner join u.factures r where r.id_facture=?1 ")
@@ -54,12 +54,12 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
 
                       List<Locataire> findAllByBailleur(Bailleur bailleur);
 
-               public Locataire findLocataireByPropriete(Propriete propriete);
+               public Locataire findLocataireByPropriete(Proprietes propriete);
 
                @Query("select u from Locataire u  where u.login=?1")
                   Locataire chercher_loc_parLOGIN(String  login);
 
-                 public List<Locataire> findByPropriete(Propriete propriete);
+                 public List<Locataire> findAllByPropriete(Proprietes propriete);
 
                 Locataire findByPropriete(Proprietes propriete);
 

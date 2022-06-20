@@ -32,7 +32,7 @@ public class Bailleur  implements Serializable   {
     @OneToOne
     private User user;
     @OneToMany(mappedBy="bailleur")
-    private Collection<Propriete> propriete;
+    private Collection<Proprietes> propriete;
 
     @OneToMany()
     private List<Locataire> locataire =new ArrayList<Locataire>();

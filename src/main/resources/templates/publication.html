@@ -136,7 +136,7 @@
                                 <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
                             </svg>
                         </a>
-                        <a class="py-2" href="../Commentaire.html" title="Commentaires" style="text-decoration:none; margin-left:50px">
+                        <a class="py-2" th:href="@{/AjouterBailleur}" href="Bailleur/AjouterBailleur.html" title="Je suis bailleur" style="text-decoration:none; margin-left:50px">
                             <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="#fff" class="bi bi-plus" viewBox="0 0 16 16">
                                 <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"></path>
                             </svg>
@@ -145,25 +145,32 @@
                 </div>
             </header>
 <article th:each = "p:${proprietes}">
-    <div class="bailleur" >
-        <a th:href="@{/AjouterBailleur}" href="Bailleur/AjouterBailleur.html">Devenir Bailleur</a>
-    </div>
+
     <div class="publication">
 
 
                 <div class="infoBailleur" >
+                    <span class="text-warning">UserName proprietaire:</span>
+                    <span class="description" th:text="${p.bailleur.login}"></span>
+                    <br>
+                    <span class="text-warning">Contact proprietaire:</span>
+                    <span class="description" th:text="${p.bailleur.telephone}"></span>
+                    <br>
                      <div >
-                         <a th:href="@{/image/imageDetails(id=${propriete.id}}"><div class="image"><img th:src="@{${'/image/display/'+ p.id}}"
+                         <a th:href="@{/image/imageDetails(id=${p.id}}"><div class="image"><img th:src="@{${'/image/display/'+ p.id}}"
                                   class="card img-fluid" style="width:450px;height: 450px" alt=""/></div>
                          </a>
-                         <span>Description:</span>
+                         <span class="text-warning">Nom de la propriété:</span>
+                         <span class="description" th:text="${p.name}"></span>
+                         <br>
+                         <span class="text-warning">Description:</span>
                          <span class="description" th:text="${p.description}"></span>
                          <br>
-                         <span>localisation:</span>
+                         <span class="text-warning">localisation:</span>
                          <span class="localisation" th:text="${p.localisation}"></span>
                          <br>
-                         <marquee><span>prix:</span>
-                         <span class="prix" th:text="${p.prix}"></span><span>Fcfa</span>
+                         <marquee class="text-warning"><span>prix:</span>
+                         <span class="prix" th:text="${p.prix}"></span><span class="text-capitalize">Fcfa</span>
                          </marquee><br>
                      </div>
                 </div>
