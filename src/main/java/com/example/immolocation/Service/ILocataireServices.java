@@ -10,22 +10,21 @@ import java.util.List;
 public interface ILocataireServices {
 
     //*********ajoute un locataire
-    public void addLocataire(Locataire locataire, Bailleur bailleur, Proprietes propriete);
+    String addLocataire(Locataire locataire, Bailleur bailleur, Proprietes propriete);
 
     //*********supprime un locataire
-    public void deleteLocatire(Locataire locataire);
+    void deleteLocatire(Locataire locataire);
 
-    public  List<Locataire> findAllByBailleur(Bailleur bailleur);
+    List<Locataire> findAllByBailleur(Bailleur bailleur);
 
-    //*********retourne les info sur les proprietes occupée par le locataire
-    public List<Locataire> findByPropriete();
+    //**********rechercher un locataire a travers la propriete qu'il occupe
+    Locataire rechercherParPropriete(Proprietes propriete);
 
-    //********retourne la liste des locataires par bailleurs
-    public List<Locataire> findByBailleur(Bailleur bailleur);
-
-
-    public Locataire rechercherParPropriete(Proprietes propriete);
+    //*********rrehercher locataire par son login
+    public Locataire rechercherLocataire(String login);
 
 
+    void modifierLocataire(Locataire locataire);
 
+    Locataire rechercherParId(Long id);
 }

@@ -36,5 +36,8 @@ public interface ProprietesRepository extends JpaRepository<Proprietes, Long>{
 
 
 
+
+
+
 }
 

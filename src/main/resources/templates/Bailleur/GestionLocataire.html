@@ -149,8 +149,8 @@
                     <td th:text="${l.profession}"></td>
                     <td th:text="${l.montant_mensuel_a_payer}" ></td>
                     <td th:text="${l.date_entree_locataire}" ></td>
-                    <td><button class="btn-primary"><a class="text-white" th:href="@{update(id=${l.id})}" >Modifier</a></button></td>
-                    <td><button class="btn-danger"><a class="text-white"  th:href="@{delete(id=${l.id})}">Supprimer</a></button></td>
+                    <td><button class="btn-primary"><a class="text-white" th:href="@{updateLocataire(id=${l.id})}" >Modifier</a></button></td>
+                    <td><button class="btn-danger"><a class="text-white"  th:href="@{deleteLocataire(id=${l.id})}">Supprimer</a></button></td>
 
 
                 </tr>

@@ -133,33 +133,33 @@
                     </nav>
                 </div>
             </header>
-                    <form th:action="@{/SaveLocataire}" method="post">
+                    <form th:action="@{/SaveLocataire}" method="post" th:object="${locataire}">
                         <h2 style="font-family:cambria;color:#000; text-align: center"> Ajouter un locataire</h2>
                             <div class="form-group">
                                 <label for="nom" style="color: #000">Nom:</label>
-                                <input type="text" id="nom" name="nom_Locataire" class="form-control" placeholder="Entrez le nom du nouveau locataire">
+                                <input type="text" id="nom" name="nom_Locataire"  th:text="${locataire.getNom_Locataire()}" class="form-control" placeholder="Entrez le nom du nouveau locataire">
                             </div>
                             <div class="form-group">
                                 <label for="cni" style="color: #000">Numero cni:</label>
-                                <input type="text" id="cni" name="Numero_cni" class="form-control" placeholder="Entrez le numéro de cni du nouveau locataire">
+                                <input type="text" id="cni" name="Numero_cni" class="form-control" th:text="${locataire.getNumero_cni()}" placeholder="Entrez le numéro de cni du nouveau locataire">
                             </div>
                             <div class="form-group">
                                 <label for="profession" style="color: #000">Proffession:</label>
-                                <input type="text" id="profession" name="profession" class="form-control" placeholder="Entrez la proffession du nouveau locataire">
+                                <input type="text" id="profession" name="profession" th:text="${locataire.getProfession()}" class="form-control" placeholder="Entrez la proffession du nouveau locataire">
                             </div>
                             <div class="form-group">
-                                <label for="nom" style="color: #000">Telephone:</label>
-                                <input type="text" id="telephone" name="contact" class="form-control" placeholder="Entrez le numéro de téléphone du nouveau locataire">
+                                <label for="nom" style="color: #000" >Telephone:</label>
+                                <input type="text" id="telephone" name="contact" class="form-control" th:text="${locataire.getContact()}"  placeholder="Entrez le numéro de téléphone du nouveau locataire">
                             </div>
                             <div class="form-group">
                                 <label for="propriete" style="color: #000">selectionnez la propriete</label>
-                                <select name="name" id="propriete">
+                                <select name="name" id="propriete" >
                                     <option  th:each="p:${proprieteList}" th:text="${p.name}"></option>
                                 </select><br/>
                             </div>
                             <div class="form-group">
                                 <label for="montant" style="color: #000">Montant mensuel à payer:</label>
-                                <input type="text" id="montant" name="montant_mensuel_a_payer" class="form-control" placeholder="Entrez le montant que le locataire doit payer chaque mois"><br/>
+                                <input type="text" id="montant" name="montant_mensuel_a_payer" th:text="${locataire.getMontant_mensuel_a_payer()}" class="form-control" placeholder="Entrez le montant que le locataire doit payer chaque mois"><br/>
                             </div>
                             <div  style="font-family:cambria;color:#000; text-align: center">
                                 <input type="submit" value="ajouter" class="btn btn-lg" style="background-color:#000; color:#fff">

@@ -57,7 +57,7 @@
 						<ul class="nav nav-tabs">
 							<ul class="nav flex-column flex-xs-row">
 								<li class="nav-item">
-									<a class="nav-link" href="../Bailleur/AjouterLocataire.html" th:href="@{/factureBailleur}">
+									<a class="nav-link" href="../Bailleur/AjouterLocataire.html" th:href="@{/AjouterLocataire}">
 										<span class="text-white">Ajouter Locataire(s)</span>
 									</a>
 								</li>
@@ -147,7 +147,7 @@
 						</thead>
 						<tbody>
 							<tr th:each="locataire:${listeDesLocataireDeBailleur}">
-								<td th:text="${locataire.login}" >nom</td>
+								<td th:text="${locataire.nom_Locataire}" >nom</td>
 								<td th:text="${locataire.Numero_cni}" >cni</td>
 								<td th:text="${locataire.montant_mensuel_a_payer}" >montant</td>
 								<td th:text="${locataire.date_entree_locataire}" >date</td>

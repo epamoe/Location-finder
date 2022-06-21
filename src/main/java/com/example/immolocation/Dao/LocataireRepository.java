@@ -63,6 +63,10 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
 
                 Locataire findByPropriete(Proprietes propriete);
 
+                Locataire findById(Long id);
+
+                List<Locataire> findAll();
+
 
 
     @Query("SELECT a.nom_Locataire, a.montant_mensuel_a_payer,r.dette FROM Locataire a " +

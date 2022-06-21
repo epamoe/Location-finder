@@ -6,13 +6,20 @@ import java.util.List;
 
 public interface IUserServices {
 
+//cette methode génère des caractères
+// utilisés pour le password locataire
 
-    public void ajouterUtilsateurRole(User user);
-    public List<User> listAll();
+    String GenerateurDeCaractaire(int nbCaractaire);
 
-    //retourne l'id de l'utilisateur
-    public  Long id_utilisateur();
+//cette methode permet d'ajouter un role
+//de locataire a un utilisateur
+    void ajouterUtilsateurRole(User user);
 
-    public void ajouterUtilsateurRoleBailleur(User user);
+//cette methode permet d'ajouter un role
+//de bailleur a un user
+    void ajouterUtilsateurRoleBailleur(User user);
+
+
+
 
 }
