@@ -25,7 +25,7 @@
                                 <ul class="nav nav-tabs">
                                     <ul class="nav flex-column flex-xs-row">
                                         <h3>Salut Mr<br></h3>
-                                        <h3 style="text-align:center" th:text="${bailleur.nom_bailleur}"></h3>
+                                        <h3 style="text-align:center" <!--th:text="${bailleur.nom_bailleur}"-->Le Bailleur!!!</h3>
                                     </ul>
                                 </ul>
                             </nav>
@@ -39,7 +39,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link"  th:href="@{/GestionProprietes} ">
+                                            <a class="nav-link"  th:href="@{/GestionPropriete} ">
                                                 <span class="text-white">Consulter Propriété(s)</span>
                                             </a>
                                         </li>
@@ -56,13 +56,13 @@
                                 <ul class="nav nav-tabs">
                                     <ul class="nav flex-column flex-xs-row">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../Bailleur/AjouterLocataire.html" th:href="@{/AjouterLocataire}">
+                                            <a class="nav-link" href="AjouterLocataire.html">
                                                 <span class="text-white">Ajouter Locataire(s)</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="SupprimerLocataire.html" th:href="@{/GestionLocataire}">
-                                                <span class="text-white">consulter Locataire(s)</span>
+                                            <a class="nav-link" href="SupprimerLocataire.html">
+                                                <span class="text-white">Supprimer Locataire(s)</span>
                                             </a>
                                         </li>
                                         <li class="nav-item">
@@ -76,7 +76,7 @@
                                             </a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="../Bailleur/Facturer.html" th:href="@{/factureBailleur}">
+                                            <a class="nav-link" href="Facturer.html" th:href="@{/factureBailleur}">
                                                 <span class="text-white">Facturer un Locataire</span>
                                             </a>
                                         </li>
