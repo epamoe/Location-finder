@@ -6,8 +6,8 @@
         <title>
             Facture
         </title>
+        <link rel="shortcut icon" href="../../static/images/logo.png"/>
         <link rel="stylesheet" href="../../static/css/MEF.css" th:href="@{css/MEF.css}"/>
-
         <link rel="stylesheet" href="../../static/bootstrap-5.1.3-dist/css/bootstrap.css" th:href="@{/bootstrap-5.1.3-dist/css/bootstrap.css}"/>
         <link rel="stylesheet" href="../../static/bootstrap-5.1.3-dist/css/bootstrap.min.css" th:href="@{/bootstrap-5.1.3-dist/css/bootstrap.min.css}"/>
         <script src="../../static/bootstrap-5.1.3-dist/js/bootstrap.js" th:src="@{/bootstrap-5.1.3-dist/js/bootstrap.js}"></script>
@@ -20,69 +20,81 @@
                 <div id="block1" class="col-sm-2" style="color:#fff">
                     <br/>
                     <div class="bg-light border mt-2 text-white bg-dark p-2 rounded-top rounded-bottom">
-                        <br>
                         <div>
                             <nav>
                                 <ul class="nav nav-tabs">
                                     <ul class="nav flex-column flex-xs-row">
-                                        <h3 style="text-align:center">Bonjour <br>cher Locataire!!!</h3>
+                                        <h3>Salut Mr<br></h3>
+                                        <h3 style="text-align:center" <!--th:text="${bailleur.nom_bailleur}"-->Le Bailleur!!!</h3>
                                     </ul>
                                 </ul>
                             </nav>
-                            <br/><br/>
-                        </div>
-                        <div>
-                            <nav><h4 style="color:#adb4da">Echanger avec le bailleur:</h4>
+                            <br/>
+                            <nav><h4 style="color:#adb4da">Gérer les propriétés:</h4>
                                 <ul class="nav nav-tabs">
                                     <ul class="nav flex-column flex-xs-row">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="Messagerie.html">
-                                                <span class="text-white">Messagerie</span>
+                                            <a class="nav-link" th:href="@{/AjouterPropriete}">
+                                                <span class="text-white">Ajouter Propriété(s)</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link"  th:href="@{/GestionPropriete} ">
+                                                <span class="text-white">Consulter Propriété(s)</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" th:href="@{/proprieteLibre}">
+                                                <span class="text-white">Propriété(s) non occupée</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </ul>
                             </nav>
                             <br/>
-                            <nav><h4 style="color:#adb4da">Informations sur sa propriété:</h4>
+                            <nav><h4 style="color:#adb4da">Gérer les locataires:</h4>
                                 <ul class="nav nav-tabs">
                                     <ul class="nav flex-column flex-xs-row">
                                         <li class="nav-item">
-                                            <a class="nav-link" href="DescriptionPro.html">
-                                                <span class="text-white">Description</span>
+                                            <a class="nav-link" href="AjouterLocataire.html">
+                                                <span class="text-white">Ajouter Locataire(s)</span>
                                             </a>
                                         </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="SupprimerLocataire.html">
+                                                <span class="text-white">Supprimer Locataire(s)</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="ModifierLocataire.html">
+                                                <span class="text-white">Modifier Locataire(s)</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="EcrireLocataire.html">
+                                                <span class="text-white">Erire à un Locataire</span>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="Facturer.html" th:href="@{/factureBailleur}">
+                                                <span class="text-white">Facturer un Locataire</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </ul>
+                            </nav>
+                            <br/>
+                            <nav><h4 style="color:#adb4da">Récapitulatif:</h4>
+                                <ul class="nav nav-tabs">
+                                    <ul class="nav flex-column flex-xs-row">
                                         <li class="nav-item" style="background-color:#adb4da">
-                                            <a class="nav-link" href="Facture.html" th:href="@{/}">
-                                                <span style="color:#000">Facture</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="Contrat_de_bail.html">
-                                                <span class="text-white">Contrat de bail</span>
+                                            <a class="nav-link" href="TableauDeBord.html">
+                                                <span style="color:#000">Tableau de bords</span>
                                             </a>
                                         </li>
                                     </ul>
                                 </ul>
                             </nav>
-                            <br/>
-                            <nav><h4 style="color:#adb4da">Autres:</h4>
-                                <ul class="nav nav-tabs">
-                                    <ul class="nav flex-column flex-xs-row">
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="DroitDomanier.html">
-                                                <span class="text-white">Droit domanier</span>
-                                            </a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="DatePayement.html">
-                                                <span class="text-white">Date payement</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </ul>
-                            </nav>
-                            <br/>
                         </div>
                     </div>
                     <br>
