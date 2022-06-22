@@ -12,34 +12,6 @@ import java.util.Date;
 @NoArgsConstructor
 @ToString
 public class Message {
- 
-    private TypeMessage Type;
-    private String content;
-    private String sender;
-
-    public enum TypeMessage {
-        MESSAGE,
-        JOIN,
-        LEAVE,
-        
-    }
-
-    public TypeMessage getType() {
-        return Type;
-    }
-    public void setType(TypeMessage type) {
-        this.Type = type;
-    }
-    public String getContent() {
-        return content;
-    }
-    public void setContent(String content) {
-        this.content = content;
-    }
-    public String getSender() {
-        return sender;
-    }
-    public void setSender(String sender) {
-        this.sender = sender;
-    }
+ private String message ;
+ private String fromLogin;
 }

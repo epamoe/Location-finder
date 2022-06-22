@@ -1,8 +1,6 @@
 package com.example.immolocation.Controleur;
 
 import com.example.immolocation.Model.*;
-import com.example.immolocation.Model.Message.TypeMessage;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +17,7 @@ import org.springframework.web.socket.messaging.SessionDisconnectEvent;
 @Component
 public class WebSocketEventListener {
 
-    private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
+   /* private static final Logger logger = LoggerFactory.getLogger(WebSocketEventListener.class);
 
     @Autowired
     private SimpMessageSendingOperations messagingTemplate;
@@ -40,11 +38,12 @@ public class WebSocketEventListener {
             logger.info("User Disconnected : " + username);
 
             Message message = new Message();
-            message.setType(TypeMessage.LEAVE);
-            message.setSender(username);
+            message.setNom_expediteur(username);
+            message.setNom_recepteur("");
+            message.setMessage("");
 
             messagingTemplate.convertAndSend("/chatroom/public", message);
         }
-    }
+    }*/
 
 }
