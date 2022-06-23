@@ -16,8 +16,8 @@ import java.util.Optional;
 @Service
 public class ProprietesServiceImpl implements  IProprietesServices {
 
-	@Autowired
-	ILocataireServices iLocataireServices;
+	//@Autowired
+	//ILocataireServices iLocataireServices;
 
 	@Autowired
 	private BailleurRepository bailleurRepository;
@@ -30,6 +30,14 @@ public class ProprietesServiceImpl implements  IProprietesServices {
 		return bailleur;
 	}
 
+
+
+	/*
+	cette methode retourne la liste des proprietés
+	du bailleur dont on lui passe en paramètre.elle
+	permet donc d'afficher toute les proprietes
+	libres d'un bailleur
+	 */
 	public List<Proprietes> proprieteLibreParBailleur(Bailleur bailleur){
 		List<Proprietes> proprieteList= listProprieteparBailleur(bailleur);
 		List<Proprietes> listPropriete=new ArrayList<>();
@@ -41,6 +49,14 @@ public class ProprietesServiceImpl implements  IProprietesServices {
 		return listPropriete;
 	}
 
+
+	/*
+	cette methode retourne la liste des proprietés
+	sans tenir compte du bailleur qui possède cette
+	proprieté.elle permet donc d'afficher toute les proprietes
+	libres présentes dans la base de donnée et pourrait etre
+	utilile pour la publication des proprietés libres en ligne
+	 */
 	@Override
 	public List<Proprietes> findAllFreePropriete() {
 		List<Proprietes> proprieteList=proprietesRepository.findAll();
@@ -69,9 +85,9 @@ public class ProprietesServiceImpl implements  IProprietesServices {
 		}
 		else{
 
-			Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
+			//Locataire locataire=iLocataireServices.rechercherParPropriete(propriete);
 
-			iLocataireServices.deleteLocatire(locataire);
+			//iLocataireServices.deleteLocatire(locataire);
 			proprietesRepository.delete(propriete);
 		}
 	}
@@ -134,10 +150,19 @@ public class ProprietesServiceImpl implements  IProprietesServices {
 	}
 
 	@Override
-	public Proprietes findByName(String name) {
-		//   proprieteRepository.findByName(name);
+	public Proprietes findByName(String name,Bailleur bailleur) {
+		Proprietes propriete=new Proprietes();
+		List<Proprietes> proprietes=proprieteLibreParBailleur(bailleur);
+		for (int i=0; i<proprietes.size();i++){
+			if (proprietes.get(i).getName().equals(name)){
+				propriete=proprietes.get(i);
+			}
+			else {
+				return propriete;
+			}
+		}
 
-		return null;
+		   return proprietesRepository.findByName(name);
 	}
 	//////////////////////::::::encours de traitement!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
@@ -152,6 +177,12 @@ public class ProprietesServiceImpl implements  IProprietesServices {
 	public void savePropriete(Proprietes propriete) {
 		proprietesRepository.save(propriete);
 	}
+
+	/*
+	cette methode retourne la liste de toute les proprietés
+	présentes en base de donnée,occupé comme libre,tous deux
+	confondu
+	 */
 
 	public List<Proprietes> getAllActivePropriete() {
 		return proprietesRepository.findAll();

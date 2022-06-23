@@ -82,22 +82,22 @@ public class Bailleur_controlleur {
     */
 
 
-    @GetMapping("/factureBailleur")
+     @GetMapping("/factureBailleur")
     public String facturebail(Model model,HttpServletRequest httpServletRequest){
 
-        HttpSession httpSession= httpServletRequest.getSession();
-        SecurityContext securityContext= (SecurityContext)
-                httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
-        String login =securityContext.getAuthentication().getName();
+          HttpSession httpSession= httpServletRequest.getSession();
+          SecurityContext securityContext= (SecurityContext)
+                  httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+          String login =securityContext.getAuthentication().getName();
 
-        List<Locataire> locataires= new ArrayList<>();
-        System.out.println(login);
-        locataires.addAll(bailleurService.locataireselonloginBailleur(login));
-        model.addAttribute("listeDesLocataireDeBailleur",locataires);
-        model.addAttribute("listeDesLocataireDeBailleur",locataires);
-        System.out.println(locataires);
-        return "/Bailleur/Facturer";
-    }
+          List<Locataire> locataires= new ArrayList<>();
+          System.out.println(login);
+          locataires.addAll(bailleurService.locataireselonloginBailleur(login));
+          model.addAttribute("listeDesLocataireDeBailleur",locataires);
+          model.addAttribute("listeDesLocataireDeBailleur",locataires);
+          System.out.println(locataires);
+          return "/Bailleur/Facturer";
+      }
 
     public Bailleur bailleur(){
         return this.bailleur;
@@ -113,9 +113,10 @@ public class Bailleur_controlleur {
     public String save(Model model, Bailleur bailleur, User user){
         model.addAttribute("user",new User());
         model.addAttribute("Bailleur",new Bailleur());
-
+        user.setId(bailleur.getId());
         iUserServices.ajouterUtilsateurRoleBailleur(user);
-        bailleur.setLogin("marco");
+        //bailleur.setLogin(user.getLogin());
+        System.out.println(user.getId());
         iBailleurServices.ajouterBailleur(bailleur);
 
         return "redirect:/Bailleur/AuthentificationBailleur";

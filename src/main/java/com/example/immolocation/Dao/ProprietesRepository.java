@@ -16,6 +16,8 @@ public interface ProprietesRepository extends JpaRepository<Proprietes, Long>{
 
     public Proprietes findById(long id_propriete);
 
+    public Proprietes findByName(String name);
+
    /* @Query("update from propriete where ")
     public void updatePropriete(Propriete propriete);*/
 

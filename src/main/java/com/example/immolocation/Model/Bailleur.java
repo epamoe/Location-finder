@@ -16,15 +16,21 @@ import java.util.*;
 @Getter
 @Setter
 @Component
-public class Bailleur extends User  implements Serializable   {
+public class Bailleur  implements Serializable   {
 
-    @GeneratedValue(strategy= GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String login;
     private String nom_bailleur;
     private String prenom_bailleur;
     private String Numero_cni;
     private String telephone;
 
 
+    @OneToOne
+    private User user;
     @OneToMany(mappedBy="bailleur")
     private Collection<Propriete> propriete;
 

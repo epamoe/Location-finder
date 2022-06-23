@@ -1,6 +1,7 @@
 package com.example.immolocation.Dao;
 
 
+import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
@@ -43,7 +44,7 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
     @Query("Select r.description from Locataire u inner join u.propriete r where u.login =?1 ")
     String description_propriete(String login);
 
-    @Query("Select r.localisation from Locataire u inner join u.propriete r where u.login =?1 ")
+    @Query("Select r.Localisation from Locataire u inner join u.propriete r where u.login =?1 ")
     String localisation_propriete(String login);
 
 
@@ -51,6 +52,7 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
                long montant_mentuel(String login);
       
 
+                      List<Locataire> findAllByBailleur(Bailleur bailleur);
 
                public Locataire findLocataireByPropriete(Propriete propriete);
 

@@ -3,6 +3,7 @@ package com.example.immolocation.Controleur;
 
 
 import com.example.immolocation.Model.Bailleur;
+import com.example.immolocation.Model.Locataire;
 import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
 import com.example.immolocation.Service.*;
@@ -28,6 +29,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -52,16 +54,23 @@ public class ProprietesController {
 	@Autowired
 	IProprietesServices iProprietesServices;
 
+	@Autowired
+	ILocataireServices iLocataireServices;
 	private final Logger log = LoggerFactory.getLogger(this.getClass());
 
+
+
 	@GetMapping("/public")
-	public String page(){
-		return "propriete/proprietes";
+	public String page(Model model){
+		List<Proprietes> proprietes=iProprietesServices.findAllFreePropriete();
+		model.addAttribute("propriete",proprietes);
+
+		return "publication";
 	}
 
 
 	@GetMapping("/GestionProprietes")
-	public String pageGestionPropriete(Model model, Authentication authentication,HttpServletRequest httpServletRequest){
+	public String pageGestionPropriete(Model model,HttpServletRequest httpServletRequest){
 		HttpSession httpSession= httpServletRequest.getSession();
 		SecurityContext securityContext= (SecurityContext)
 				httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
@@ -69,12 +78,16 @@ public class ProprietesController {
 		this.bailleur=ibailleurServices.rechercherBailleur(login);//recuperation du bailleur connecté
 		System.out.println(bailleur.getLogin());
 		List<Proprietes> propriete=iProprietesServices.listProprieteparBailleur(this.bailleur);
+		//List<Proprietes> propriete = iProprietesServices.proprieteLibreParBailleur(this.bailleur);
+		model.addAttribute("propriete", propriete);
 		model.addAttribute("bailleur",this.bailleur);
 		model.addAttribute("propriete", propriete);
 		return "propriete/GestionProprietes";
 	}
 
-
+	/*
+	renvoie le formulaire pour l'ajout d'une propriete
+	 */
 	@GetMapping("/AjouterPropriete")
 	public String formulairePropriete(Model model){
 		model.addAttribute("bailleur",bailleur);
@@ -82,6 +95,11 @@ public class ProprietesController {
 		return "propriete/AjouterPropriete";
 	}
 
+	/*
+	cette methode permet de sauvegarder une
+	image dans la base de donnée en associant
+	image et info image de la propriete
+	 */
 	@PostMapping("/image/saveImageDetails")
 	public @ResponseBody ResponseEntity<?> createProduct(@RequestParam("name") String name,
 														 @RequestParam("prix") int prix, @RequestParam("description") String description, @RequestParam("localisation") String localisation, Model model, HttpServletRequest request
@@ -125,7 +143,7 @@ public class ProprietesController {
 			propriete.setPrix(prix);
 			propriete.setDescription(descriptions[0]);
 			propriete.setCreateDate(createDate); propriete.setLocalisation(localisation);
-			iProprietesServices.savePropriete(propriete);
+			iProprietesServices.ajouterProprieter(propriete,this.bailleur);
 			log.info("HttpStatus===" + new ResponseEntity<>(HttpStatus.OK));
 			return new ResponseEntity<>("Product Saved With File - " + fileName, HttpStatus.OK);
 		} catch (Exception e) {
@@ -136,6 +154,11 @@ public class ProprietesController {
 	}
 
 
+	/*
+	cette methode permet d'afficher l'image
+	d'une propriete dont on lui passe l'id
+	sur la vue
+	 */
 	@GetMapping("/image/display/{id}")
 	@ResponseBody
 	void showImage(@PathVariable("id") Long id, HttpServletResponse response, Optional<Proprietes> propriete)
@@ -147,6 +170,12 @@ public class ProprietesController {
 		response.getOutputStream().close();
 	}
 
+	/*
+	cette methode permet d'agrandir l'image
+	d'une propriete en presentant tout les caracteristiques
+	qui lui sont associées
+	 */
+
 	@GetMapping("/image/imageDetails")
 	String showProductDetails(@RequestParam("id") Long id, Optional<Proprietes> propriete, Model model) {
 		try {
@@ -156,6 +185,8 @@ public class ProprietesController {
 			
 				log.info("products :: " + propriete);
 				if (propriete.isPresent()) {
+					model.addAttribute("login_bailleur",propriete.get().getBailleur().getLogin());
+					model.addAttribute("telephone_Bailleur",propriete.get().getBailleur().getTelephone());
 					model.addAttribute("id", propriete.get().getId());
 					model.addAttribute("description", propriete.get().getDescription());
 					model.addAttribute("name", propriete.get().getName());
@@ -172,16 +203,6 @@ public class ProprietesController {
 			return "redirect:/GestionProprietes";
 		}	
 	}
-
-	@GetMapping("/image/show")
-	String show(Model map) {
-		List<Proprietes> propriete = iProprietesServices.getAllActivePropriete();
-		map.addAttribute("propriete", propriete);
-		return "propriete/GestionProprietes";
-	}
-
-
-
 
 	/*
     apres l'envoie du formulaire d'ajout si la propriete est occupé par un locataire,
@@ -204,8 +225,8 @@ public class ProprietesController {
      */
 
 
-	@RequestMapping("/delete")
-	public String delete(Long id){
+	@RequestMapping("/delete/{id}" )
+	public String delete(@PathVariable("id") Long id){
 		iProprietesServices.supprimerPropriete(id);
 		return "redirect:/GestionProprietes";
 	}
@@ -214,16 +235,19 @@ public class ProprietesController {
     permet de mettre a jour une propriete dont on lui passe l'id
     en parametre
      */
-	@GetMapping("/update")
-	public String Pageupdate(Long id,Model model){
+	@GetMapping("/update/{id}")
+	public String Pageupdate(@PathVariable("id") Long id,Model model){
 		this.nId=id;
-		Proprietes propriete=iProprietesServices.consulterPropriete(this.nId);
+		Proprietes propriete=iProprietesServices.consulterPropriete(id);
 		model.addAttribute("bailleur",this.bailleur);
 		model.addAttribute("propriete",propriete);
 		return "Bailleur/ModifierPropriete";
 
 	}
-
+	/*
+	permet de sauvegarder les info de mise
+	a jour d'une propriete
+	 */
 	@PostMapping("/SaveUpdate")
 	public String upadate(Model model,Proprietes propriete){
 		model.addAttribute("propriete",new Propriete());
@@ -239,9 +263,10 @@ public class ProprietesController {
 	public String proprieteLibre(Model model){
 		List<Proprietes>proprieteList= iProprietesServices.proprieteLibreParBailleur(this.bailleur);
 		model.addAttribute("bailleur",this.bailleur);
-		model.addAttribute("proprieteList",proprieteList);
-		return "Bailleur/ProprieteLibre";
+		model.addAttribute("propriete",proprieteList);
+		return "propriete/GestionProprietes";
 	}
+
 
 }	
 

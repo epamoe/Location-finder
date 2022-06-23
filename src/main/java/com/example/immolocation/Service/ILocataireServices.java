@@ -11,10 +11,12 @@ import java.util.List;
 public interface ILocataireServices {
 
     //*********ajoute un locataire
-    public void addLocataire(Locataire locataire, Bailleur bailleur, Propriete propriete);
+    public void addLocataire(Locataire locataire, Bailleur bailleur, Proprietes propriete);
 
     //*********supprime un locataire
     public void deleteLocatire(Locataire locataire);
+
+    public  List<Locataire> findAllByBailleur(Bailleur bailleur);
 
     //*********retourne les info sur les proprietes occupée par le locataire
     public List<Locataire> findByPropriete();
