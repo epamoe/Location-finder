@@ -24,11 +24,17 @@ public class ServiceFacture {
     @Autowired
     private FactureRepository factureRepository;
 
+    //***********************************************essaie de traiment sur la robustesse du code lorsqu'un locataire n'a aucune facture précédente pour la premiere facturation***************************
 
     //retoure la liste des facture selon les id
-    public Facture dernier_facture_loc(String login){
+    public Facture dernier_facture_loc(String login){//************************************traitement en cas de premiere facturation
+        List<Facture> factureList=factureRepository.dernier_facture_loc(login);
+        if(factureList.isEmpty()){
+            return new Facture();
+        }else {
+            return factureRepository.dernier_facture_loc(login).get(0);
+        }
 
-        return factureRepository.dernier_facture_loc(login).get(0);
     }
 
     public List<Facture> Liste_de_facture(String login) {
@@ -39,25 +45,39 @@ public class ServiceFacture {
 
     public int derniere_dette_loc(String login) {
 
-        List<Facture> test= factureRepository.dernier_facture_loc(login);
+        List<Facture> test= factureRepository.dernier_facture_loc(login);//************************************traitement en cas de premiere facturation
+        if(test.isEmpty()){
+            return 0;
+        }else{
+            return  test.get(0).getDette();
+        }
 
-       return  test.get(0).getDette();
+
     }
 
 
     public int dernier_avance_loc(String login) {
 
-        List<Facture> test= factureRepository.dernier_facture_loc(login);
+        List<Facture> test= factureRepository.dernier_facture_loc(login);//************************************traitement en cas de premiere facturation
+            if(test.isEmpty()){
+                return 0;
+            }else{
+                return  test.get(0).getAvance();
+            }
 
-        return  test.get(0).getAvance();
     }
 
 
     public int dernier_surplus_loc(String login) {
+        List<Facture> test= factureRepository.dernier_facture_loc(login);//************************************traitement en cas de premiere facturation
+        if(test.isEmpty()){
+            return 0;
+        }else{
+            return  test.get(0).getSurplus();
+        }
 
-        List<Facture> test= factureRepository.dernier_facture_loc(login);
 
-        return  test.get(0).getSurplus();
+
     }
     //methode permetant de facture elle attriebut une facture facture a un locatiare
 

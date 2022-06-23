@@ -24,23 +24,42 @@ public class LocataireServiceImpl implements ILocataireServices {
     cette methode permet d'enregistrer un locataire
     en définissant la proprieté qu'il occupe comme
     non disponible et en definissant qui est le bailleur
-    de ce locataire
+    de ce locataire.elle retourne un string qui correspond
+    au mot de passe du locataire.ce mot de passe sera remet
+    au locataire via une api d'envoie de sms
      */
     @Override
-    public void addLocataire(Locataire locataire,Bailleur bailleur,Proprietes propriete) {
+    public String addLocataire(Locataire locataire,Bailleur bailleur,Proprietes propriete) {
+
+        String mdp=iUserServices.GenerateurDeCaractaire(5);
+
         List<Proprietes> proprieteList = locataire.getPropriete();//lorsque on alloue une propriete elle devient occupé
+
         propriete=iProprietesServices.setDisponibilite("LA PROPRIETE EST OCCUPEE PAR UN LOCATAIRE",propriete);//changement d'etat de la propriete(passage de l'etat libre a occupé)
+
         User user=new User();//instanciation d'un nouvelle utilisateur
+
         user.setLogin(locataire.getContact());//definition du login de l'utilisateur
-        user.setMot_de_passe(locataire.getContact());///modifier par un générateur de mot de passe**************************************************************************0
+
+        user.setMot_de_passe(mdp);//on genère 5 caractère en guise de mot de passe
+
         iUserServices.ajouterUtilsateurRole(user);//ajouter le role locataire a l'utilisateur
+
         locataire.setLogin(locataire.getContact());//enregistrer le login de l'utilisateur
+
         proprieteList.add(propriete);
+
         locataire.setPropriete(proprieteList);//enregister sa proprieté
+
         locataire.setBailleur(bailleur);// definit le bailleur qui enregistre la propriete
+
         locataireRepository.save(locataire);//senregistrement du locataire
+
         iProprietesServices.modifierPropriete(propriete.getId(),propriete);//modification de la propriete le rendant occupée
 
+        System.out.println(mdp);
+
+        return mdp;
     }
 
 
@@ -48,35 +67,39 @@ public class LocataireServiceImpl implements ILocataireServices {
 
     @Override
     public void deleteLocatire(Locataire locataire) {
+
         locataireRepository.delete(locataire);
+
     }
 
     @Override
     public List<Locataire> findAllByBailleur(Bailleur bailleur) {
-        List<Locataire> locataireList=locataireRepository.findAllByBailleur(bailleur);
-        return null;
-    }
 
-    @Override
-    public List<Locataire> findByPropriete() {
-        return null;
-    }
+        return  locataireRepository.findAllByBailleur(bailleur);
 
-    @Override
-    public List<Locataire> findByBailleur(Bailleur bailleur) {
-        return null;
     }
 
 
     @Override
-    public Locataire rechercherParPropriete(Propriete propriete) {
+    public Locataire rechercherParPropriete(Proprietes propriete) {
        Locataire locataire=locataireRepository.findLocataireByPropriete(propriete);
        return locataire;
     }
 
-    public Locataire rechercherParPropriete(Proprietes propriete) {
-        Locataire locataire=locataireRepository.findByPropriete(propriete);
-        return locataire;
+    @Override
+    public Locataire rechercherLocataire(String login) {
+        return locataireRepository.chercher_loc_parLOGIN(login);
     }
+
+    @Override
+    public void modifierLocataire(Locataire locataire) {
+        locataireRepository.save(locataire);
+    }
+
+    @Override
+    public Locataire rechercherParId(Long id) {
+        return locataireRepository.findById(id);
+    }
+
 
 }

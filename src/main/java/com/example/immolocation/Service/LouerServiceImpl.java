@@ -1,8 +1,8 @@
 package com.example.immolocation.Service;
 
 
-import com.example.immolocation.Dao.ProprieteRepository;
-import com.example.immolocation.Model.Propriete;
+import com.example.immolocation.Dao.ProprietesRepository;
+import com.example.immolocation.Model.Proprietes;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 public class LouerServiceImpl implements ILouerServices{
 
     @Autowired
-    ProprieteRepository proprieteRepository;
+    ProprietesRepository proprietesRepository;
     @Override
-    public void ajouterPropriete(Propriete propriete) {
-        proprieteRepository.save(propriete);
+    public void ajouterPropriete(Proprietes propriete) {
+        proprietesRepository.save(propriete);
     }
 
     @Override

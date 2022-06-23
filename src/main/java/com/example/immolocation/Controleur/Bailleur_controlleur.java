@@ -34,7 +34,7 @@ public class Bailleur_controlleur {
    @Autowired
    ServiceFacture serviceFacture;
    @Autowired
-   LocataireRepository locataireRepository;
+   ILocataireServices iLocataireServices;
    @Autowired
     BailleurServiceImpl bailleurService;
 
@@ -89,12 +89,12 @@ public class Bailleur_controlleur {
           SecurityContext securityContext= (SecurityContext)
                   httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
           String login =securityContext.getAuthentication().getName();
-
+          List<Locataire> locataireList=iLocataireServices.findAllByBailleur(iBailleurServices.rechercherBailleur(login));
           List<Locataire> locataires= new ArrayList<>();
           System.out.println(login);
           locataires.addAll(bailleurService.locataireselonloginBailleur(login));
           model.addAttribute("listeDesLocataireDeBailleur",locataires);
-          model.addAttribute("listeDesLocataireDeBailleur",locataires);
+          model.addAttribute("listeDesLocataireDeBailleur",locataireList);
           System.out.println(locataires);
           return "/Bailleur/Facturer";
       }
@@ -127,7 +127,7 @@ public class Bailleur_controlleur {
 
 
         Facture facture = serviceFacture.dernier_facture_loc(login);
-        Locataire locataires = locataireRepository.chercher_loc_parLOGIN(login);
+        Locataire locataires = iLocataireServices.rechercherLocataire(login);
         model.addAttribute("listeDesLocataireDeBailleur", locataires);
         model.addAttribute("listeDesFactureDuLocTel", facture);
         locataires.setLogin(login);
