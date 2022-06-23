@@ -1,7 +1,5 @@
 package com.example.immolocation.Controleur;
 
-//import com.example.immolocation.Service.IRoleService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.WebAttributes;
@@ -14,20 +12,16 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class Accuiel {
- /*   @Autowired
-    IRoleService iRoleService;
-*/
+
     @GetMapping(value="/")
     public String accueil1()
     {
-        //iRoleService.definirRoleBd();
         return "Accueil";
     }
 
     @GetMapping(value="/home")
     public String accueil()
     {
-       // iRoleService.definirRoleBd();
         return "Accueil";
     }
 

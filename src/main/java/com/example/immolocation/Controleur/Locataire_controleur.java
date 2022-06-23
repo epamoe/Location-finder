@@ -9,7 +9,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
@@ -88,35 +87,6 @@ public class  Locataire_controleur {
         return "redirect:/GestionLocataire";
     }
 
-    @RequestMapping("/deleteLocataire" )
-    public String delete(Long id){
-            Locataire locataire=iLocataireServices.rechercherParId(id);
-            List<Proprietes> proprietesListDuLocataire=locataire.getPropriete();
-            if(proprietesListDuLocataire.size()<=1){
-                Proprietes proprietes=proprietesListDuLocataire.get(0);
-                proprietesListDuLocataire.remove(proprietes);
-                iProprietesServices.setDisponibilite("LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE",proprietes);
-                iProprietesServices.modifierPropriete(proprietes.getId(),proprietes);
-                iLocataireServices.deleteLocatire(locataire);
-
-            }
-            else
-            {
-                for(int i=0;i<proprietesListDuLocataire.size();i++){
-                    Proprietes proprietes=proprietesListDuLocataire.get(i);
-                    proprietesListDuLocataire.remove(proprietes);
-                    iProprietesServices.setDisponibilite("LA PROPRIETE N'EST PAS OCCUPEE PAR UN LOCATAIRE",proprietes);
-                    iProprietesServices.modifierPropriete(proprietes.getId(),proprietes);
-
-                }
-
-                iLocataireServices.deleteLocatire(locataire);
-            }
-            return "redirect:/GestionLocataire";
-
-        }
-
-
     @GetMapping("/GestionLocataire")
     public String pageGestionLocataire(Model model,HttpServletRequest httpServletRequest){
 
@@ -125,29 +95,55 @@ public class  Locataire_controleur {
                 httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
         String login = securityContext.getAuthentication().getName();
         this.bailleur= iBailleurServices.rechercherBailleur(login);
-        System.out.println(login);
+
 
 
         List<Locataire> locataires= new ArrayList<>();
-        locataires=iLocataireServices.findAllByBailleur(this.bailleur);
 
-
+        List<Proprietes> proprietes=iProprietesServices.listProprieteparBailleur(iBailleurServices.rechercherBailleur("al"));
+        for (int i=0;i<proprietes.size();i++){
+            locataires.add(iLocataireServices.rechercherParPropriete(proprietes.get(i)));
+        }
         model.addAttribute("locataireList",locataires);
         model.addAttribute("bailleur",this.bailleur);
         return "Bailleur/GestionLocataire";
     }
 
-    @GetMapping("/updateLocataire")
-    public String update(Long id, Model model,HttpServletRequest httpServletRequest){
-        HttpSession httpSession = httpServletRequest.getSession();
-        SecurityContext securityContext = (SecurityContext)
-                httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
-        String login = securityContext.getAuthentication().getName();
-        this.bailleur= iBailleurServices.rechercherBailleur(login);
-        model.addAttribute("bailleur",this.bailleur);
-        model.addAttribute("locataire",iLocataireServices.rechercherParId(id));
-        List<Proprietes> proprieteList = iProprietesServices.proprieteLibreParBailleur(this.bailleur);
+}
+      /*  @PostMapping("/SaveProcessing1")
+        public String SaveLocataire1 (Model model, Locataire locataire, String login){
+
+  /*
+     @GetMapping("/AjouterLocataire")
+   @GetMapping("/AjouterLocataire")
+    public String formulaireLocataire(Model model){
+        List<Propriete> proprieteList = iProprieteServices.listProprieteparBailleur(iBailleurServices.rechercherBailleurParId(1L));
         model.addAttribute("proprieteList",proprieteList);
-        return "Bailleur/AjouterLocataire";
+        model.addAttribute("locataire",new Locataire());
+        //List<Propriete> proprieteList= iProprieteServices.listProprieteparBailleur();
+    return "Bailleur/AjouterLocataire";
+
+
+    } @PostMapping("/SaveProcessing")
+    public String SaveLocataire(Model model,String name, Locataire locataire){
+       Propriete propriete= iProprieteServices.findByName(name);
+    return "AjouterLocataire";
+    }*//* @PostMapping("/SaveProcessing")
+    public String SaveLocataire(Model model, Locataire locataire){
+>>>>>>> 15d4ac3189412932c2318b6a23d1c04d0dbe1eba
+
+            model.addAttribute("Locatiare", new Locataire());
+
+        iLocataireServices.addLocataire(locataire,iBailleurServices.rechercherBailleurParId(this.IdBailleurConnecter),propriete);
+        return"redirect:Bailleur/GestionPropriete";
+    }
+
+    @GetMapping("/GestionLocataire")
+    public String Gestion(Model model){
+       List<Locataire>locataireList= iLocataireServices.findByBailleur(iBailleurServices.rechercherBailleurParId(this.IdBailleurConnecter));
+       model.addAttribute("locataireList",locataireList);
+
+       return "Bailleur/GestionLocataire";
     }
 }
+*/
