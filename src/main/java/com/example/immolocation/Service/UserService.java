@@ -23,24 +23,6 @@ public class UserService implements IUserServices {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
     }
-    @Override
-    public String GenerateurDeCaractaire(int nbCaractaire) {
-            String chaineDeChoix;
-            StringBuilder builder;
-            chaineDeChoix = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
-                    + "0123456789";
-            builder = new StringBuilder(nbCaractaire);
-
-            for (int m = 0; m < nbCaractaire; m++) {
-                int index
-                        = (int)(chaineDeChoix.length()
-                        * Math.random());
-                builder.append(chaineDeChoix
-                        .charAt(index));
-            }
-
-            return builder.toString();
-    }
 
     public void ajouterUtilsateurRole(User user){
 
@@ -64,6 +46,13 @@ public class UserService implements IUserServices {
         userRepository.save(user);
     }
 
+    public  Long id_utilisateur(){
+        return user.getId();
+
+    }
+    public List<User> listAll(){
+        return userRepository.findAll();
+    }
 
 
 }

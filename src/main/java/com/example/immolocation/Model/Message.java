@@ -4,14 +4,34 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import org.springframework.stereotype.Component;
 
-import javax.transaction.Status;///////////////////////
-import java.util.Date;
+import javax.persistence.*;
+
+@Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
+@Component
 public class Message {
- private String message ;
- private String fromLogin;
+@Id
+@GeneratedValue(strategy= GenerationType.IDENTITY)
+private int Id_Message;
+@Transient
+    private MessageType type;
+    private String content="Contenu";
+    @Transient
+    private String sender="sender";
+
+    public enum MessageType {
+        CHAT,
+        JOIN,
+        LEAVE
+    }
+    @ManyToOne
+    Bailleur bailleur;
+    @ManyToOne
+  Locataire locataire;
+
 }
