@@ -3,6 +3,7 @@ package com.example.immolocation.Service;
 
 import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Locataire;
+import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
 
 import java.util.List;
@@ -10,21 +11,22 @@ import java.util.List;
 public interface ILocataireServices {
 
     //*********ajoute un locataire
-    String addLocataire(Locataire locataire, Bailleur bailleur, Proprietes propriete);
+    public void addLocataire(Locataire locataire, Bailleur bailleur, Proprietes propriete);
 
     //*********supprime un locataire
-    void deleteLocatire(Locataire locataire);
+    public void deleteLocatire(Locataire locataire);
 
-    List<Locataire> findAllByBailleur(Bailleur bailleur);
+    public  List<Locataire> findAllByBailleur(Bailleur bailleur);
 
-    //**********rechercher un locataire a travers la propriete qu'il occupe
-    Locataire rechercherParPropriete(Proprietes propriete);
+    //*********retourne les info sur les proprietes occupée par le locataire
+    public List<Locataire> findByPropriete();
 
-    //*********rrehercher locataire par son login
-    public Locataire rechercherLocataire(String login);
+    //********retourne la liste des locataires par bailleurs
+    public List<Locataire> findByBailleur(Bailleur bailleur);
 
 
-    void modifierLocataire(Locataire locataire);
+    public Locataire rechercherParPropriete(Propriete propriete);
 
-    Locataire rechercherParId(Long id);
+    public Locataire rechercherParPropriete(Proprietes propriete);
+
 }

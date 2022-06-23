@@ -19,7 +19,7 @@ public class ImmolocationApplication {
 
         System.out.println("Current Date = " + calendar.getTime());
         // Incrementing Month by 2
-        calendar.add(Calendar.MINUTE, 5);
+        calendar.add(Calendar.MONTH, 2);
         System.out.println("Updated Date (+2 Months) = " + calendar.getTime());
 
         Date date =new Date();
