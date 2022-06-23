@@ -5,7 +5,8 @@
     <meta name="viewport" content="width-device-width, initial-scale=1"/>
     <title>
         Tableau de bord
-    </title><link rel="shortcut icon" href="../../static/images/logo.png" th:src="@{/images/logo.png}"/>
+    </title>
+    <link rel="shortcut icon" href="../../static/images/logo.png" th:href="@{images/logo.png}"/>
     <link rel="stylesheet" href="../../static/css/MEF.css" th:href="@{css/MEF.css}"/>
     <link rel="stylesheet" href="../../static/bootstrap-5.1.3-dist/css/bootstrap.css" th:href="@{/bootstrap-5.1.3-dist/css/bootstrap.css}"/>
     <link rel="stylesheet" href="../../static/bootstrap-5.1.3-dist/css/bootstrap.min.css" th:href="@{/bootstrap-5.1.3-dist/css/bootstrap.min.css}"/>
@@ -19,7 +20,7 @@
         <!--side bar-->
         <div id="block1" class="col-sm-2" style="color:#fff">
             <br/>
-            <div class="bg-light border mt-2 text-white bg-dark p-2 rounded-top rounded-bottom">
+            <div class="bg-light border mt-2 text-white bg-dark p-2 rounded-top rounded-bottom" style="position: fixed">
                 <div>
                     <nav>
                         <ul class="nav nav-tabs">
@@ -162,7 +163,7 @@
                     <td><a th:href="@{/image/imageDetails(id=${propriete.id})}" class="btn btn-info text-right" target="_blank">visualiser</a></td>
                     <td><button class="btn-primary"><a class="text-white" th:href="@{/AjouterImage(id=${propriete.id})}" href="../Bailleur/AjouterImage.html" >Photo</a></button></td>
                     <td><button class="btn-warning"><a class="text-white" th:href="@{/update(id=${propriete.id})}">Modifier</a></button></td>
-                    <td><button class="btn-danger"><a class="text-white" th:href="@{/delete(id=${propriete.id})}">supprimer  </a></button></td>
+                    <td><button class="btn-danger"><a class="text-white"  onclick="return confirm('la suppression est irreversible')" th:href="@{/delete(id=${propriete.id})}">supprimer  </a></button></td>
                 </tr>
                 </tbody>
             </table>

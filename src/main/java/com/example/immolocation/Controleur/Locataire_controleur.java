@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -130,8 +131,11 @@ public class  Locataire_controleur {
 
         List<Locataire> locataires= new ArrayList<>();
         locataires=iLocataireServices.findAllByBailleur(this.bailleur);
-
-
+        List<Integer> Date = new ArrayList<>();
+            for( int i=0;i <locataires.size();i++){
+              Date.add(locataires.get(i).getDate_entree_locataire().getMinute());
+            }
+        model.addAttribute("date",Date);
         model.addAttribute("locataireList",locataires);
         model.addAttribute("bailleur",this.bailleur);
         return "Bailleur/GestionLocataire";

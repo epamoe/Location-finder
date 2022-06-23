@@ -123,16 +123,26 @@ public class Bailleur_controlleur {
     }
 
     @RequestMapping("/locataire/facturer/{login}")
-    public String proccederFacture(Model model, @PathVariable("login") String login) {
+    public String proccederFacture(Model model, @PathVariable("login") String login,HttpServletRequest httpServletRequest) {
 
+        HttpSession httpSession= httpServletRequest.getSession();
+        SecurityContext securityContext= (SecurityContext)
+                httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
+        String login1 =securityContext.getAuthentication().getName();
 
         Facture facture = serviceFacture.dernier_facture_loc(login);
         Locataire locataires = iLocataireServices.rechercherLocataire(login);
+        model.addAttribute("bailleur",iBailleurServices.rechercherBailleur(login1));
         model.addAttribute("listeDesLocataireDeBailleur", locataires);
         model.addAttribute("listeDesFactureDuLocTel", facture);
         locataires.setLogin(login);
         System.out.println(login);
         System.out.println(locataires);
         return "/Bailleur/fac_loc";
+    }
+
+    @PostMapping("/saveFacture")
+    public String save(){
+         return "/";
     }
 }

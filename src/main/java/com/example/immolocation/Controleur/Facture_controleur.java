@@ -101,7 +101,7 @@ public class Facture_controleur {
 }
 
     @PostMapping ("/enregistrerfacture/{login}")
-    public String enregistre_facture(@RequestParam int montant , @PathVariable String login){
+    public String enregistre_facture(@RequestParam int montant , @PathVariable("login") String login){
         System.out.println(montant);
         System.out.println(login);
       serviceFacture.attribuer_fact(login,montant);
