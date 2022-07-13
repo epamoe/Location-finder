@@ -31,7 +31,7 @@ public class Facture {
     // liaison de tables
 
   @ManyToOne
-  @JoinColumn(name="Id_Locataire")
+  @JoinColumn(name="login_Locataire")
   private Locataire locataire;
   // getters et setters
 

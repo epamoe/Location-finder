@@ -1,7 +1,6 @@
 package com.example.immolocation.Service;
 
 import com.example.immolocation.Model.Bailleur;
-import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
 
 import java.util.List;
@@ -40,6 +39,8 @@ public interface IProprietesServices {
 
 
     public Optional<Proprietes> getProprieteById(Long id);
+
+    public void supprimerProprieteOccupe(Long id);
 
 
     public List<Proprietes> getAllActivePropriete();

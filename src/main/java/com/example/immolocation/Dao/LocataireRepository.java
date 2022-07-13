@@ -3,18 +3,17 @@ package com.example.immolocation.Dao;
 
 import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Locataire;
-import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
-
-
+@Component
+@Repository
 public interface LocataireRepository extends CrudRepository<Locataire, String> {
-    @Query("select u from Locataire u where u.login=?1")
-    Locataire retourlocataire(String login) ;
 
     @Query("select u.login from Locataire u inner join u.factures r where r.id_facture=?1 ")
     String recupererloginLocataire(int id_facture);
@@ -56,19 +55,31 @@ public interface LocataireRepository extends CrudRepository<Locataire, String> {
 
                       List<Locataire> findAllByBailleur(Bailleur bailleur);
 
-               public Locataire findLocataireByPropriete(Propriete propriete);
+               public Locataire findLocataireByPropriete(Proprietes propriete);
 
                @Query("select u from Locataire u  where u.login=?1")
                   Locataire chercher_loc_parLOGIN(String  login);
 
-                 public List<Locataire> findByPropriete(Propriete propriete);
+                 public List<Locataire> findAllByPropriete(Proprietes propriete);
 
                 Locataire findByPropriete(Proprietes propriete);
 
+                @Query("select u from Locataire u where u.login=?1")
+                   Locataire findloc(String id);
 
+                List<Locataire> findAll();
+
+    @Query("select u from Bailleur r inner join r.locataire u where r.id=?1")
+    List<Locataire> liste_loc_selon_Bailleurid(long id);
+
+    @Query("select u from Locataire u where u.login=?1")
+    Locataire retourlocataire(String login);
 
     @Query("SELECT a.nom_Locataire, a.montant_mensuel_a_payer,r.dette FROM Locataire a " +
             "inner JOIN a.factures r WHERE r.dette>0 AND r.id_facture=(select max(r.id_facture) from r  ) ")
                             List<String> locataire_endettes();
+
+    @Query("Select u from Locataire u inner join u.bailleur r where u.login =?1 ")
+    String contact_Bailleurst(String login);
 
 }

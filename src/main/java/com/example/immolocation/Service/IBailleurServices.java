@@ -5,6 +5,7 @@ import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Locataire;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IBailleurServices {
 
@@ -13,7 +14,7 @@ public interface IBailleurServices {
 
     void ajouterBailleur(Bailleur bailleur);
 
-    Bailleur rechercherParId(Long id);
+    Optional<Bailleur> rechercherParId(Long id);
 
     public List<Locataire> locataireselonloginBailleur(String login);
 

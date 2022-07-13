@@ -1,5 +1,6 @@
 package com.example.immolocation.Controleur;
 
+import com.example.immolocation.Dao.BailleurRepository;
 import com.example.immolocation.Dao.LocataireRepository;
 import com.example.immolocation.Model.Bailleur;
 import com.example.immolocation.Model.Facture;
@@ -43,6 +44,10 @@ public class Bailleur_controlleur {
 
     @Autowired
     IUserServices iUserServices;
+    @Autowired
+    BailleurRepository bailleurRepository;
+    @Autowired
+LocataireRepository locataireRepository;
     /*
         @GetMapping("/Ajouter_locataire")
         public String ajouter_locataire() {
@@ -89,13 +94,14 @@ public class Bailleur_controlleur {
           SecurityContext securityContext= (SecurityContext)
                   httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
           String login =securityContext.getAuthentication().getName();
+          this.bailleur=iBailleurServices.rechercherBailleur(login);
           List<Locataire> locataireList=iLocataireServices.findAllByBailleur(iBailleurServices.rechercherBailleur(login));
           List<Locataire> locataires= new ArrayList<>();
-          System.out.println(login);
+
           locataires.addAll(bailleurService.locataireselonloginBailleur(login));
           model.addAttribute("listeDesLocataireDeBailleur",locataires);
           model.addAttribute("listeDesLocataireDeBailleur",locataireList);
-          System.out.println(locataires);
+
           return "/Bailleur/Facturer";
       }
 
@@ -122,27 +128,21 @@ public class Bailleur_controlleur {
         return "redirect:/Bailleur/AuthentificationBailleur";
     }
 
-    @RequestMapping("/locataire/facturer/{login}")
-    public String proccederFacture(Model model, @PathVariable("login") String login,HttpServletRequest httpServletRequest) {
 
-        HttpSession httpSession= httpServletRequest.getSession();
-        SecurityContext securityContext= (SecurityContext)
-                httpSession.getAttribute("SPRING_SECURITY_CONTEXT");
-        String login1 =securityContext.getAuthentication().getName();
+
+    @RequestMapping("/locataire/facturer/{login}")
+    public String proccederFacture(Model model, @PathVariable("login") String login) {
+
 
         Facture facture = serviceFacture.dernier_facture_loc(login);
-        Locataire locataires = iLocataireServices.rechercherLocataire(login);
-        model.addAttribute("bailleur",iBailleurServices.rechercherBailleur(login1));
+        Locataire locataires = locataireRepository.chercher_loc_parLOGIN(login);
         model.addAttribute("listeDesLocataireDeBailleur", locataires);
         model.addAttribute("listeDesFactureDuLocTel", facture);
+        model.addAttribute("bailleur",this.bailleur);
         locataires.setLogin(login);
         System.out.println(login);
         System.out.println(locataires);
         return "/Bailleur/fac_loc";
     }
 
-    @PostMapping("/saveFacture")
-    public String save(){
-         return "/";
-    }
 }

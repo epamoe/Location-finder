@@ -21,15 +21,14 @@ import java.util.List;
 @Component
 public class Locataire implements Serializable {
     // precise que l'attribut qui est juste en bas est l'identifiant
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Id
     private String login;
     private String nom_Locataire;
     private String Numero_cni;
     private int montant_mensuel_a_payer;
     private String Profession;
     private String contact;
-    private LocalDateTime date_entree_locataire= LocalDateTime.now();
+    private String date_entree_locataire;
 
 
     @ManyToOne(cascade = CascadeType.ALL)

@@ -1,7 +1,6 @@
 package com.example.immolocation.Dao;
 
 import com.example.immolocation.Model.Bailleur;
-import com.example.immolocation.Model.Propriete;
 import com.example.immolocation.Model.Proprietes;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -34,6 +33,9 @@ public interface ProprietesRepository extends JpaRepository<Proprietes, Long>{
     public List<Proprietes> finfAllByLocalisation(@Param("x")String localisation);
 
     //public Page<Propriete> listProprieteParBailleur
+
+
+
 
 
 

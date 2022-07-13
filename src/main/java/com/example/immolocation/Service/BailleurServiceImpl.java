@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class BailleurServiceImpl implements IBailleurServices {
@@ -28,7 +29,7 @@ public class BailleurServiceImpl implements IBailleurServices {
     }
 
     @Override
-    public Bailleur rechercherParId(Long id) {
+    public Optional<Bailleur> rechercherParId(Long id) {
         return bailleurRepository.findById(id);
     }
 
